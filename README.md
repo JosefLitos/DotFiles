@@ -16,7 +16,7 @@ I include source code for my terminal of choice: st, as well as used themes for 
 + termite
 + htop
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.jpg)
 
 # Necessary programms
 | NAME                     | PURPOUSE                                    |
