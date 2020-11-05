@@ -23,6 +23,7 @@ I include source code for my terminal of choice: st, as well as used themes for 
 |--------------------------|---------------------------------------------|
 | acpi                     | get information about battery               |
 | alsa-utils               | sound control                               |
+| bc                       | used for floating-point arithmetics         |
 | bat                      | cat with syntax highlightning               |
 | feh                      | background and image viewer                 |
 | fish                     | my shell of choice                          |

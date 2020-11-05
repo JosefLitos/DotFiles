@@ -1,0 +1,7 @@
+#!/bin/bash
+
+case "$1" in
+	"vol") pkill -RTMIN+10 i3blocks;;
+	# wait before the the value rises up
+	"light") sleep 0.2; pkill -RTMIN+11 i3blocks;;
+esac

@@ -10,9 +10,6 @@ Plug 'francoiscabrol/ranger.vim' 														" ranger file browser integration
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 						" Code completion and much more
 Plug 'honza/vim-snippets' 																	" buch of snippets to work with CoC
 Plug 'mattn/emmet-vim' 																			" make writing html much more easier
-" Motions
-Plug 'pechorin/any-jump.vim' 																" searches for definitions and references across files, better than coc's <leader>gd and ripgrep
-Plug 'easymotion/vim-easymotion' 														" enables new ways to move through file
 " Syntax highlighting
 Plug 'morhetz/gruvbox' 																			" gruvbox color scheme used by vim
 Plug 'rust-lang/rust.vim' 																	" better highlighting for rust lang
