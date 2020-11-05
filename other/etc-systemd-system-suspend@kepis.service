@@ -1,0 +1,12 @@
+[Unit]
+Description=Lockscreen app launch after suspend resuming
+Before=sleep.target
+
+[Service]
+User=kepis
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/i3lock -i /home/kepis/Pictures/screen/pozadi.png
+
+[Install]
+WantedBy=sleep.target
