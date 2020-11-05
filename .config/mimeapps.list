@@ -1,0 +1,41 @@
+[Added Associations]
+application/octet-stream=mousepad.desktop;nvim.desktop;
+image/jpeg=userapp-feh -. -B black -d %d -|-823DT0.desktop;ranger.desktop;userapp-feh -. -B black --start-at-O0J2R0.desktop;userapp-sudo feh -. -B black-GOEPR0.desktop;
+application/x-java-archive=userapp-java -jar-U3ANR0.desktop;
+inode/directory=7zFM.desktop;
+image/png=userapp-feh -. -B black -d %d -|-ITA6S0.desktop;userapp-feh -. -B black -d %d -|-PX67S0.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/ftp=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+application/x-theme=nvim.desktop;
+application/x-navi-animation=gimp.desktop;
+video/x-matroska=vlc.desktop;
+video/mp4=vlc.desktop;
+
+[Removed Associations]
+
+[Default Applications]
+image/jpeg=userapp-feh -. -B black -d %d -|-823DT0.desktop
+application/x-java-archive=userapp-java -jar-U3ANR0.desktop
+image/png=userapp-feh -. -B black -d %d -|-ITA6S0.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/ftp=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+text/html=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+application/x-theme=nvim.desktop
+video/mp4=vlc.desktop

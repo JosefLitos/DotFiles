@@ -1,0 +1,53 @@
+#!/bin/bash
+# Copyright (C) 2020 Josef Litoš
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#Echos a color between red and green (0 for red, 100 for green)
+
+OPACITY=$(printf '%x\n' 200)
+
+fix() {
+	echo "$([[ $1 -le 16 ]] && echo 0)$(printf '%x\n' $1)"
+}
+
+#input in format: color [0-255] [0-255] [0-255]
+color() {
+	echo "#$(fix $1)$(fix $2)$(fix $3)"
+}
+
+if [[ $1 -ge 200 ]]; then
+	x=0
+elif [[ $1 -gt 100 ]]; then
+	x=$((200-$1))
+elif [ $1 ]; then
+	x=$1
+else
+	color 50 128 255
+	exit
+fi
+
+case "$x" in
+	100 ) color 0 255 0;;
+	50 ) color 255 255 0;;
+	0 ) color 255 0 0;;
+	*) if [[ $x -gt 50 ]]; then
+		let x=(101-$x)*5
+		color $x 255 0
+	else
+		let x=$x*5+5
+		color 255 $x 0
+	fi
+esac
+

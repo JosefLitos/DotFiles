@@ -1,0 +1,73 @@
+#!/bin/sh
+# Copyright (C) 2020 Josef Litoš
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#TYPE="${BLOCK_INSTANCE:-mem}"
+
+TEXT=$(awk -v type=$TYPE '
+/^MemTotal:/ {
+	mem_total=$2
+}
+/^MemFree:/ {
+	mem_free=$2
+}
+/^Buffers:/ {
+	mem_free+=$2
+}
+/^Cached:/ {
+	mem_free+=$2
+}
+/^SwapTotal:/ {
+	swap_total=$2
+}
+/^SwapFree:/ {
+	swap_free=$2
+}
+END {
+#	if (type == "swap") {
+#		free=swap_free/1024/1024
+#		used=(swap_total-swap_free)/1024/1024
+#		total=swap_total/1024/1024
+#	} else {
+		free=mem_free/1024/1024
+		used=(mem_total-mem_free)/1024
+		if (used >= 1000) {
+			used/=1024
+			type="G"
+		} else {
+			type="M"
+		}
+		total=mem_total/1024/1024
+#	}
+
+	pct=0
+	if (total > 0) {
+		if (type == "G" ) {
+			pct=used/total*100
+		} else {
+			pct=used/total*0.1
+		}
+	}
+
+	printf("%.1f%s/%.1fG %.f", used, type, total, pct)
+}
+' /proc/meminfo)
+
+# Nice icons:  
+echo $(echo $TEXT | sed 's/^/ /;s/G /G (/;s/$/\%)/')
+PCT=$(echo $TEXT | sed 's/^.*G //')
+echo $(echo $PCT | sed 's/^/ /;s/$/\%/')
+~/.config/i3blocks/colorcode $[100-PCT]
+

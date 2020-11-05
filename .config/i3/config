@@ -1,0 +1,260 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $term st
+set $mod Mod4
+set $alt Mod1
+set $exit Escape
+set $modetgl --no-startup-id ~/.config/i3/modetoggle.sh
+set $mode tiling
+
+#-----------------+
+# Appearance opts |
+#-----------------+
+
+font pango:Inconsolata 17, Font Awesome 5 Free Solid 14
+#DejaVu Sans Mono
+
+default_border pixel 1
+focus_follows_mouse no
+mouse_warping none
+#exec_always --no-startup-id autotiling
+#gaps inner 10
+#gaps outer 5
+
+bindsym $mod+g gaps inner current plus 5
+bindsym $mod+Shift+g gaps inner current minus 5
+bindsym $mod+$alt+g gaps outer current plus 5
+bindsym $mod+$alt+Shift+g gaps outer current minus 5
+bindsym $mod+$alt+t border toggle
+
+client.focused #008800 #000000 #dddddd #888800 #008800
+
+exec --no-startup-id bash /bin/batCheck.sh
+exec --no-startup-id picom
+bindsym $mod+p exec --no-startup-id pgrep -x "picom" && killall picom || picom
+
+set $feh --no-startup-id feh --no-fehbg --bg-fill -z ~/Pictures/screen
+bindsym $mod+Next exec $feh/Jetrichovicke\ steny/
+bindsym $mod+Prior exec $feh/my_shots/
+exec $feh/best/
+#normal image displaying
+#feh -. -B black -d %d -| /path/to/image
+
+#---------------+
+# App selection |
+#---------------+
+
+# start rofi to run apps
+bindsym $mod+r exec --no-startup-id rofi -show drun
+# quick app starter
+bindsym $mod+Return exec $term
+bindsym $mod+1 exec firefox;workspace $w8
+bindsym $mod+$alt+2 exec mousepad
+bindsym $mod+2 exec $term -e nvim
+bindsym $mod+3 exec $term
+bindsym $mod+$alt+3 exec termite
+bindsym $mod+4 exec discord
+bindsym $mod+7 exec vlc; workspace $w7
+#bindsym $mod+$alt+7 workspace $w7; exec gimp
+bindsym $mod+9 exec minecraft-launcher
+bindsym $mod+$alt+e exec pcmanfm
+bindsym $mod+e exec $term -e ranger
+bindsym $mod+Shift+e exec sudo pcmanfm
+# managing/control
+bindsym Ctrl+Shift+Escape exec $term -e htop
+
+#------------------+
+# App manipulation |
+#------------------+
+
+for_window [title=".*vzhled.*"] floating enable
+for_window [window_type="utility"] floating enable sticky enable
+for_window [floating] border pixel 1
+for_window [window_type="dialog"] floating enable
+for_window [title=".*[dD]okončeno"] floating enable
+for_window [title=".*[vV]ytv.*"] floating enable
+for_window [title=".*[kK]opírov.*"] floating enable
+for_window [title=".*[oO]dstran.*"] floating enable
+for_window [title=".*[pP]řesun.*"] floating enable
+for_window [title=".*[pP]otvr.*"] floating enable
+
+## Termination
+# kill focused window
+bindsym $alt+$exit kill
+bindsym $mod+q kill
+# force kill window on select
+bindsym $alt+F4 exec $term -e xkill
+
+## Focus
+for_window [urgent=latest] focus
+# tiling/floating
+bindsym $mod+space focus mode_toggle
+# recent NOT GREAT in tiling mode (focus next/prev)
+bindsym $alt+Tab focus prev
+bindsym $alt+Shift+Tab focus next
+bindsym $alt+Ctrl+Tab exec --no-startup-id rofi -show window; focus
+# positioned
+bindsym $mod+a focus left
+bindsym $mod+s focus down
+bindsym $mod+w focus up
+bindsym $mod+d focus right
+# change tiling layer
+bindsym $mod+grave focus parent
+bindsym $mod+Shift+asciitilde focus child
+# resize
+bindsym $mod+y resize shrink width 80 px or 3 ppt
+bindsym $mod+u resize grow height 80 px or 3 ppt
+bindsym $mod+i resize shrink height 80 px or 3 ppt
+bindsym $mod+o resize grow width 80 px or 3 ppt
+# resize
+bindsym $mod+$alt+a resize shrink width 80 px or 3 ppt
+bindsym $mod+$alt+s resize grow height 80 px or 3 ppt
+bindsym $mod+$alt+w resize shrink height 80 px or 3 ppt
+bindsym $mod+$alt+d resize grow width 80 px or 3 ppt
+
+#bindsym $mod+t mode "floating"
+#mode "floating" {
+#	bindsym $exit mode "default"
+#}
+
+## Position change
+# floating mode, with tilling mode compatibility
+set $floatpos --no-startup-id ~/.config/i3/floatpos.sh
+bindsym $mod+Left exec $floatpos left
+bindsym $mod+Down exec $floatpos down
+bindsym $mod+Up exec $floatpos up
+bindsym $mod+Right exec $floatpos right
+bindsym $mod+c exec $floatpos c
+
+bindsym $mod+h exec $floatpos left
+bindsym $mod+j exec $floatpos down
+bindsym $mod+k exec $floatpos up
+bindsym $mod+l exec $floatpos right
+
+bindsym $mod+Shift+a move left
+bindsym $mod+Shift+s move down
+bindsym $mod+Shift+w move up
+bindsym $mod+Shift+d move right
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+## Layout change
+bindsym $mod+f fullscreen toggle
+# container types
+bindsym $mod+Ctrl+v sticky toggle
+bindsym $mod+Ctrl+c split toggle
+bindsym $mod+Ctrl+x layout splith
+bindsym $mod+Ctrl+z layout splitv
+bindsym $mod+Ctrl+s layout stacking
+bindsym $mod+Ctrl+a layout tabbed
+bindsym $mod+Ctrl+d layout toggle split
+# tiling/floating managing
+bindsym $mod+Ctrl+f floating toggle
+bindsym $mod+$alt+Ctrl+f exec $modetgl $mode default
+
+#------------+
+# Workspaces |
+#------------+
+
+set $w1 <b>1: </b><span color=\"#0e0\"></span>
+set $w2 <b>2: </b><span color=\"#16f\"></span>
+set $w3 <b>3: </b><span color=\"#ee0\"></span>
+set $w4 <b>4: </b><span color=\"#a0f\"></span>
+set $w5 <b>5: </b><span color=\"#e00\"></span>
+set $w6 <b>6: </b><span color=\"#0dd\"></span>
+set $w7 <b>7: </b><span color=\"#f60\"></span>
+set $w8 <b>8: </b><span color=\"#a0f\"></span>
+set $w9 <b>9: </b><span color=\"#b50\"></span>
+
+# switch to
+bindsym $mod+F1 workspace $w1
+bindsym $mod+F2 workspace $w2
+bindsym $mod+F3 workspace $w3
+bindsym $mod+F4 workspace $w4
+bindsym $mod+F5 workspace $w5
+bindsym $mod+F6 workspace $w6
+bindsym $mod+F7 workspace $w7
+bindsym $mod+F8 workspace $w8
+bindsym $mod+F9 workspace $w9
+# move focused container to
+bindsym $mod+Shift+1 move container to workspace $w1; workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2; workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3; workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4; workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5; workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6; workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7; workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8; workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9; workspace $w9
+# recent/prev workspace
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+$alt+Tab workspace back_and_forth
+
+assign [class=".*craft.*"] $w9
+assign [class="firefox"] $w8
+assign [class="Brave-browser"] $w8
+assign [class="vlc"] $w7
+assign [class="Gimp"] $w7
+
+#--------------+
+# System setts |
+#--------------+
+
+# reload config file
+bindsym $mod+$alt+c exec $modetgl $mode reload
+#restart i3 preserving layout/session
+bindsym $mod+$alt+r exec $modetgl $mode restart
+# systemstate changes
+bindsym $mod+$alt+$exit exec pkill -f "bash /bin/batCheck.sh"; exit
+bindsym $mod+XF86Launch1 exec systemctl suspend
+#bindsym $mod+$exit exec systemctl suspend
+bindsym $mod+Ctrl+$exit exec sudo umount -a;exec shutdown 0
+
+# Start i3bar to display a workspace bar with i3blocks
+bar {
+	height 24
+	font pango:Inconsolata 18, Font Awesome 5 Free Solid 16
+	status_command i3blocks
+	position top
+
+	colors {
+		statusline #ffffff
+		separator #aaaaaa
+		background #1c1c1c
+		focused_workspace #00aa00 #444240 #ffffff
+		inactive_workspace #888888 #000000 #888888
+		urgent_workspace #ff0000 #550000 #aaaaaa
+	}
+}
+
+exec --no-startup-id nm-applet
+exec --no-startup-id xrandr -r 50
+exec_always --no-startup-id xset r rate 220 30
+exec --no-startup-id xbacklight = 30
+
+# screenshot
+bindsym $mod+Print exec --no-startup-id scrot '%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/scrshot'
+# keyboard layout p
+bindsym $mod+Shift+k exec --no-startup-id setxkbmap -layout $([ $(setxkbmap -query | awk '/lay/ { print $2 }') == cz ] && echo us || echo cz)
+
+# special keys (all with XF86): ScreenSaver (lock key), WakeUp (Fn key), WebCam, Display, Launch1
+# system vals change
+# tgl lid on/off
+bindsym XF86ScreenSaver exec --no-startup-id $term -e bash -c `[ "$(xrandr --verbose | grep -m 1 CRTC:)" ] && xrandr --output LVDS1 --off || xrandr --auto && xrandr -r 50`
+
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight + $(echo "$(xbacklight)/2+3" | bc); exec pkill -RTMIN+11 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight - $(echo "$(xbacklight)/2.2+1" | bc); exec pkill -RTMIN+11 i3blocks
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
+
+bindsym XF86AudioPlay exec --no-startup-id mpris-ctl pp
+bindsym XF86AudioNext exec --no-startup-id mpris-ctl next
+bindsym XF86AudioPrev exec --no-startup-id mpris-ctl prev
+bindsym XF86AudioStop exec --no-startup-id mpris-ctl stop

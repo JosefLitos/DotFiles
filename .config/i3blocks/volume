@@ -1,0 +1,34 @@
+#!/bin/bash
+# Copyright (C) 2020 Josef Litoš
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+TEXT=$(pacmd list-sinks | awk '/front-left:/ { print $5 } /muted:/ { print $2; exit }' | sed "s/\%//")
+NUM=$(echo $TEXT | awk '{ print $1 }')
+
+if [[ $TEXT == *"yes"* ]]; then
+	ICON=
+elif [[ $NUM -ge 70 ]]; then
+	ICON=
+elif [[ $NUM -ge 50 ]]; then
+	ICON=
+else
+	ICON=
+fi
+
+echo "$ICON $NUM%"
+echo "$ICON $NUM%"
+#echo "$COLOR"
+~/.config/i3blocks/colorcode $NUM
+
