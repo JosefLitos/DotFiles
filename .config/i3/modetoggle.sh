@@ -14,7 +14,7 @@ esac
 
 rm ~/.config/i3/config
 cp ~/.config/i3/def.config ~/.config/i3/config
-sed -i '10iset $mode '$mode ~/.config/i3/config
+sed -i '9iset $mode '$mode ~/.config/i3/config
 if [ $mode == "floating" ]; then
 	echo "
 for_window [class=\".*\"] floating enable"	>> ~/.config/i3/config
