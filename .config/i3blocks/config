@@ -15,7 +15,7 @@ signal=10
 interval=60
 
 [memory]
-interval=60
+interval=20
 
 [backlight]
 interval=once

@@ -27,6 +27,11 @@ else
 	fi
 	if [[ $STATE -gt 15 ]] & ! [[ $TEXT == *""* ]]; then
 		TEXT=$(echo $TEXT | sed "s/ ..%//")
+	elif [[ $STATE -le 6 ]]; then
+		case "$(echo -en "Battery low:  $STATE%\nI'll plug it in\nSuspend\nPower off" | rofi -dmenu)" in
+			"Suspend") systemctl suspend;;
+			"Power off") systemctl poweroff;;
+		esac
 	fi
 fi
 
