@@ -19,7 +19,7 @@ I include source code for my terminal of choice: st, as well as used themes for 
 ![screenshot](screenshot.png)
 
 # Necessary programms
-| NAME                     | PURPOUSE                                    |
+| NAME                     | PURPOSE                                    |
 |--------------------------|---------------------------------------------|
 | acpi                     | get information about battery               |
 | alsa-utils               | sound control                               |
