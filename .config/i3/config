@@ -45,7 +45,8 @@ exec $feh/best/arch\ green.png
 #---------------+
 
 # start rofi to run apps
-bindsym $mod+r exec --no-startup-id rofi -show drun -location 1
+bindsym $mod+r exec --no-startup-id rofi -show run -location 1
+bindsym --release Super_L exec --no-startup-id rofi -show drun -location 1
 
 # quick app starter
 bindsym $mod+Return exec $term
@@ -92,7 +93,7 @@ bindsym $mod+space focus mode_toggle
 # recent NOT GREAT in tiling mode (focus next/prev)
 bindsym $alt+Tab focus prev
 bindsym $alt+Shift+Tab focus next
-bindsym $alt+Ctrl+Tab exec --no-startup-id rofi -show window; focus
+bindsym $mod+Ctrl+Tab exec --no-startup-id rofi -show window; focus
 # positioned
 bindsym $mod+a focus left
 bindsym $mod+s focus down
@@ -224,10 +225,10 @@ bar {
 	colors {
 		statusline #ffffff
 		separator #aaaaaa
-		background #1c1c1c00
-		focused_workspace #00aa00 #444240 #ffffff
-		inactive_workspace #888888 #000000 #888888
-		urgent_workspace #ff0000 #550000 #aaaaaa
+		background #1c1c1c44
+		focused_workspace #555555aa #555555aa #ffffff
+		inactive_workspace #1c1c1c00 #22222288 #888888
+		urgent_workspace #ff000022 #550000aa #aaaaaa
 	}
 }
 

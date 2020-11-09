@@ -18,10 +18,10 @@
 #       ⚡ 
 TEXT=$(acpi | cut -d " " -f3-5 | sed "s/,//g;s/Discharging//;s/Charging//;s/Unknown//;s/Full//;s/:..$//;s/ 0/ /g")
 
-if ! [ $TEXT ]; then
+if ! [ "$TEXT" ]; then
 	TEXT=
 else
-	STATE=$(echo $TEXT | sed "s/^. //;s/\%.*//")
+	STATE=$(echo "$TEXT" | sed "s/^. //;s/\%.*//")
 	if [[ $STATE -le 20 ]]; then
 		TEXT=$(echo $TEXT | sed "s///")
 	elif [[ $STATE -le 40 ]]; then

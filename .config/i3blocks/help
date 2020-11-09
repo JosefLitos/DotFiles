@@ -1,18 +1,21 @@
 #!/bin/bash
+#Basic guide for my i3 setup usage
 
 SELECTED=$(echo \
-"Mod+R          Rofi app launcher
+"Super/WinKey   Rofi app launcher
+Mod+R          Rofi command launcher
 Mod+E          PcManFM
 Mod+1          Firefox
 Mod+2          NeoVim
 Mod+Alt+2      Mousepad
 Mod+Enter/3    st
 Mod+(Shift)+M  Volume adj
-Mod+(Shift)+B  Backlight adj" | rofi -dmenu -location 3 -p "help menu" | sed -e "s/^...............//")
+Mod+(Shift)+B  Backlight adj" | rofi -dmenu -location 3 -p "select action" | sed -e "s/^...............//")
 
 start() {
 	case "$SELECTED" in
-		"Rofi app launcher") i3 exec rofi -drun;;
+		"Rofi app launcher") i3 exec "rofi -show drun -location 3";;
+		"Rofi command launcher") i3 exec "rofi -show run -location 3";;
 		"PcManFM") i3 exec pcmanfm;;
 		"Firefox") i3 exec firefox;;
 		"NeoVim") i3 exec st -e nvim;;

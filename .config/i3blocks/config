@@ -3,10 +3,6 @@ separator_block_width=15
 separator=true
 markup=pango
 
-[help]
-full_text=
-color=#8800aa
-
 [wifi]
 instance=wlp3s0
 interval=60
@@ -32,4 +28,8 @@ color=#2288ff
 
 [clock]
 interval=60
+
+[help]
+full_text=
+color=#8800aa
 

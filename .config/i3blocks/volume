@@ -15,8 +15,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #Nice icons:       
-if [[ $button -eq 1 ]]; then
-	pactl set-sink-volume @DEFAULT_SINK@ $(rofi -dmenu -location 3 -l 0 -p " ±[0-200]")% >> /dev/null
+if [[ $button -ge 4 ]]; then
+	pactl set-sink-volume @DEFAULT_SINK@ $([[ $button -eq 4 ]] && echo \+ || echo \-)10% >> /dev/null
+elif [[ $button -eq 1 ]]; then
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+elif [[ $button -eq 3 ]]; then
+	amixer set Capture toggle >> /dev/null
 fi
 
 TEXT=$(pacmd list-sinks | awk '/front-left:/ { print $5 } /muted:/ { print $2; exit }' | sed "s/\%//")
@@ -26,7 +30,7 @@ if [[ $TEXT == *"yes"* ]]; then
 	ICON=
 elif [[ $NUM -ge 70 ]]; then
 	ICON=
-elif [[ $NUM -ge 50 ]]; then
+elif [[ $NUM -ge 35 ]]; then
 	ICON=
 else
 	ICON=

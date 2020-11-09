@@ -13,9 +13,10 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-if [[ $button -eq 1 ]]; then
-	xbacklight = $(rofi -dmenu -location 3 -l 0 -p " [0-100]")
-	sleep 0.15
+if [[ $button -eq 1 ]] || [[ $button -eq 4 ]]; then
+	xbacklight + 10
+elif [[ $button -eq 3 ]] || [[ $button -eq 5 ]]; then
+	xbacklight - 10
 fi
 
 TEXT=$(xbacklight | awk '{ printf("%.f", $1) }')
