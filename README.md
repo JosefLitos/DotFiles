@@ -16,7 +16,7 @@ I include source code for my terminal of choice: st, as well as used themes for 
 + termite
 + htop
 
-![screenshot](screenshot.jpg)
+![screenshot](screenshot.png)
 
 # Necessary programms
 | NAME                     | PURPOUSE                                    |
@@ -65,3 +65,4 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | xorg-xrandr              | used to turn off lid                        |
 | xorg-xwininfo            | information about opened windows            |
 | yay                      | aur helper                                  |
+| imagemagick              | w3m compannion img display tool             |

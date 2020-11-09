@@ -34,7 +34,7 @@ elif [[ $1 -gt 100 ]]; then
 elif [ $1 ]; then
 	x=$1
 else
-	color 50 128 255
+	color 34 136 255
 	exit
 fi
 

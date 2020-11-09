@@ -14,6 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#Nice icons:       
+if [[ $button -eq 1 ]]; then
+	pactl set-sink-volume @DEFAULT_SINK@ $(rofi -dmenu -location 3 -l 0 -p " ±[0-200]")% >> /dev/null
+fi
+
 TEXT=$(pacmd list-sinks | awk '/front-left:/ { print $5 } /muted:/ { print $2; exit }' | sed "s/\%//")
 NUM=$(echo $TEXT | awk '{ print $1 }')
 
@@ -27,7 +32,7 @@ else
 	ICON=
 fi
 
-echo "$ICON $NUM%"
+echo "$ICON<b> $NUM%</b>"
 echo "$ICON $NUM%"
 #echo "$COLOR"
 ~/.config/i3blocks/colorcode $NUM

@@ -19,8 +19,8 @@ default_border pixel 1
 focus_follows_mouse no
 mouse_warping none
 #exec_always --no-startup-id autotiling
-#gaps inner 10
-#gaps outer 5
+gaps inner 10
+gaps outer 5
 
 bindsym $mod+g gaps inner current plus 5
 bindsym $mod+Shift+g gaps inner current minus 5
@@ -30,7 +30,6 @@ bindsym $mod+$alt+t border toggle
 
 client.focused #008800 #000000 #dddddd #888800 #008800
 
-exec --no-startup-id bash /bin/batCheck.sh
 exec --no-startup-id picom
 bindsym $mod+p exec --no-startup-id pgrep -x "picom" && killall picom || picom
 
@@ -46,20 +45,20 @@ exec $feh/best/arch\ green.png
 #---------------+
 
 # start rofi to run apps
-bindsym $mod+r exec --no-startup-id rofi -show drun
+bindsym $mod+r exec --no-startup-id rofi -show drun -location 1
+
 # quick app starter
 bindsym $mod+Return exec $term
-bindsym $mod+1 exec firefox;workspace $w8
+bindsym $mod+1 workspace $w8; exec firefox
+bindsym $mod+$alt+1 workspace $w8; exec brave
 bindsym $mod+$alt+2 exec mousepad
 bindsym $mod+2 exec $term -e nvim
 bindsym $mod+3 exec $term
 bindsym $mod+$alt+3 exec termite
 bindsym $mod+4 exec discord
-bindsym $mod+7 exec vlc; workspace $w7
-#bindsym $mod+$alt+7 workspace $w7; exec gimp
 bindsym $mod+9 exec minecraft-launcher
-bindsym $mod+$alt+e exec pcmanfm
-bindsym $mod+e exec $term -e ranger
+bindsym $mod+e exec pcmanfm
+bindsym $mod+$alt+e exec $term -e ranger
 bindsym $mod+Shift+e exec sudo pcmanfm
 # managing/control
 bindsym Ctrl+Shift+Escape exec $term -e htop
@@ -198,6 +197,7 @@ assign [class="firefox"] $w8
 assign [class="Brave-browser"] $w8
 assign [class="vlc"] $w7
 assign [class="Gimp"] $w7
+assign [class="Pinta"] $w7
 
 #--------------+
 # System setts |
@@ -208,21 +208,23 @@ bindsym $mod+$alt+c exec $modetgl $mode reload
 #restart i3 preserving layout/session
 bindsym $mod+$alt+r exec $modetgl $mode restart
 # systemstate changes
-bindsym $mod+$alt+Escape exec pkill -f "bash /bin/batCheck.sh"; exit
+bindsym $mod+$alt+Escape exit
 bindsym $mod+Escape exec systemctl suspend
 bindsym $mod+Ctrl+Escape exec sudo umount -a;exec systemctl poweroff
 
 # Start i3bar to display a workspace bar with i3blocks
 bar {
 	height 24
-	font pango:Inconsolata 18, Font Awesome 5 Free Solid 16
+	font pango:Inconsolata 16
 	status_command i3blocks
+	i3bar_command i3bar --transparency
+#	separator_symbol "|"
 	position top
 
 	colors {
 		statusline #ffffff
 		separator #aaaaaa
-		background #1c1c1c
+		background #1c1c1c00
 		focused_workspace #00aa00 #444240 #ffffff
 		inactive_workspace #888888 #000000 #888888
 		urgent_workspace #ff0000 #550000 #aaaaaa
@@ -230,8 +232,6 @@ bar {
 }
 
 set $barsig --no-startup-id ~/.config/i3blocks/signal
-
-exec --no-startup-id nm-applet
 exec --no-startup-id xrandr -r 50
 exec_always --no-startup-id xset r rate 220 30
 exec --no-startup-id xbacklight = 30

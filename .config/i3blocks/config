@@ -3,23 +3,27 @@ separator_block_width=15
 separator=true
 markup=pango
 
+[help]
+full_text=
+color=#8800aa
+
 [wifi]
 instance=wlp3s0
-interval=60
-
-[volume]
-interval=once
-signal=10
-
-[battery]
 interval=60
 
 [memory]
 interval=20
 
+[volume]
+interval=once
+signal=10
+
 [backlight]
 interval=once
 signal=11
+
+[battery]
+interval=60
 
 [date]
 command=date +" %d.%m."
