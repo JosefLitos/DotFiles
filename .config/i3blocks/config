@@ -4,7 +4,6 @@ separator=true
 markup=pango
 
 [wifi]
-instance=wlp3s0
 interval=60
 
 [memory]
