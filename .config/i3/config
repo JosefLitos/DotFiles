@@ -28,15 +28,17 @@ bindsym $mod+$alt+g gaps outer current plus 5
 bindsym $mod+$alt+Shift+g gaps outer current minus 5
 bindsym $mod+$alt+t border toggle
 
-client.focused #008800 #000000 #dddddd #888800 #008800
+client.focused #338800 #000000 #dddddd #8800aaaa #338800dd
 
 exec --no-startup-id picom
 bindsym $mod+p exec --no-startup-id pgrep -x "picom" && killall picom || picom
 
 set $feh --no-startup-id feh --no-fehbg --bg-fill -z ~/Pictures/screen
 bindsym $mod+Next exec $feh/my_shots/
-bindsym $mod+Prior exec $feh/best
-exec $feh/best/arch\ green.png
+bindsym $mod+$alt+Next exec $feh/best/
+bindsym $mod+Prior exec $feh/mc/
+bindsym $mod+$alt+Prior exec $feh/nature/
+exec $feh/mc/
 #normal image displaying
 #feh -. -B black -d %d -| /path/to/image
 
@@ -45,14 +47,14 @@ exec $feh/best/arch\ green.png
 #---------------+
 
 # start rofi to run apps
-bindsym $mod+r exec --no-startup-id rofi -show run -location 1
-bindsym --release Super_L exec --no-startup-id rofi -show drun -location 1
+bindsym $mod+r exec --no-startup-id rofi -show drun -location 1
+#bindsym --release Super_L exec --no-startup-id rofi -show drun -location 1
 
 # quick app starter
 bindsym $mod+Return exec $term
-bindsym $mod+1 workspace $w8; exec firefox
-bindsym $mod+$alt+1 workspace $w8; exec brave
-bindsym $mod+$alt+2 exec mousepad
+bindsym $mod+1 exec firefox
+bindsym $mod+$alt+1 exec brave
+bindsym $mod+$alt+2 exec geany
 bindsym $mod+2 exec $term -e nvim
 bindsym $mod+3 exec $term
 bindsym $mod+$alt+3 exec termite
@@ -151,22 +153,24 @@ bindsym $mod+Ctrl+s layout stacking
 bindsym $mod+Ctrl+a layout tabbed
 bindsym $mod+Ctrl+d layout toggle split
 # tiling/floating managing
-bindsym $mod+Ctrl+f floating toggle
+bindsym $mod+Ctrl+f floating toggle; sticky toggle
 bindsym $mod+$alt+Ctrl+f exec $modetgl $mode default
 
 #------------+
 # Workspaces |
 #------------+
 
-set $w1 <b>1: </b><span color=\"#0e0\"></span>
-set $w2 <b>2: </b><span color=\"#16f\"></span>
-set $w3 <b>3: </b><span color=\"#ee0\"></span>
-set $w4 <b>4: </b><span color=\"#a0f\"></span>
-set $w5 <b>5: </b><span color=\"#e00\"></span>
-set $w6 <b>6: </b><span color=\"#0dd\"></span>
-set $w7 <b>7: </b><span color=\"#f60\"></span>
-set $w8 <b>8: </b><span color=\"#a0f\"></span>
-set $w9 <b>9: </b><span color=\"#b50\"></span>
+# simple formatting options
+#set $w1 <span color=\"#888\"><b>1: </b></span>
+set $w1 ""
+set $w2 ""
+set $w3 "<b>3</b>"
+set $w4 "<b>4</b>"
+set $w5 "<b>5</b>"
+set $w6 "<b>6</b>"
+set $w7 ""
+set $w8 ""
+set $w9 ""
 
 # switch to
 bindsym $mod+F1 workspace $w1
@@ -216,19 +220,20 @@ bindsym $mod+Ctrl+Escape exec sudo umount -a;exec systemctl poweroff
 # Start i3bar to display a workspace bar with i3blocks
 bar {
 	height 24
-	font pango:Inconsolata 16
+	font pango:Inconsolata 15
 	status_command i3blocks
 	i3bar_command i3bar --transparency
 #	separator_symbol "|"
 	position top
+	set $bg #1c1c1cdd
 
 	colors {
 		statusline #ffffff
 		separator #aaaaaa
-		background #1c1c1c44
-		focused_workspace #555555aa #555555aa #ffffff
-		inactive_workspace #1c1c1c00 #22222288 #888888
-		urgent_workspace #ff000022 #550000aa #aaaaaa
+		background $bg
+		focused_workspace $bg $bg #77ff00
+		inactive_workspace $bg $bg #8800aa
+		urgent_workspace #aa0000dd #660000dd #aaaaaa
 	}
 }
 
@@ -236,10 +241,11 @@ set $barsig --no-startup-id ~/.config/i3blocks/signal
 exec --no-startup-id xrandr -r 50
 exec_always --no-startup-id xset r rate 220 30
 exec --no-startup-id xbacklight = 30
+#exec --no-startup-id ./echocancel
 
 # screenshot
 bindsym $mod+Print exec --no-startup-id scrot '%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/scrshot'
-# keyboard layout p
+# keyboard layout toggle
 bindsym $mod+Shift+k exec --no-startup-id setxkbmap -layout $([ $(setxkbmap -query | awk '/lay/ { print $2 }') == cz ] && echo us || echo cz)
 
 # special keys (all with XF86): ScreenSaver (lock key), WakeUp (Fn key), WebCam, Display, Launch1

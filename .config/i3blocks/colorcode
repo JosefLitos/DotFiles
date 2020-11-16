@@ -1,22 +1,8 @@
 #!/bin/bash
-# Copyright (C) 2020 Josef Litoš
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+#Author: Josef Litoš
 #Echos a color between red and green (0 for red, 100 for green)
 
-OPACITY=$(printf '%x\n' 200)
+#OPACITY=$(printf '%x\n' 200)
 
 fix() {
 	echo "$([[ $1 -le 16 ]] && echo 0)$(printf '%x\n' $1)"
@@ -34,20 +20,42 @@ elif [[ $1 -gt 100 ]]; then
 elif [ $1 ]; then
 	x=$1
 else
-	color 34 136 255
+	echo "#8822aa"
 	exit
 fi
 
-case "$x" in
-	100 ) color 0 255 0;;
-	50 ) color 255 255 0;;
-	0 ) color 255 0 0;;
-	*) if [[ $x -gt 50 ]]; then
-		let x=(101-$x)*5
-		color $x 255 0
+#x ranged to [0-190]
+
+# normal 0=red 100=green
+redtogreen() {
+	if [[ $x -le 50 ]]; then
+		let x=$x*380/100+30
+		color 220 $x 30
 	else
-		let x=$x*5+5
-		color 255 $x 0
+		let x=(100-$x)*380/100+30
+		color $x 220 30
 	fi
-esac
+}
+
+#rainbow mod 0=red 40=green 80=blue 100=violet
+rainbow() {
+	if [[ $x -le 20 ]]; then
+		let x=$x*95/10+30
+		color 220 $x 30
+	elif [[ $x -le 40 ]]; then
+		let x=(40-$x)*95/10+30
+		color $x 220 30
+	elif [[ $x -le 60 ]]; then
+		let x=($x-40)*95/10+30
+		color 30 220 $x
+	elif [[ $x -le 80 ]]; then
+		let x=(80-$x)*95/10+30
+		color 30 $x 220
+	else
+		let x=($x-80)*95/10+30
+		color $x 30 220
+	fi
+}
+
+redtogreen
 

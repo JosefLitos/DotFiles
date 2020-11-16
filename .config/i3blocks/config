@@ -23,12 +23,12 @@ interval=60
 [date]
 command=date +" %d.%m."
 interval=once
-color=#2288ff
+color=#8822aa
 
 [clock]
 interval=60
 
 [help]
 full_text=
-color=#8800aa
+color=#8822aa
 

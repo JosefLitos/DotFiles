@@ -68,7 +68,7 @@ END {
 PCT=$(echo $TEXT | sed 's/^.*G //')
 # Nice icons:  
 if [[ $button -eq 1 ]]; then
-	TEXT=$(echo $TEXT | sed 's/^/<b> /;s/G /G (/;s/$/\%)<\/b>/')
+	TEXT=$(echo $TEXT | sed 's/^/ /;s/G /G (/;s/$/\%)/')
 elif [[ $button -eq 3 ]]; then
 	ps axo rss,comm,pid \
                 | awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
