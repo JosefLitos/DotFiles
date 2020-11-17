@@ -33,7 +33,7 @@ else
 	fi
 	if [[ $STATE -gt 15 ]] && ! [[ $TEXT == *""* ]] && ! [[ $button -eq 1 ]]; then
 		TEXT=$(echo $TEXT | sed "s/ ..%//")
-	elif [[ $STATE -le 6 ]] && [[ $TEXT == *""* ]]; then
+	elif [[ $STATE -le 6 ]] && [[ $TEXT != *""* ]]; then
 		case "$(echo -en "I'll plug it in\nSuspend\nPower off" | rofi -dmenu -l 3 -p " $STATE%")" in
 			"Suspend") systemctl suspend;;
 			"Power off") systemctl poweroff;;
