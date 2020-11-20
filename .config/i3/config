@@ -88,7 +88,7 @@ for_window [title=".*[pP]otvr.*"] floating enable
 bindsym $alt+Escape kill
 bindsym $mod+q kill
 # force kill window on select
-bindsym $alt+F4 exec $term -e xkill
+bindsym --release $alt+F4 exec xkill
 
 ## Focus
 for_window [urgent=latest] focus
