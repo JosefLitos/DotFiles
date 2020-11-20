@@ -21,6 +21,8 @@ elif [[ $button -eq 1 ]]; then
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 elif [[ $button -eq 3 ]]; then
 	amixer set Capture toggle >> /dev/null
+elif [[ $button -eq 2 ]]; then
+	i3 exec pavucontrol >> /dev/null
 fi
 
 TEXT=$(pacmd list-sinks | awk '/front-left:/ { print $5 } /muted:/ { print $2; exit }' | sed "s/\%//")

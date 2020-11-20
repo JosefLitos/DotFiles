@@ -32,6 +32,7 @@ client.focused #338800 #000000 #dddddd #8800aaaa #338800dd
 
 exec --no-startup-id picom
 bindsym $mod+p exec --no-startup-id pgrep -x "picom" && killall picom || picom
+bindsym $mod+n exec --no-startup-id pgrep -x "redshift" && killall redshift || redshift-gtk
 
 set $feh --no-startup-id feh --no-fehbg --bg-fill -z ~/Pictures/screen
 bindsym $mod+Next exec $feh/my_shots/
@@ -51,6 +52,7 @@ bindsym $mod+r exec --no-startup-id rofi -show drun -location 1
 #bindsym --release Super_L exec --no-startup-id rofi -show drun -location 1
 
 # quick app starter
+# file-roller for .zip, vlc for .mp4, pinta for .jpg
 bindsym $mod+Return exec $term
 bindsym $mod+1 exec firefox
 bindsym $mod+$alt+1 exec brave
@@ -127,7 +129,7 @@ bindsym $mod+Left exec $floatpos left
 bindsym $mod+Down exec $floatpos down
 bindsym $mod+Up exec $floatpos up
 bindsym $mod+Right exec $floatpos right
-bindsym $mod+c exec $floatpos c
+bindsym $mod+Ctrl+c exec $floatpos c
 
 bindsym $mod+h exec $floatpos left
 bindsym $mod+j exec $floatpos down
@@ -146,12 +148,10 @@ floating_modifier $mod
 bindsym $mod+f fullscreen toggle
 # container types
 bindsym $mod+Ctrl+v sticky toggle
-bindsym $mod+Ctrl+c split toggle
-bindsym $mod+Ctrl+x layout splith
-bindsym $mod+Ctrl+z layout splitv
-bindsym $mod+Ctrl+s layout stacking
-bindsym $mod+Ctrl+a layout tabbed
-bindsym $mod+Ctrl+d layout toggle split
+bindsym $mod+c split toggle
+bindsym $mod+z layout toggle split
+bindsym $mod+Ctrl+z layout stacking
+bindsym $mod+$alt+z layout tabbed
 # tiling/floating managing
 bindsym $mod+Ctrl+f floating toggle; sticky toggle
 bindsym $mod+$alt+Ctrl+f exec $modetgl $mode default
@@ -222,10 +222,10 @@ bar {
 	height 24
 	font pango:Inconsolata 15
 	status_command i3blocks
-	i3bar_command i3bar --transparency
+#	i3bar_command i3bar --transparency
 #	separator_symbol "|"
 	position top
-	set $bg #1c1c1cdd
+	set $bg #1c1c1c
 
 	colors {
 		statusline #ffffff
@@ -233,7 +233,7 @@ bar {
 		background $bg
 		focused_workspace $bg $bg #77ff00
 		inactive_workspace $bg $bg #8800aa
-		urgent_workspace #aa0000dd #660000dd #aaaaaa
+		urgent_workspace $bg $bg #ff0800
 	}
 }
 
@@ -260,13 +260,13 @@ bindsym XF86MonBrightnessDown exec $barsig light - $(bc <<< $(xbacklight)/2.2+1)
 bindsym $mod+Shift+b exec $barsig light - 10
 
 bindsym XF86AudioRaiseVolume exec $barsig vol +5
-bindsym $mod+m exec $barsig vol +5
+bindsym $mod+v exec $barsig vol +5
 bindsym XF86AudioLowerVolume exec $barsig vol -5
-bindsym $mod+Shift+m exec $barsig vol -5
+bindsym $mod+Shift+v exec $barsig vol -5
 bindsym XF86AudioMute exec $barsig mute toggle
-bindsym $mod+$alt+m exec $barsig mute toggle
+bindsym $mod+$alt+v exec $barsig mute toggle
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
-bindsym $mod+$alt+Shift+m exec --no-startup-id amixer set Capture toggle
+bindsym $mod+$alt+Shift+v exec --no-startup-id amixer set Capture toggle
 
 bindsym XF86AudioPlay exec --no-startup-id mpris-ctl pp
 bindsym XF86AudioNext exec --no-startup-id mpris-ctl next
