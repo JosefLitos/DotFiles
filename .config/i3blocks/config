@@ -2,7 +2,7 @@ command=~/.config/i3blocks/$BLOCK_NAME
 separator_block_width=15
 separator=true
 markup=pango
-color=#8822aa
+color=#881eaa
 
 [wifi]
 interval=60

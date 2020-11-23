@@ -9,7 +9,7 @@ else
 fi
 ~/.config/i3blocks/colorcode $[($(date +%H | sed "s/^0//")*3600+$(date +%M | sed "s/^0//"))/432]
 
-if ! [[ $(pgrep -x redshift) ]] && [[ $(date +"%H") -ge 18 ]]; then
-	i3 exec redshift >> /dev/null
-fi
+#if ! [[ $(pgrep -x redshift) ]] && [[ $(date +"%H") -ge 18 ]]; then
+#	i3 exec redshift-gtk >> /dev/null
+#fi
 
