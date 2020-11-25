@@ -1,30 +1,30 @@
 let mapleader =" "
 
 call plug#begin('~/.config/nvim/plugged')
-" Plug 'vim-airline/vim-airline-themes' 											" themes for airline
 " Files
-Plug 'scrooloose/nerdtree' 																	" IDE-like file browser
-Plug 'junegunn/fzf.vim' 																		" fuzzy finder integration in vim
-Plug 'francoiscabrol/ranger.vim' 														" ranger file browser integration in vim
+Plug 'scrooloose/nerdtree' 											" IDE-like file browser
+Plug 'junegunn/fzf.vim' 												" fuzzy finder integration in vim
+Plug 'francoiscabrol/ranger.vim' 									" ranger file browser integration in vim
 " Code Completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'} 						" Code completion and much more
-Plug 'honza/vim-snippets' 																	" buch of snippets to work with CoC
-Plug 'mattn/emmet-vim' 																			" make writing html much more easier
+Plug 'neoclide/coc.nvim', {'branch': 'release'} 				" Code completion and much more
+Plug 'honza/vim-snippets' 												" buch of snippets to work with CoC
+Plug 'mattn/emmet-vim' 													" make writing html much more easier
 " Syntax highlighting
-Plug 'morhetz/gruvbox' 																			" gruvbox color scheme used by vim
-Plug 'rust-lang/rust.vim' 																	" better highlighting for rust lang
-Plug 'kovetskiy/sxhkd-vim' 																	" highlighting for sxhkd configuration
+Plug 'mboughaba/i3config.vim'
+Plug 'morhetz/gruvbox' 													" gruvbox color scheme used by vim
+Plug 'rust-lang/rust.vim' 												" better highlighting for rust lang
+Plug 'kovetskiy/sxhkd-vim' 											" highlighting for sxhkd configuration
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } 	" color hex codes will display corresponding color
 " Note taking
-Plug 'vimwiki/vimwiki' 																			" note-organizing tool in vim, org mode like
+Plug 'vimwiki/vimwiki' 													" note-organizing tool in vim, org mode like
 " Writing, text editing
-Plug 'tpope/vim-commentary' 																" easy commenting
-Plug 'mbbill/undotree' 																			" complex undo enables moving to already rewritten changes
-Plug 'Chiel92/vim-autoformat' 															" autoformats file, normally use CoC feature
+Plug 'tpope/vim-commentary' 											" easy commenting
+Plug 'mbbill/undotree' 													" complex undo enables moving to already rewritten changes
+Plug 'Chiel92/vim-autoformat' 										" autoformats file, normally use CoC feature
 " Programming
 " Misc
-Plug 'mhinz/vim-startify' 																	" gives vim pretty start screen (bye bye Uganda), manages stored vim sessions
-Plug 'liuchengxu/vim-which-key' 														" guide for key bindings
+Plug 'mhinz/vim-startify' 												" gives vim pretty start screen (bye bye Uganda), manages stored vim sessions
+Plug 'liuchengxu/vim-which-key' 										" guide for key bindings
 call plug#end()
 
 " Some basics:
@@ -114,6 +114,7 @@ autocmd BufEnter *.wiki nnoremap <leader>p :Vimwiki2HTMLBrowse<CR>
 " Ensure files are read as what I want:
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
+autocmd BufRead,BufNewFile *config,*.conf,*.config set filetype=config
 
 " Copy selected text to system clipboard
 noremap <C-c> "*y :let @+=@*<CR>

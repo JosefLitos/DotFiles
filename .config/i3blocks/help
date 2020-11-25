@@ -7,9 +7,9 @@ Mod+R          Rofi command launcher
 Mod+E          PcManFM
 Mod+1          Firefox
 Mod+2          NeoVim
-Mod+Alt+2      Mousepad
+Mod+Alt+2      Geany
 Mod+Enter/3    st
-Mod+(Shift)+M  Volume adj
+Mod+(Shift)+V  Volume adj
 Mod+(Shift)+B  Backlight adj" | rofi -dmenu -location 3 -p "select action" | sed -e "s/^...............//")
 
 start() {
@@ -21,8 +21,9 @@ start() {
 		"NeoVim") i3 exec st -e nvim;;
 		"Mousepad") i3 exec mousepad;;
 		"st") i3 exec st;;
-		"Volume adj") pactl set-sink-volume @DEFAULT_SINK@ $(rofi -dmenu -location 3 -l 0 -p " ±[0-200]")% >> /dev/null;;
-		"Backlight adj") xbacklight = $(rofi -dmenu -location 3 -l 0 -p " [0-100]"); pkill -RTMIN+11 i3blocks;;
+		"Volume adj") ./signal vol $(rofi -dmenu -location 3 -l 0 -p " ±[0-200]") >> /dev/null;;
+
+		"Backlight adj") ./signal light = $(rofi -dmenu -location 3 -l 0 -p " [0-100]");;
 	esac
 }
 start >> /dev/null

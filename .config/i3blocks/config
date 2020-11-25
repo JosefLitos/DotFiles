@@ -28,6 +28,6 @@ interval=once
 [clock]
 interval=60
 
-[help]
-full_text=
+#[help]
+#full_text=
 

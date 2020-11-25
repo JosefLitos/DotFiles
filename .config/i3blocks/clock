@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Clock script
 if [[ $button -eq 1 ]]; then
 	date +" %H:%M:%S"
 	date +" %H:%M:%S"
