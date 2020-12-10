@@ -15,8 +15,8 @@ if [[ $button -eq 1 ]]; then
 fi
 
 QUALITY=$(grep wlp /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
-
-TEXT=$([ $QUALITY ] && echo " $QUALITY%: $(iwgetid | sed 's/^.*:\"//;s/\"//')" || echo "")
+SSID=$(nmcli | awk '{ print $4; exit }')
+TEXT=$([ $QUALITY ] && echo " $QUALITY%: $([ $SSID ] && echo $SSID || echo "")")
 
 
 echo "$TEXT"
