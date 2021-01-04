@@ -2488,7 +2488,7 @@
 [skins2] # Skinnable Interface
 
 # Skin to use (string)
-#skins2-last=
+skins2-last=/usr/share/vlc/skins2/default.vlt
 
 # Config of last used skin (string)
 #skins2-config=
