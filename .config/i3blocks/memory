@@ -1,7 +1,7 @@
 #!/bin/sh
-#Memory status script
+#Memory usage, total mem usage on click
 
-#TYPE="${BLOCK_INSTANCE:-mem}"
+TYPE="${BLOCK_INSTANCE}"
 
 TEXT=$(awk -v type=$TYPE '
 /^MemTotal:/ {
@@ -48,26 +48,25 @@ END {
 		}
 	}
 
-	printf("%.1f%s/%.1fG %.f", used, type, total, pct)
+	printf("%.1f%s/%.1fG %.1f", used, type, total, pct)
 }
 ' /proc/meminfo)
 
 PCT=$(echo $TEXT | sed 's/^.*G //')
 # Nice icons:  
 if [[ $button -eq 1 ]]; then
-	TEXT=$(echo $TEXT | sed 's/^/ /;s/G /G (/;s/$/\%)/')
+	TEXT=" $(echo $TEXT | sed 's/ / (/')%)"
 elif [[ $button -eq 3 ]]; then
-	ps axo rss,comm,pid \
+	ps axo rss,comm \
                 | awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
                 END { for (proc in proc_list) { printf("%d\t%s\n", \
                 proc_list[proc "," 1],proc); }}' | sort -n | tail -n 10 | sort -rn \
                 | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}' \
 					 | rofi -dmenu -location 3 -p ramuse >> /dev/null
-	TEXT=$(echo $PCT | sed 's/^/<b> /;s/$/\%<\/b>/')
+	TEXT="<b> $PCT%</b>"
 else
-	TEXT=$(echo $PCT | sed 's/^/<b> /;s/$/\%<\/b>/')
+	TEXT="<b> $PCT%</b>"
 fi
 echo $TEXT
 echo $TEXT
-~/.config/i3blocks/colorcode $[100-PCT]
-
+~/.config/i3blocks/colorcode $[100-$(echo $PCT | awk '{printf "%.f", $1}')]
