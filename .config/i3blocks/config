@@ -8,14 +8,17 @@ color=#881eaa
 interval=60
 
 [memory]
-interval=2
+interval=5
 instance=swap
 
 [cpu]
-interval=2
+interval=5
+
+[cpu_temp]
+interval=5
 
 [fan]
-interval=2
+interval=5
 
 [volume]
 interval=once

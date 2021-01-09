@@ -26,7 +26,7 @@ let y--
 let w=w+2
 let h=h+2
 # height of the status bar
-bar=0
+bar=24
 # half if the available height
 let halfsz=540-$bar/2
 # the second half of the available screen
@@ -43,7 +43,7 @@ defsize() {
 #Manages 'up' action
 up() {
 	if [ "$p2" == "shift" ]; then
-		i3 move position $x 0
+		i3 move position $x $bar
 	elif [ $y == $bar ]; then
 		case "$h" in
 			"$height") i3 resize set height $halfsz;;

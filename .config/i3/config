@@ -228,7 +228,8 @@ bar {
 	height 24
 	font pango:Inconsolata 15
 	status_command i3blocks
-	mode hide
+	#modes: dock, hide, invisible
+	mode dock
 	modifier $mod+$alt
 	i3bar_command i3bar --transparency
 #	separator_symbol "|"
