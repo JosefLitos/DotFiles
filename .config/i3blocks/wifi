@@ -3,7 +3,7 @@
 
 #Nice icons:    
 if [[ $button -eq 1 ]]; then
-	NAME="$(nmcli d wifi | sed -n 's/^\*//;/:/p' | awk '{ print $8"\t"$2 }' | rofi -dmenu -location 3 -p  | awk '{ print $2 }')"
+	NAME="$(nmcli d wifi list | sed -n 's/^\*//;/:/p' | awk '{ print $8"\t"$2 }' | rofi -dmenu -location 3 -p  | awk '{ print $2 }')"
 	if [ "$NAME" ]; then
 		PASSWD="$(rofi -dmenu -location 3 -l 0 -passowrd -p )"
 		if [ "$PASSWD" ]; then

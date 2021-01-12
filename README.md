@@ -51,7 +51,6 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | ttf-inconsolata      | font                                    |
 | udisks2              | diskmanagement utility                  |
 | w3m                  | image displayer                         |
-| wireless-tools       | used by script for ssid                 |
 | xclip                | clipboard                               |
 | xdotool              | used in scripts controls X windows      |
 | xf86-input-synaptics | drivers for touchpad                    |
@@ -61,9 +60,5 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | xorg-xcursorgen      | for creating custom cursor icons        |
 | xorg-xev             | optional, for getting xorg key names    |
 | xorg-xinit           |                                         |
-| xorg-xkill           | kills x window                          |
-| xorg-xprop           | information about opened windows        |
-| xorg-xrandr          | used to turn off lid                    |
-| xorg-xwininfo        | information about opened windows        |
 | yay                  | aur helper                              |
 
