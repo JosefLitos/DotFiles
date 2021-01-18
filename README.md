@@ -7,13 +7,10 @@ I include source code for my terminal of choice: st, as well as used themes for 
 + i3
 + i3blocks
 + nvim
++ picom
 + rofi
-+ bash
 + fish
 + vlc
-+ ranger
-+ picom
-+ termite
 + htop
 
 ![screenshot](screenshot.png)
@@ -29,12 +26,12 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | fish                 | my shell of choice                      |
 | fzf                  | fuzzy finder used in ranger and shell   |
 | git                  | vcs system                              |
-| gvfs-mtp             | mounting android phones                 |
+| gvfs-mtp             | mounting phones                         |
 | gvfs                 | for pcmanfm automounting                |
 | i3blocks             | statusbar                               |
 | i3lock               | lockscreen                              |
 | i3-gaps              | used window manager                     |
-| imagemagick          | w3m compannion img display tool         |
+| imagemagick          | image management library                |
 | mpris-ctl            | music bg controller                     |
 | neovim               | my editor of choice                     |
 | pavucontrol          | gui way to control pulse audio          |
@@ -42,22 +39,20 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | picom                | compositor                              |
 | qt5ct                | use gtk3 theme for qt                   |
 | scrot                | tool for taking screenshot              |
-| st                   | terminal                                |
+| st                   | terminal emulator                       |
 | ranger               | terminal file browse                    |
 | rofi                 | dmenu replacement                       |
-| termite              | lightweight terminal with all functions |
 | ttf-dejavu           | font                                    |
 | ttf-font-awesome     | font for simple emojis                  |
 | ttf-inconsolata      | font                                    |
 | udisks2              | diskmanagement utility                  |
-| w3m                  | image displayer                         |
 | xclip                | clipboard                               |
 | xdotool              | used in scripts controls X windows      |
 | xf86-input-synaptics | drivers for touchpad                    |
 | xf86-video-intel     | video drivers                           |
 | xorg-server          |                                         |
 | xorg-xbacklight      | clipboard                               |
-| xorg-xcursorgen      | for creating custom cursor icons        |
+| xorg-xcursorgen      | optional, custom cursor icons           |
 | xorg-xev             | optional, for getting xorg key names    |
 | xorg-xinit           |                                         |
 | yay                  | aur helper                              |
