@@ -61,8 +61,8 @@ abbr xev 		"xev | grep keysym | awk '{ print \$7 }' | sed 's/),//'"
 # set key autopress rate
 abbr xkr 		"xset r rate 225 20"
 # wifi
-abbr wl 			"nmcli d wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
-abbr wc 			"nmcli d wifi connect"
+abbr il 			"nmcli d wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
+abbr ic 			"nmcli d wifi connect"
 
 # git \ abbr push 		"git remote | xargs -L1 git push --all"
 

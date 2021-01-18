@@ -48,12 +48,12 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | udisks2              | diskmanagement utility                  |
 | xclip                | clipboard                               |
 | xdotool              | used in scripts controls X windows      |
-| xf86-input-synaptics | drivers for touchpad                    |
 | xf86-video-intel     | video drivers                           |
 | xorg-server          |                                         |
 | xorg-xbacklight      | clipboard                               |
 | xorg-xcursorgen      | optional, custom cursor icons           |
 | xorg-xev             | optional, for getting xorg key names    |
 | xorg-xinit           |                                         |
+| xorg-xinput          | touchpad drivers                        |
 | yay                  | aur helper                              |
 
