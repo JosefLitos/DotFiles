@@ -1,9 +1,7 @@
 #!/bin/sh
 #Memory usage, total mem usage on click
 
-TYPE="${BLOCK_INSTANCE}"
-
-TEXT=$(awk -v type=$TYPE '
+TEXT=$(awk -v type=$BLOCK_INSTANCE '
 /^MemTotal:/ {
 	mem_total=$2
 }
@@ -52,7 +50,7 @@ END {
 }
 ' /proc/meminfo)
 
-PCT=$(echo $TEXT | sed 's/^.*G //')
+PCT=$(echo $TEXT | sed 's/^.* //')
 # Nice icons:  
 if [[ $button -eq 1 ]]; then
 	TEXT=" $(echo $TEXT | sed 's/ / (/')%)"

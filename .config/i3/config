@@ -23,9 +23,9 @@ gaps outer 5
 
 bindsym $mod+g gaps inner current plus 5
 bindsym $mod+Shift+g gaps inner current minus 5
-bindsym $mod+Ctrl+g gaps outer current plus 5
-bindsym $mod+Ctrl+Shift+g gaps outer current minus 5
-bindsym $mod+Ctrl+t border toggle
+bindsym $mod+$alt+g gaps outer current plus 5
+bindsym $mod+$alt+Shift+g gaps outer current minus 5
+bindsym $mod+$alt+t border toggle
 
 # class                 border  bg        text    indic.  child_border
 client.focused          #77ff00 #1c1c1c00 #ffffff #881eaa #77ff00
@@ -214,7 +214,7 @@ assign [instance="libreoffice"] $w6
 
 # reload config file
 bindsym $mod+$alt+c exec $modetgl $mode reload
-#restart i3 preserving layout/session
+# restart i3 inplace
 bindsym $mod+$alt+r exec $modetgl $mode restart
 # systemstate changes
 bindsym $mod+$alt+Escape exit
@@ -262,9 +262,9 @@ bindsym --release Shift+Print exec --no-startup-id scrot -s -e 'xclip -selection
 bindsym $mod+Ctrl+Print exec feh -. -B black -\| "$HOME/Pictures/scrshot/$(ls ~/Pictures/scrshot | grep -m 1 "")"
 
 # keyboard layout toggle, old way
-#bindsym $mod+k exec --no-startup-id setxkbmap -layout $([ $(setxkbmap -query | awk '/lay/ { print $2 }') == cz ] && echo us || echo cz)
-# now using
-exec --no-startup-id setxkbmap -layout us,cz -option -option grp:alt_shift_toggle
+bindsym $mod+k exec --no-startup-id $barsig kb
+# more common, but works for every keyboard separately
+#exec --no-startup-id setxkbmap -layout us,cz -option -option grp:alt_shift_toggle
 
 # poweroff and eject any connected device (udisksctl power-off -b /dev/sdx0)
 bindsym $mod+$alt+p exec --no-startup-id /usr/local/bin/DrivePowerOff
@@ -277,7 +277,7 @@ bindsym XF86Display exec --no-startup-id [ "$(xrandr --verbose | grep -m 1 CRTC:
 bindsym --release $mod+Shift+Escape exec --no-startup-id [ "$(xrandr --verbose | grep -m 1 CRTC:)" ] && xrandr --output LVDS1 --off || xrandr --auto && xrandr -r 50
 
 # Change gamma manually, since redshift is not working for me
-bindsym $mod+n exec --no-startup-id xrandr --output LVDS1 --gamma 1:0.90:0.80
+bindsym $mod+n exec --no-startup-id xrandr --output LVDS1 --gamma 1:0.9:0.8
 bindsym $mod+Shift+n exec --no-startup-id xrandr --output LVDS1 --gamma 1:1:1
 
 #Rotating screen
@@ -298,10 +298,9 @@ bindsym $mod+v exec $barsig vol +5
 bindsym XF86AudioLowerVolume exec $barsig vol -5
 bindsym $mod+Shift+v exec $barsig vol -5
 bindsym XF86AudioMute exec $barsig mute toggle
-bindsym $mod+$alt+v exec $barsig mute toggle
+bindsym $mod+$alt+Shift+v exec $barsig mute toggle
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
-#cannot use alt+shift because of keyboard layout switching
-bindsym $mod+Ctrl+Shift+v exec --no-startup-id amixer set Capture toggle
+bindsym $mod+$alt+v exec --no-startup-id amixer set Capture toggle
 
 bindsym XF86AudioPlay exec --no-startup-id mpris-ctl pp
 bindsym XF86AudioNext exec --no-startup-id mpris-ctl next

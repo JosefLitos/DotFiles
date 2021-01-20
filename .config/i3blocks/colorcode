@@ -13,15 +13,15 @@ color() {
 	echo "#$(fix $1)$(fix $2)$(fix $3)"
 }
 
-if [[ $1 -ge 200 ]]; then
+if [[ -z $1 ]]; then
+	echo "#881eaa"
+	exit
+elif [[ $1 -ge 200 ]] || [[ $1 -le 0 ]]; then
 	x=0
 elif [[ $1 -gt 100 ]]; then
 	x=$((200-$1))
-elif [ $1 ]; then
-	x=$1
 else
-	echo "#881eaa"
-	exit
+	x=$1
 fi
 
 #x ranged to [0-190]

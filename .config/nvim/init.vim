@@ -81,6 +81,7 @@ vmap > >gv
 " Bindings to get to cmdline
 nnoremap ; :
 nnoremap ů :
+nnoremap f p
 nnoremap a h
 nnoremap s j
 nnoremap d l
@@ -115,11 +116,12 @@ autocmd BufEnter *.wiki nnoremap <leader>p :Vimwiki2HTMLBrowse<CR>
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufRead,BufNewFile *config,*.conf,*.config set filetype=config
+autocmd BufRead,BufNewFile */X11/xorg* set filetype=xf86conf
+autocmd BufRead,BufNewFile */i3/*conf* set filetype=i3config
 
 " Copy selected text to system clipboard
 noremap <C-c> "*y :let @+=@*<CR>
 noremap <C-x> "*x :let @+=@*<CR>
-noremap <C-v> "+P
 noremap p "+P
 
 " Easy CAPS

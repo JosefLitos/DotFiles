@@ -32,11 +32,15 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | i3lock               | lockscreen                              |
 | i3-gaps              | used window manager                     |
 | imagemagick          | image management library                |
+| inxi                 | the best system props tool              |
 | mpris-ctl            | music bg controller                     |
 | neovim               | my editor of choice                     |
+| nodejs               | for nvim functions                      |
+| npm                  | packages provider for nvim              |
 | pavucontrol          | gui way to control pulse audio          |
 | pcmanfm-gtk3         | file manager                            |
 | picom                | compositor                              |
+| python-pynvim        | for nvim functions                      |
 | qt5ct                | use gtk3 theme for qt                   |
 | scrot                | tool for taking screenshot              |
 | st                   | terminal emulator                       |

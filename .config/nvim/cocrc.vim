@@ -19,7 +19,6 @@ let g:coc_global_extensions = [
 			\ 'coc-cspell-dicts',
 			\ 'coc-actions',
 			\ 'coc-sh',
-			\ 'coc-template',
 			\ 'coc-emmet'
 			\ ]
 
