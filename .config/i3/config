@@ -18,8 +18,8 @@ font pango:Inconsolata 17, Font Awesome 5 Free Solid 14
 default_border pixel 1
 focus_follows_mouse no
 mouse_warping none
-gaps inner 10
-gaps outer 5
+gaps inner 0
+gaps outer 0
 
 bindsym $mod+g gaps inner current plus 5
 bindsym $mod+Shift+g gaps inner current minus 5
@@ -63,7 +63,7 @@ bindsym $mod+2 exec $term -e nvim
 bindsym $mod+3 exec $term
 #bindsym $mod+$alt+3 exec $term2
 bindsym $mod+4 exec discord
-bindsym $mod+9 exec minecraft-launcher
+bindsym $mod+9 exec prime minecraft-launcher
 bindsym $mod+e exec pcmanfm
 bindsym $mod+$alt+e exec $term -e ranger
 #bindsym $mod+Shift+e exec sudo pcmanfm
@@ -156,7 +156,7 @@ bindsym $mod+z layout toggle split
 bindsym $mod+Ctrl+z layout stacking
 bindsym $mod+$alt+z layout tabbed
 # tiling/floating managing
-bindsym $mod+Ctrl+f floating toggle; sticky toggle
+bindsym $mod+Ctrl+f floating toggle; sticky enable
 bindsym $mod+$alt+Ctrl+f exec $modetgl $mode default
 
 #------------+
