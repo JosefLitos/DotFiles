@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Signal managing script for statusbar
 
 case "$1" in

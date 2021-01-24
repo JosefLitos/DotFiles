@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Clock script
 if [[ $button -eq 1 ]]; then
 	date +" %H:%M:%S"

@@ -118,6 +118,7 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufRead,BufNewFile *config,*.conf,*.config set filetype=config
 autocmd BufRead,BufNewFile */X11/xorg* set filetype=xf86conf
 autocmd BufRead,BufNewFile */i3/*conf* set filetype=i3config
+autocmd BufRead,BufNewFile */fish* set filetype=sh
 
 " Copy selected text to system clipboard
 noremap <C-c> "*y :let @+=@*<CR>

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #WiFi stat script
 
 #Nice icons:    
@@ -13,13 +13,14 @@ if [[ $button -eq 1 ]]; then
 		fi
 	fi
 fi
-
+ON=$(ip a s wlp3s0 | grep "<.*UP.*>")
 QUALITY=$(grep wlp /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
-SSID=$(nmcli | awk '{ print $4; exit }')
-TEXT=$([ $QUALITY ] && echo " $QUALITY%: $([ $SSID ] && echo $SSID || echo "")")
-
+if [ $QUALITY ]; then
+	SSID=$(nmcli | awk '{ print $4; exit }')
+fi
+TEXT=$([ "$ON" ] && ([ $QUALITY ] && echo " $QUALITY%: $SSID" || echo "" ) || echo "")
 
 echo "$TEXT"
 echo "$TEXT"
-~/.config/i3blocks/colorcode $QUALITY
+~/.config/i3blocks/colorcode $([[ -z $QUALITY && "$ON" ]] && echo 0 || echo $QUALITY)
 

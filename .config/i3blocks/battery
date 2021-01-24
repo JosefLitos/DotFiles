@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Battery status detection
 #FontAwesome icons for use
 #       ⚡ 

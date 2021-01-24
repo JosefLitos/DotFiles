@@ -45,10 +45,8 @@ abbr jctl 		"journalctl -p 3 -xb"
 
 # pacman
 abbr p 			"yay"
-abbr prm 		"sudo rm -rf /var/cache/pacman/"
-abbr orphans 	"yay -Qqtd"
+abbr pc 			"yay -Sc"
 abbr pror 		"yay -Rscn (yay -Qqtd)"
-abbr pr 			"yay -Rscn"
 abbr pss 		"yay -Slq | fzf -m --preview 'yay -Si {1}'  --preview-window="wrap" | xargs -ro  yay -S"
 abbr psr 		"yay -Qeq | fzf -m --preview 'yay -Si {1}'  --preview-window="wrap" | xargs -ro  yay -Rscn"
 
@@ -58,8 +56,6 @@ abbr ... 		"cd ../.."
 
 # detect keys pressed
 abbr xev 		"xev | grep keysym | awk '{ print \$7 }' | sed 's/),//'"
-# set key autopress rate
-abbr xkr 		"xset r rate 225 20"
 # wifi
 abbr il 			"nmcli d wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
 abbr ic 			"nmcli d wifi connect"

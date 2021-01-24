@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Basic guide for my i3 setup usage
 
 SELECTED=$(echo \

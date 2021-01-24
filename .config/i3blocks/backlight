@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Backlight detection
 if [[ $button -eq 1 ]] || [[ $button -eq 4 ]]; then
 	xbacklight + 10

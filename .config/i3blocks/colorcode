@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Author: Josef Litoš
 #Echos a color between red and green (0 for red, 100 for green)
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Volume detection script
 #Nice icons:       
 if [[ $button -ge 4 ]]; then
