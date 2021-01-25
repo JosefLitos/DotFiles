@@ -2,29 +2,30 @@ let mapleader =" "
 
 call plug#begin('~/.config/nvim/plugged')
 " Files
-Plug 'scrooloose/nerdtree' 											" IDE-like file browser
-Plug 'junegunn/fzf.vim' 												" fuzzy finder integration in vim
-Plug 'francoiscabrol/ranger.vim' 									" ranger file browser integration in vim
+Plug 'scrooloose/nerdtree'												" IDE-like file browser
+Plug 'junegunn/fzf.vim'													" fuzzy finder integration in vim
+Plug 'francoiscabrol/ranger.vim'										" ranger file browser integration in vim
 " Code Completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'} 				" Code completion and much more
-Plug 'honza/vim-snippets' 												" buch of snippets to work with CoC
-Plug 'mattn/emmet-vim' 													" make writing html much more easier
+Plug 'neoclide/coc.nvim', {'branch': 'release'}					" Code completion and much more
+Plug 'honza/vim-snippets'												" buch of snippets to work with CoC
+Plug 'mattn/emmet-vim'													" make writing html much more easier
 " Syntax highlighting
 Plug 'mboughaba/i3config.vim'
-Plug 'morhetz/gruvbox' 													" gruvbox color scheme used by vim
-Plug 'rust-lang/rust.vim' 												" better highlighting for rust lang
-Plug 'kovetskiy/sxhkd-vim' 											" highlighting for sxhkd configuration
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } 	" color hex codes will display corresponding color
+Plug 'morhetz/gruvbox'													" gruvbox color scheme used by vim
+Plug 'rust-lang/rust.vim'												" better highlighting for rust lang
+Plug 'kovetskiy/sxhkd-vim'												" highlighting for sxhkd configuration
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }	" color hex codes will display corresponding color
 " Note taking
-Plug 'vimwiki/vimwiki' 													" note-organizing tool in vim, org mode like
+Plug 'vimwiki/vimwiki'													" note-organizing tool in vim, org mode like
 " Writing, text editing
-Plug 'tpope/vim-commentary' 											" easy commenting
-Plug 'mbbill/undotree' 													" complex undo enables moving to already rewritten changes
-Plug 'Chiel92/vim-autoformat' 										" autoformats file, normally use CoC feature
+Plug 'tpope/vim-commentary'											" easy commenting
+Plug 'mbbill/undotree'													" complex undo enables moving to already rewritten changes
+Plug 'Chiel92/vim-autoformat'											" autoformats file, normally use CoC feature
 " Programming
 " Misc
-Plug 'mhinz/vim-startify' 												" gives vim pretty start screen (bye bye Uganda), manages stored vim sessions
-Plug 'liuchengxu/vim-which-key' 										" guide for key bindings
+Plug 'vim-airline/vim-airline'										" bottom status bar
+Plug 'mhinz/vim-startify'												" gives vim pretty start screen (bye bye Uganda), manages stored vim sessions
+Plug 'liuchengxu/vim-which-key'										" guide for key bindings
 call plug#end()
 
 " Some basics:
@@ -54,10 +55,12 @@ set undodir="~/.vim/undo/"
 set mouse=a
 let g:python3_host_prog='/usr/bin/python'
 
-" Color Scheme, torte for black
+" Color Scheme, and design
+let g:airline_powerline_fonts=1
 let g:gruvbox_italic=1
+let g:gruvbox_transparent_bg=1
 set background=dark
-colorscheme default
+colorscheme gruvbox
 
 " Use UFT-8
 setglobal termencoding=utf-8
@@ -81,21 +84,11 @@ vmap > >gv
 " Bindings to get to cmdline
 nnoremap ; :
 nnoremap ů :
-nnoremap f p
-nnoremap a h
-nnoremap s j
-nnoremap d l
-nnoremap w k
 
 " Disables automatic comenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Shortcutting split navigation, saving a keypress:
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 nnoremap <C-Left> <C-w>h
 nnoremap <C-Down> <C-w>j
 nnoremap <C-Up> <C-w>k
@@ -124,10 +117,7 @@ autocmd BufRead,BufNewFile */fish* set filetype=sh
 noremap <C-c> "*y :let @+=@*<CR>
 noremap <C-x> "*x :let @+=@*<CR>
 noremap p "+P
-
-" Easy CAPS
-inoremap <c-u> <ESC>viwUi
-nnoremap <c-u> viwU<Esc>
+nnoremap f "+P
 
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
@@ -135,15 +125,15 @@ autocmd BufWritePre * %s/\s\+$//e
 " Custom commands
 command! Filename execute ":echo expand('%:p')"
 command! Config execute ":e $MYVIMRC"
-command! Reload execute "source ~/.vimrc"
 
 " Special highlighting
-hi DELETE			term=standout guibg=white guifg=red		ctermbg=black ctermfg=red
-hi TODO				term=standout guifg=blue	guibg=white ctermbg=blue	ctermfg=black
-hi NOTE				term=standout guifg=blue	guibg=white ctermbg=green ctermfg=red
-hi NEXT				term=standout guifg=red		guibg=green ctermbg=blue	ctermfg=red
-hi IMPORTANT	term=bold			guibg=red		guifg=white ctermbg=red		ctermfg=black
-hi OPTIONAL		term=bold			guibg=green guifg=white ctermbg=green ctermfg=black
+hi DELETE		term=standout	guibg=white	guifg=red	ctermbg=black	ctermfg=red
+hi TODO			term=standout	guifg=green	guibg=LightGray ctermbg=green	ctermfg=black
+hi NOTE			term=standout	guifg=blue	guibg=white	ctermbg=green	ctermfg=red
+hi NEXT			term=standout	guifg=red	guibg=green	ctermbg=blue	ctermfg=red
+hi IMPORTANT	term=bold		guibg=red	guifg=white	ctermbg=red 	ctermfg=black
+hi OPTIONAL		term=bold		guibg=green	guifg=white	ctermbg=green	ctermfg=black
+hi Normal 		guibg=NONE 		ctermbg=NONE
 call matchadd('TODO','TODO')
 call matchadd('NOTE','NOTE')
 call matchadd('NEXT', 'NEXT')
@@ -163,7 +153,7 @@ let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeHijackNetrw=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
-let NERDTreeMinimalUI = 1
+let NERDTreeMinimalUI=1
 autocmd StdinReadPre * let s:std_in=1
 
 " Vim Hexokinase
@@ -181,8 +171,8 @@ nmap <leader><leader>k <Plug>(easymotion-overwin-line)
 nmap <leader><leader>w <Plug>(easymotion-overwin-w)
 
 " FzF
-nnoremap <c-g> :GFiles<CR>
-nnoremap <c-z> :Files<CR>
+"nnoremap <c-g> :GFiles<CR>
+"nnoremap <c-z> :Files<CR>
 nnoremap ?? :Rg<CR>
 nnoremap // :BLines<CR>
 nnoremap cc :Commands<CR>
@@ -194,10 +184,6 @@ command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'optio
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, {'options': ['--preview', 'preview {}']}, <bang>0)
 command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --color=always --smart-case -- '.shellescape(<q-args>), 1,fzf#vim#with_preview(), <bang>0)
 
-" Ranger
-let g:ranger_map_keys=0
-nnoremap <leader>r :Ranger<CR>
-
 " Autoformat
 nnoremap F :Autoformat<CR>
 
@@ -206,15 +192,12 @@ nnoremap <leader>u :UndotreeToggle<cr>
 
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/.vim/vimwiki/', 'path_html': '~/.vim/vimwiki/html', "auto_diary_index": 1,
-\ 'template_path': '~/.vim/vimwiki/templates',
-		  \ 'template_default': 'def_template',
-		  \ 'template_ext': '.html'}]
+			\ 'template_path': '~/.vim/vimwiki/templates',
+			\ 'template_default': 'def_template',
+			\ 'template_ext': '.html'}]
 let g:vimwiki_listsyms = '✗✓'
 let g:vimwiki_conceallevel = 2
 let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr, pre, script'
-
-nnoremap <leader>w<leader>t :VimwikiMakeTomorrowDiaryNote><CR>
-nnoremap <leader>wc :CalendarH<CR>
 
 " Load external files
 runtime macros.vim

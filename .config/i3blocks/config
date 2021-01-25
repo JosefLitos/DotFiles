@@ -43,7 +43,7 @@ interval=60
 
 [gpu_dri]
 # icons:   
-command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.*driver: \(.*\) .*:.*/\1/p' | sed 's/intel/I/;s/nvidia/N/;s/modesetting/M/')
+command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*:.*/\1/p' | sed 's/intel/I/;s/nvidia/N/;s/modesetting/M/')
 interval=once
 
 #[kb]
