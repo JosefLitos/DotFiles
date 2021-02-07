@@ -1,0 +1,135 @@
+#!/bin/sh
+#i3/floatpos.sh -i3 floating mode tiling functionality like in Windows
+# Made by Kepis, enjoy your linux i3floatingWM setup
+
+# variables that can not be automatically detected
+#statusbar height
+bar=24
+#window border
+border=1
+
+p2="$2"
+#for usage in tiling mode
+if [[ `xprop -id $(xdotool getactivewindow)` != *"I3_FLOATING_WINDOW"* ]]; then
+	if [ "$p2" == "shift" ]; then
+		case "$1" in
+			"up") i3 focus up;;
+			"down") i3 focus down;;
+			"left") i3 focus left;;
+			"right") i3 focus right;;
+		esac
+	else
+		case "$1" in
+			"up") i3 move up;;
+			"down") i3 move down;;
+			"left") i3 move left;;
+			"right") i3 move right;;
+			"c") i3 split toggle;;
+		esac
+	fi
+	exit
+fi
+
+#get window pos and size
+win=($(xwininfo -id $(xdotool getactivewindow) | sed -n \
+	-e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/\1/p" \
+	-e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/\1/p" \
+	-e "s/^ \+Width: \+\([0-9]\+\).*/\1/p" \
+	-e "s/^ \+Height: \+\([0-9]\+\).*/\1/p" ))
+let win[0]-=$border
+let win[1]-=$border
+let win[2]+=$border*2
+let win[3]+=$border*2
+dim=($(xrandr | awk '/\*+/{print $1}' | sed 's/x/ /'))
+# available height
+height=$[${dim[1]}-bar]
+
+#Setts window default size (quarter of the screen) and centers it
+defsize() {
+	i3 resize set $[${dim[0]}/2] $[height/2]
+	i3 move position center
+}
+
+#Manages 'up' action
+up() {
+	if [ "$p2" == "shift" ]; then
+		i3 move position ${win[0]} $bar
+	elif [ ${win[1]} == $bar ]; then
+		case "${win[3]}" in
+			"$height") i3 resize set height $[height/2];;
+			*)
+				i3 move position 0 $bar
+				i3 resize set ${dim[0]} $height;;
+		esac
+	elif [ $[${win[1]}+${win[3]}] == ${dim[1]} ]; then
+		if [ ${win[2]} -gt $[${dim[0]}*5/7] ]; then
+			defsize
+		elif [ ${win[3]} -le $[${dim[1]}*3/5] ]; then
+			i3 move position ${win[0]} $bar
+			i3 resize set height $height
+		else
+			i3 move position ${win[0]} $bar
+			i3 resize set height $[height/2]
+		fi
+	else
+		i3 move position ${win[0]} $bar
+	fi
+}
+
+#Manages 'down' action
+down() {
+	if [ "$p2" == "shift" ]; then
+		i3 move position ${win[0]} $[${dim[1]}-${win[3]}]
+	elif [ ${win[1]} == $bar ]; then
+		if [ ${win[2]} -gt $[${dim[0]}*5/7] ]; then
+			defsize
+		elif [ ${win[3]} == $height ]; then
+			i3 move position ${win[0]} $[height/2+bar]
+			i3 resize set height $[height/2]
+		else
+			i3 resize set height $height
+		fi
+	elif [ $[${win[1]}+${win[3]}] == ${dim[1]} ]; then
+		i3 move position 0 $[height/2+bar]
+		i3 resize set ${dim[0]} $[height/2]
+	else
+		i3 move position ${win[0]} $[${dim[1]}-${win[3]}]
+	fi
+}
+
+#Manages 'left' action
+left() {
+	if [ "$p2" == "shift" ]; then
+		i3 move position 0 ${win[1]}
+	elif [ ${win[0]} == 0 ] && [ ${win[2]} -le $[${dim[0]}*5/7] ]; then
+		i3 move position $[${dim[0]}-${win[2]}] ${win[1]}
+	elif [ ${win[0]} -gt $[${dim[0]}*3/7] ]; then
+		defsize
+	else
+		i3 move position 0 $bar
+		i3 resize set $[${dim[0]}/2] $height
+	fi
+}
+
+#Manages 'right' action
+right() {
+	if [ "$p2" == "shift" ]; then
+		i3 move position $[${dim[0]}-${win[2]}] ${win[1]}
+	elif [ $[${win[0]}+${win[2]}] == ${dim[0]} ] && [ ${win[2]} -le $[${dim[0]}*5/7] ]; then
+		i3 move position 0 ${win[1]}
+	elif [ $[${win[0]}+${win[2]}] -le $[${dim[0]}*4/7] ]; then
+		defsize
+	else
+		i3 move position $[${dim[0]}/2] $bar
+		i3 resize set $[${dim[0]}/2] $height
+	fi
+}
+
+case "$1" in
+	"up") up;;
+	"down") down;;
+	"left") left;;
+	"right") right;;
+	"c") i3 move position center;;
+esac
+

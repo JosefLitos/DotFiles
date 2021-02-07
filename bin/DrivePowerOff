@@ -1,0 +1,7 @@
+#!/bin/sh
+# Simple script for ejecting harddisk
+DISKPART=$(lsblk -l | grep "$(ls /run/media/$USER | sed 's/  /\n/' | rofi -dmenu -p 'UMount USB Device')" | awk '{ print $1; exit }')
+echo $DISKPART
+udisksctl unmount -b /dev/$DISKPART
+udisksctl power-off -b /dev/$DISKPART
+

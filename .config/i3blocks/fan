@@ -1,0 +1,13 @@
+#!/bin/sh
+
+SPEED=$(sensors | grep fan1 | awk '{print $2; exit}')
+
+if [ "$SPEED" != "" ]; then
+	speed_round=$(echo "scale=1;$SPEED/1000" | bc -l )
+	TEXT=" <b>"$speed_round"k</b>"
+else
+   TEXT=""
+fi
+echo $TEXT
+echo $TEXT
+~/.config/i3blocks/colorcode $[100-SPEED/45]

@@ -37,6 +37,7 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | neovim               | my editor of choice                     |
 | nodejs               | for nvim functions                      |
 | npm                  | packages provider for nvim              |
+| paru                 | aur packages helper                     |
 | pavucontrol          | gui way to control pulse audio          |
 | pcmanfm-gtk3         | file manager                            |
 | picom                | compositor                              |
@@ -59,5 +60,4 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | xorg-xev             | optional, for getting xorg key names    |
 | xorg-xinit           |                                         |
 | xorg-xinput          | touchpad drivers                        |
-| yay                  | aur helper                              |
 

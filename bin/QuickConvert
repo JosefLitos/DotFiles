@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#1=idir 2=params/default 3=odir
+ifile=$(echo "$1" | sed 's/\/$//')
+ofile=$(echo "$3" | sed 's/\/$//')
+
+if [[ "$2" == "default" ]]; then
+	params="-c:v libx265 -c:a copy -c:s copy -crf 28 -map 0"
+else params="$2"
+fi
+
+for f in $(ls "$ifile" | sed 's/ /\\/g'); do
+	f=$(echo "$f" | sed 's/\\/ /g')
+	ffmpeg -i "$ifile/$f" $params "$ofile/$(echo $f | sed 's/....$/.mp4/')"
+done

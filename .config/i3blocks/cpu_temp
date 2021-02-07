@@ -1,0 +1,28 @@
+#!/bin/sh
+# CPU temperature
+
+c=0;t=0
+
+TEMP=$(sensors | awk '/Core/ {print substr($3, 2, length($3)-5)}' | (while read -r i
+do
+    t=$(echo "scale=2; $t + $i" | bc)
+    let c++
+done
+echo "scale=0; $t / $c" | bc))
+
+if [[ $TEMP -le 45 ]]; then
+	TEXT=" <b>$TEMP°C</b>"
+elif [[ $TEMP -le 60 ]]; then
+	TEXT=" <b>$TEMP°C</b>"
+elif [[ $TEMP -le 75 ]]; then
+	TEXT=" <b>$TEMP°C</b>"
+elif [[ $TEMP -le 90 ]]; then
+	TEXT=" <b>$TEMP°C</b>"
+else
+	TEXT=" <b>$TEMP°C</b>"
+fi
+
+echo $TEXT
+echo $TEXT
+# TEMP-30 because lowest temp is 30° C
+~/.config/i3blocks/colorcode $[100-(TEMP-30)/7*10]

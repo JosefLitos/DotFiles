@@ -1,0 +1,26 @@
+#!/bin/sh
+test() {
+	for f in $(ls "$1" | sed 's/ /\\/g'); do
+		f=$1/$(echo "$f" | sed 's/\\/ /g')
+		if [ -d "$f" ]; then
+			echo -e "\033[0;36m$f {"
+			test "$f"
+			echo -e "\033[0;36m}"
+		#elif [ "$(ffprobe $f 2>&1 >/dev/null | grep 'Stream.*Video: mpeg')" ]; then
+		elif [ "$(echo $f | grep -i '.avi$')" ] || [ "$(echo $f | grep -i '.mp4$')" ] || [ "$(echo $f | grep -i '.mkv$')" ]; then
+			cc=$(ffprobe "$f" 2>&1 >/dev/null | grep Stream.*Video | sed 's/^.*Video: //' | awk '{ print $1; exit }')
+			if [[ $cc != h* ]]; then
+				if [[ $cc == "hevc" ]]; then C='\033[32m'
+				elif [[ $cc == "h264" ]]; then C='\033[33m'
+				elif [[ $cc == "mpeg4" ]]; then C='\033[31m'
+				else C='\033[35m'
+				fi
+				size=$[$(wc -c "$f" | awk '{ print $1; exit }')/1000000]
+				C=$([ $size -gt 2000 ] && echo -e '\033[1;4m' || echo -e '\033[0m')$C
+				echo -e $C$size"M\t$cc\033[37m\t$(echo $f | sed 's/^.*\///')"
+			fi
+		fi
+	done
+}
+test "$(echo $1 | sed 's/\/$//' )"
+echo -e "\033[0m"

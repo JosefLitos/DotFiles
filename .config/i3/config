@@ -42,7 +42,7 @@ bindsym $mod+Shift+Next exec $feh/mc/
 bindsym $mod+Prior exec $feh/current/
 bindsym $mod+$alt+Prior exec $feh/best/
 bindsym $mod+Shift+Prior exec $feh/nature/
-exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/screen/simpledark/archwin10G.png
+exec $feh/nature/
 #normal image displaying
 #feh -. -B black -| /path/to/image
 
@@ -56,15 +56,15 @@ bindsym $mod+r exec --no-startup-id rofi -show drun -location 1
 # quick app starter
 # engrampa for .zip, vlc for .mp4, pinta for .jpg
 bindsym $mod+Return exec st
-bindsym $mod+1 exec lof firefox firefox
+bindsym $mod+1 exec lof librewolf LibreWolf
 bindsym $mod+$alt+1 exec lof min Min
 bindsym $mod+2 exec st nvim
-bindsym $mod+$alt+2 exec lof geany Geany
+bindsym $mod+$alt+2 exec lof notepadqq Notepadqq
 bindsym $mod+3 exec lof st St
 #bindsym $mod+$alt+3 exec $term2
-bindsym $mod+4 exec lof discord discord
+bindsym $mod+4 exec lof discord discord Discord
 bindsym $mod+5 exec lof netbeans NetBeans
-bindsym $mod+7 exec lof pinta Pinta
+bindsym $mod+7 exec lof vlc vlc
 bindsym $mod+9 exec lof "prime minecraft-launcher" ".*craft.*"
 bindsym $mod+e exec lof pcmanfm Pcmanfm
 bindsym $mod+$alt+e exec st ranger
@@ -203,6 +203,7 @@ bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
 assign [class=".*craft.*"] $w9
+assign [class="LibreWolf"] $w8
 assign [class="firefox"] $w8
 assign [class="Min"] $w8
 assign [class="vlc"] $w7
