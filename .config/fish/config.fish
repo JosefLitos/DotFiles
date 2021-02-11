@@ -44,15 +44,17 @@ abbr mv 			"mv -i"
 abbr jctl 		"journalctl -p 3 -xb"
 
 # pacman
-abbr p 			"yay"
-abbr pc 			"yay -Sc"
-abbr pror 		"yay -Rscn (yay -Qqtd)"
-abbr pss 		"yay -Slq | fzf -m --preview 'yay -Si {1}'  --preview-window="wrap" | xargs -ro  yay -S"
-abbr psr 		"yay -Qeq | fzf -m --preview 'yay -Si {1}'  --preview-window="wrap" | xargs -ro  yay -Rscn"
+abbr p 			"paru"
+abbr pc 			"paru -Sc"
+abbr pror 		"paru -Rscn (paru -Qqtd)"
+abbr pss 		"paru -Slq | fzf -m --preview 'paru -Si {1}'  --preview-window="wrap" | xargs -ro  paru -S"
+abbr psr 		"paru -Qeq | fzf -m --preview 'paru -Si {1}'  --preview-window="wrap" | xargs -ro  paru -Rscn"
 
 # navigation
 abbr ..  		"cd .."
 abbr ... 		"cd ../.."
+abbr cu 			"cd /usr/"
+abbr ce 			"cd /etc/"
 
 # detect keys pressed
 abbr xev 		"xev | grep keysym | awk '{ print \$7 }' | sed 's/),//'"

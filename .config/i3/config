@@ -1,7 +1,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-exec [ $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*/\1/p' | sed -n 's/.*mode.*/1/p') ] && i3 exit
+#exec [ $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*/\1/p' | sed -n 's/.*mode.*/1/p') ] && i3 exit
 
 set $mod Mod4
 set $alt Mod1
@@ -18,8 +18,9 @@ font pango:Inconsolata 17, Font Awesome 5 Free Solid 14
 default_border pixel 1
 focus_follows_mouse no
 mouse_warping none
-gaps inner 0
-gaps outer 0
+gaps inner 15
+#gaps outer 0
+
 
 bindsym $mod+g gaps inner current plus 5
 bindsym $mod+Shift+g gaps inner current minus 5
@@ -36,13 +37,18 @@ exec --no-startup-id picom
 bindsym $mod+p exec --no-startup-id pgrep -x "picom" && killall picom || picom
 
 set $feh --no-startup-id feh --no-fehbg --bg-fill -z ~/Pictures/screen
-bindsym $mod+Next exec $feh/simpledark/
-bindsym $mod+$alt+Next exec $feh/anime/
-bindsym $mod+Shift+Next exec $feh/mc/
-bindsym $mod+Prior exec $feh/current/
-bindsym $mod+$alt+Prior exec $feh/best/
-bindsym $mod+Shift+Prior exec $feh/nature/
-exec $feh/nature/
+bindsym $mod+u mode "BG"
+mode "BG" {
+	bindsym $mod+u mode "default"
+	bindsym Escape mode "default"
+	bindsym c exec $feh/cars/
+	bindsym a exec $feh/animals/
+	bindsym d exec $feh/simpledark/
+	bindsym u exec $feh/unsplash/
+	bindsym b exec $feh/best/
+	bindsym n exec $feh/nature/
+}
+exec $feh/unsplash/
 #normal image displaying
 #feh -. -B black -| /path/to/image
 
@@ -56,15 +62,15 @@ bindsym $mod+r exec --no-startup-id rofi -show drun -location 1
 # quick app starter
 # engrampa for .zip, vlc for .mp4, pinta for .jpg
 bindsym $mod+Return exec st
-bindsym $mod+1 exec lof librewolf LibreWolf
-bindsym $mod+$alt+1 exec lof min Min
+bindsym $mod+1 exec lof firefox firefox
+bindsym $mod+$alt+1 exec lof qutebrowser qutebrowser
 bindsym $mod+2 exec st nvim
 bindsym $mod+$alt+2 exec lof notepadqq Notepadqq
 bindsym $mod+3 exec lof st St
 #bindsym $mod+$alt+3 exec $term2
-bindsym $mod+4 exec lof discord discord Discord
+bindsym $mod+4 exec lof discord discord
 bindsym $mod+5 exec lof netbeans NetBeans
-bindsym $mod+7 exec lof vlc vlc
+bindsym $mod+7 workspace $w7
 bindsym $mod+9 exec lof "prime minecraft-launcher" ".*craft.*"
 bindsym $mod+e exec lof pcmanfm Pcmanfm
 bindsym $mod+$alt+e exec st ranger
@@ -113,15 +119,20 @@ bindsym $mod+d focus right
 bindsym $mod+grave focus parent
 bindsym $mod+Shift+asciitilde focus child
 # resize
-bindsym $mod+$alt+a resize shrink width 80 px or 3 ppt
-bindsym $mod+$alt+s resize grow height 80 px or 3 ppt
-bindsym $mod+$alt+w resize shrink height 80 px or 3 ppt
-bindsym $mod+$alt+d resize grow width 80 px or 3 ppt
+#resize shrink width 80 px or 4 ppt
+bindsym $mod+$alt+a resize shrink width 80 or 4
+bindsym $mod+$alt+s resize grow height 80 or 4
+bindsym $mod+$alt+w resize shrink height 80 or 4
+bindsym $mod+$alt+d resize grow width 80 or 4
 
-#bindsym $mod+t mode "floating"
-#mode "floating" {
-#	bindsym Escape mode "default"
-#}
+bindsym $mod+$alt+Left resize grow left 80 or 4
+bindsym $mod+$alt+Down resize grow down 80 or 4
+bindsym $mod+$alt+Up resize grow up 80 or 4
+bindsym $mod+$alt+Right resize grow right 80 or 4
+bindsym $mod+$alt+Shift+Left resize shrink right 80 or 4
+bindsym $mod+$alt+Shift+Down resize shrink up 80 or 4
+bindsym $mod+$alt+Shift+Up resize shrink down 80 or 4
+bindsym $mod+$alt+Shift+Right resize shrink left 80 or 4
 
 ## Position change
 # floating mode, with tilling mode compatibility
@@ -177,6 +188,8 @@ set $w7 ""
 set $w8 ""
 set $w9 ""
 
+exec i3 workspace $w1
+
 # switch to
 bindsym $mod+F1 workspace $w1
 bindsym $mod+F2 workspace $w2
@@ -203,9 +216,8 @@ bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
 assign [class=".*craft.*"] $w9
-assign [class="LibreWolf"] $w8
 assign [class="firefox"] $w8
-assign [class="Min"] $w8
+assign [class="qutebrowser"] $w8
 assign [class="vlc"] $w7
 assign [class="Gimp"] $w7
 assign [class="Pinta"] $w7
@@ -281,7 +293,7 @@ bindsym XF86Display exec --no-startup-id [ "$(xrandr --verbose | grep -m 1 CRTC:
 bindsym --release $mod+Shift+Escape exec --no-startup-id [ "$(xrandr --verbose | grep -m 1 CRTC:)" ] && xrandr --output LVDS1 --off || xrandr --auto && xrandr -r 50
 
 # Change gamma manually, since redshift is not working for me
-bindsym $mod+n exec --no-startup-id xrandr --output LVDS1 --gamma 1:0.9:0.8
+bindsym $mod+n exec --no-startup-id xrandr --output LVDS1 --gamma 1:0.85:0.75
 bindsym $mod+Shift+n exec --no-startup-id xrandr --output LVDS1 --gamma 1:1:1
 
 #Rotating screen

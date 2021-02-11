@@ -4,8 +4,8 @@ separator=true
 markup=pango
 color=#881eaa
 
-[wifi]
-interval=60
+#[wifi]
+#interval=60
 #instance=wlp3s0
 
 [bandwidth]
@@ -21,8 +21,8 @@ interval=5
 #interval=20
 #instance=ram
 
-[cpu]
-interval=5
+#[cpu]
+#interval=5
 
 #[cpu_temp]
 #interval=5
@@ -41,10 +41,10 @@ signal=11
 [battery]
 interval=60
 
-[gpu_dri]
-# icons:   
-command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*:.*/\1/p' | sed 's/intel/I/;s/nvidia/N/;s/modesetting/M/')
-interval=once
+#[gpu_dri]
+## icons:   
+#command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*:.*/\1/p' | sed 's/intel/I/;s/nvidia/N/;s/modesetting/M/')
+#interval=once
 
 #[kb]
 #command=echo  $(setxkbmap -query | awk '/^l/ { print toupper($2) }')

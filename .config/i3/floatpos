@@ -54,7 +54,7 @@ defsize() {
 up() {
 	if [ "$p2" == "shift" ]; then
 		i3 move position ${win[0]} $bar
-	elif [ ${win[1]} == $bar ]; then
+	elif [ ${win[1]} -le $bar ]; then
 		case "${win[3]}" in
 			"$height") i3 resize set height $[height/2];;
 			*)

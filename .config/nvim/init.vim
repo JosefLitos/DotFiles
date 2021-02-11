@@ -85,6 +85,9 @@ vmap > >gv
 nnoremap ; :
 nnoremap ů :
 
+" for —
+inoremap <C-d> <C-v>u2014
+
 " Disables automatic comenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -131,9 +134,9 @@ hi DELETE		term=standout	guibg=white	guifg=red	ctermbg=black	ctermfg=red
 hi TODO			term=standout	guifg=green	guibg=LightGray ctermbg=green	ctermfg=black
 hi NOTE			term=standout	guifg=blue	guibg=white	ctermbg=green	ctermfg=red
 hi NEXT			term=standout	guifg=red	guibg=green	ctermbg=blue	ctermfg=red
-hi IMPORTANT	term=bold		guibg=red	guifg=white	ctermbg=red 	ctermfg=black
+hi IMPORTANT	term=bold		guibg=red	guifg=white	ctermbg=red		ctermfg=black
 hi OPTIONAL		term=bold		guibg=green	guifg=white	ctermbg=green	ctermfg=black
-hi Normal 		guibg=NONE 		ctermbg=NONE
+hi Normal		guibg=NONE		ctermbg=NONE
 call matchadd('TODO','TODO')
 call matchadd('NOTE','NOTE')
 call matchadd('NEXT', 'NEXT')
