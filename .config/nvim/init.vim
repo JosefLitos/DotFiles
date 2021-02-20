@@ -10,6 +10,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}					" Code completion and much m
 Plug 'honza/vim-snippets'												" buch of snippets to work with CoC
 Plug 'mattn/emmet-vim'													" make writing html much more easier
 " Syntax highlighting
+Plug 'cespare/vim-toml' 												"toml syntax highliting
+
 Plug 'mboughaba/i3config.vim'
 Plug 'morhetz/gruvbox'													" gruvbox color scheme used by vim
 Plug 'rust-lang/rust.vim'												" better highlighting for rust lang
@@ -32,7 +34,7 @@ call plug#end()
 set nocompatible
 filetype plugin on
 syntax on
-set tabstop=3 shiftwidth=3 smarttab
+set tabstop=2 shiftwidth=2 smarttab
 set encoding=utf-8
 set relativenumber number
 set clipboard=unnamedplus
