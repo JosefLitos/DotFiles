@@ -53,14 +53,15 @@ abbr psr 		"paru -Qeq | fzf -m --preview 'paru -Si {1}'  --preview-window="wrap"
 # navigation
 abbr ..  		"cd .."
 abbr ... 		"cd ../.."
-abbr cu 			"cd /usr/"
-abbr ce 			"cd /etc/"
+abbr cu 		"cd /usr/"
+abbr ce 		"cd /etc/"
+abbr cds 		"cd ~/Documents/AvAvA/server/src/"
 
 # detect keys pressed
 abbr xev 		"xev | grep keysym | awk '{ print \$7 }' | sed 's/),//'"
 # wifi
-abbr il 			"nmcli d wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
-abbr ic 			"nmcli d wifi connect"
+abbr il 			"nmcli device wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
+abbr ic 			"nmcli device wifi connect"
 
 # git \ abbr push 		"git remote | xargs -L1 git push --all"
 

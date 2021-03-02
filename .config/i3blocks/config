@@ -7,63 +7,96 @@ markup=pango
 color=#881eaa
 interval=once
 
-#[wifi]
-#interval=60
-#instance=wlp3s0
-
 [separator]
-#background=#1c1c1c66
+#background=#5c5c5c88
 color=#00000088
 full_text= 
 
-[bandwidth]
-interval=2
+[wifi]
+interval=60
+#instance=wlp3s0
 background=#00000088
-
-#[upload]
-#interval=3
-
-#[download]
-#interval=3
-
-#[memory]
-#interval=20
-#instance=ram
-
-#[cpu]
-#interval=5
-
-#[cpu_temp]
-#interval=5
-
-#[fan]
-#interval=10
 
 [separator]
 background=#00000088
 color=#5c5c5c88
+full_text= 
+
+[bandwidth]
+interval=5
+background=#5c5c5c88
+
+#[separator]
+#background=#5c5c5c88
+#color=#00000088
+#full_text= 
+#
+#[upload]
+#interval=3
+#background=#00000088
+#
+#[separator]
+#background=#00000088
+#color=#5c5c5c88
+#full_text= 
+#
+#[download]
+#interval=3
+#background=#5c5c5c88
+
+[separator]
+background=#5c5c5c88
+color=#00000088
+full_text= 
+
+[memory]
+interval=20
+instance=ram
+background=#00000088
+
+[separator]
+background=#00000088
+color=#5c5c5c88
+full_text= 
+
+[cpu]
+interval=5
+background=#5c5c5c88
+
+[separator]
+background=#5c5c5c88
+color=#00000088
+full_text= 
+
+[cpu_temp]
+interval=5
+background=#00000088
+
+[separator]
+background=#00000088
+color=#5c5c5c88
+full_text= 
+
+[fan]
+interval=10
+background=#5c5c5c88
+
+[separator]
+background=#5c5c5c88
+color=#00000088
 full_text= 
 
 [volume]
 signal=10
-background=#5c5c5c88
+background=#00000088
 
 [separator]
-background=#5c5c5c88
-color=#00000088
+background=#00000088
+color=#5c5c5c88
 full_text= 
 
 [backlight]
 signal=11
-background=#00000088
-
-[separator]
-background=#00000088
-color=#5c5c5c88
-full_text= 
-
-[battery]
-interval=60
 background=#5c5c5c88
 
 [separator]
@@ -71,16 +104,8 @@ background=#5c5c5c88
 color=#00000088
 full_text= 
 
-#[gpu_dri]
-## icons:   
-#command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*:.*/\1/p' | sed 's/intel/I/;s/nvidia/N/;s/modesetting/M/')
-
-#[kb]
-#command=echo  $(setxkbmap -query | awk '/^l/ { print toupper($2) }')
-#signal=12
-
-[date]
-command=date +" %d.%m."
+[battery]
+interval=60
 background=#00000088
 
 [separator]
@@ -88,11 +113,26 @@ background=#00000088
 color=#5c5c5c88
 full_text= 
 
-[clock]
-interval=60
+[date]
+command=date +" %d.%m."
 background=#5c5c5c88
 
-#[help]
-#full_text=
-#interval=undefined
+[separator]
+background=#5c5c5c88
+color=#00000088
+full_text= 
+
+[clock]
+interval=60
+background=#00000088
+
+[separator]
+background=#00000088
+color=#5c5c5c88
+full_text= 
+
+[help]
+full_text=
+background=#5c5c5c88
+interval=undefined
 

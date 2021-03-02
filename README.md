@@ -40,7 +40,7 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | paru                 | aur packages helper                     |
 | pavucontrol          | gui way to control pulse audio          |
 | pcmanfm-gtk3         | file manager                            |
-| picom                | compositor                              |
+| picom-tryone-git     | compositor with great blur method       |
 | python-pynvim        | for nvim functions                      |
 | qt5ct                | use gtk3 theme for qt                   |
 | scrot                | tool for taking screenshot              |
