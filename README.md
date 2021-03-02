@@ -39,13 +39,13 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | npm                  | packages provider for nvim              |
 | paru                 | aur packages helper                     |
 | pavucontrol          | gui way to control pulse audio          |
-| pcmanfm-gtk3         | file manager                            |
-| picom-tryone-git     | compositor with great blur method       |
+| pcmanfm-gtk3         | file manager                                   |
+| picom-ibhagwan-git   | compositor with great blur method         |
 | python-pynvim        | for nvim functions                      |
 | qt5ct                | use gtk3 theme for qt                   |
 | scrot                | tool for taking screenshot              |
 | st                   | terminal emulator                       |
-| ranger               | terminal file browse                    |
+| ranger               | terminal file browser                   |
 | rofi                 | dmenu replacement                       |
 | ttf-dejavu           | font                                    |
 | ttf-font-awesome     | font for simple emojis                  |
