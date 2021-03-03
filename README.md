@@ -28,9 +28,11 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | git                  | vcs system                              |
 | gvfs-mtp             | mounting phones                         |
 | gvfs                 | for pcmanfm automounting                |
+| i3-gaps              | used window manager                     |
 | i3blocks             | statusbar                               |
 | i3lock               | lockscreen                              |
-| i3-gaps              | used window manager                     |
+| i3lock-fancy-rapid   | blazing fast screenshot blur for i3lock |
+| i3title              | shows current app title in statusbar    |
 | imagemagick          | image management library                |
 | inxi                 | the best system props tool              |
 | mpris-ctl            | music bg controller                     |
@@ -39,9 +41,9 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | npm                  | packages provider for nvim              |
 | paru                 | aur packages helper                     |
 | pavucontrol          | gui way to control pulse audio          |
-| pcmanfm-gtk3         | file manager                                   |
-| picom-ibhagwan-git   | compositor with great blur method         |
-| python-pynvim        | for nvim functions                      |
+| pcmanfm-gtk3         | file manager                            |
+| picom-ibhagwan-git   | compositor with great blur method       |
+| python-pynvim        | for nvim coc plugin                     |
 | qt5ct                | use gtk3 theme for qt                   |
 | scrot                | tool for taking screenshot              |
 | st                   | terminal emulator                       |

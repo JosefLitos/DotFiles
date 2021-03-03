@@ -63,9 +63,10 @@ exec $feh/unsplash/
 # App selection |
 #---------------+
 
-# start rofi to run apps
-bindsym $mod+r exec --no-startup-id rofi -show drun -location 1
-bindsym Menu exec --no-startup-id rofi -show drun -location 1
+# start app launcher
+#exec i3-dmenu-desktop
+bindsym $mod+r exec --no-startup-id rofi -show drun
+bindsym Menu exec --no-startup-id rofi -show drun
 
 # quick app starter
 # engrampa for .zip, vlc for .mp4, pinta for .jpg
@@ -251,7 +252,8 @@ bindsym $mod+$alt+r exec $modetgl $mode restart
 # systemstate changes
 bindsym $mod+$alt+Escape exit
 bindsym $mod+Escape exec systemctl suspend
-bindsym $mod+l exec i3lock_blur
+bindsym $mod+l exec i3lock-fancy-rapid 10 2
+#bindsym $mod+l exec i3lock_blur
 bindsym $mod+Ctrl+Escape exec sudo umount -a;exec poweroff
 
 # Start i3bar to display a workspace bar with i3blocks

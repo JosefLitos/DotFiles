@@ -7,6 +7,12 @@ markup=pango
 color=#881eaa
 interval=once
 
+[activewin]
+label=:
+command=i3title -s
+interval=-3
+color=#4488ff
+
 [separator]
 #background=#5c5c5c88
 color=#00000088
