@@ -55,6 +55,7 @@ set splitbelow
 set undofile
 set undodir="~/.vim/undo/"
 set mouse=a
+set title titlestring=%{expand('%:t')}\ -\ NVim
 let g:python3_host_prog='/usr/bin/python'
 
 " Color Scheme, and design

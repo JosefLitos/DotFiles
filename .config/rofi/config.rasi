@@ -4,12 +4,15 @@ configuration {
 	lines: 15;
 	location: 0;
 //	columns: 1;
-	font: "Inconsolata 15";
+	font: "Inconsolata 16";
 	show-icons: true;
 	terminal: "st";
 /*	window-command: "wmctrl -i -R {window}";*/
 /*	window-match-fields: "all";*/
-	icon-theme: "Material-Black-Lime-Suru-GLOW";
+	theme: "MB-Lime";
+	icon-theme: "MB-Lime-Suru-GLOW";
+//	theme: "AD-Kiwi";
+//	icon-theme: "AD-Kiwi-Suru";
 	disable-history: true;
 /*	ignored-prefixes: "";*/
 	sort: true;
@@ -20,7 +23,6 @@ configuration {
 /*	threads: 0;*/
 	scroll-method: 1;
 /*	window-format: "{w}    {c}   {t}";*/
-	theme: "Material-Black-Lime";
 	max-history-size: 0;
 	kb-row-up: "Up";
 	kb-row-down: "Down";

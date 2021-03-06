@@ -120,7 +120,7 @@ color=#5c5c5c88
 full_text= 
 
 [date]
-command=date +" %d.%m."
+command=date +" %a %d.%m."
 background=#5c5c5c88
 
 [separator]

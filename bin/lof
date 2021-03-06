@@ -16,3 +16,5 @@ else
 	i3 [class="$2"] focus
 fi
 
+disown
+

@@ -14,6 +14,10 @@ set -x TERMINAL st
 function fish_greeting
 end
 
+function fish_title
+	printf (basename $PWD)" - Fish"
+end
+
 function fish_prompt
 	set_color "0D0" --bold
 		printf "%s" "$USER"
@@ -57,6 +61,8 @@ abbr cu 		"cd /usr/"
 abbr ce 		"cd /etc/"
 abbr cds 		"cd ~/Documents/AvAvA/server/src/"
 
+# quick program fetch
+abbr xp 		" xprop | grep -e "^_NET_WM_WINDOW_TYPE" -e "^WM_NAME" -e "^WM_CLASS" | sed 's/^.*_\(.*\)(.*) = /\1 = /'"
 # detect keys pressed
 abbr xev 		"xev | grep keysym | awk '{ print \$7 }' | sed 's/),//'"
 # wifi

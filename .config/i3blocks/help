@@ -2,29 +2,31 @@
 #Basic guide for my i3 setup usage
 
 SELECTED=$(echo \
-"Super/WinKey   Rofi app launcher
-Mod+R          Rofi command launcher
+"Mod+R          Rofi app launcher
 Mod+E          PcManFM
 Mod+1          Firefox
 Mod+2          NeoVim
-Mod+Alt+2      Geany
+Mod+Alt+2      Notepadqq
 Mod+Enter/3    st
 Mod+(Shift)+V  Volume adj
-Mod+(Shift)+B  Backlight adj" | rofi -dmenu -location 3 -p "select action" | sed -e "s/^...............//")
+Mod+(Shift)+B  Backlight adj
+Mod+Q          Close window
+Mod+Esc/X      Session options" | rofi -dmenu -location 3 -l 10 -p "select action" | sed -e "s/^...............//")
 
 start() {
 	case "$SELECTED" in
-		"Rofi app launcher") i3 exec "rofi -show drun -location 3";;
-		"Rofi command launcher") i3 exec "rofi -show run -location 3";;
-		"PcManFM") i3 exec pcmanfm;;
-		"Firefox") i3 exec firefox;;
-		"NeoVim") i3 exec st -e nvim;;
-		"Mousepad") i3 exec mousepad;;
-		"st") i3 exec st;;
-		"Volume adj") ./signal vol $(rofi -dmenu -location 3 -l 0 -p " ±[0-200]") >> /dev/null;;
-
-		"Backlight adj") ./signal light = $(rofi -dmenu -location 3 -l 0 -p " [0-100]");;
+		"Rofi app launcher") rofi -show drun -location 3 &;;
+		"PcManFM") pcmanfm &;;
+		"Firefox") firefox &;;
+		"NeoVim") st -e nvim &;;
+		"Notepadqq") notepadqq &;;
+		"st") st &;;
+		"Volume adj") sleep 1 && ./signal vol $(rofi -dmenu -location 3 -l 0 -p " ±[0-200]") >> /dev/null;;
+		"Backlight adj") sleep 1 && ./signal light = $(rofi -dmenu -location 3 -l 0 -p " [0-100]");;
+		"Close window") xkill -id $(xdotool getactivewindow);;
+		"Session options") xdotool key super+x;
 	esac
 }
 start >> /dev/null
 
+disown
