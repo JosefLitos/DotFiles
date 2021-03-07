@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Inconsolata:pixelsize=22:antialias=true:autohint=true";
+static char *font = "FiraCode:pixelsize=18:antialias=true:autohint=true";
 static char *font2[] = { "Font Awesome 5 Free Solid:pixelsize=16:antialias=true:autohint=true" };
 static int borderpx = 1;
 
@@ -25,8 +25,8 @@ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-static float cwscale = 0.35;
-static float chscale = 0.8;
+static float cwscale = 1;
+static float chscale = 0.9;
 
 /*
  * word delimiter string

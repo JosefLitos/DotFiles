@@ -17,8 +17,8 @@ set $modetgl --no-startup-id ~/.config/i3/modetoggle
 set $term st
 exec sleep 10 && $term -e paru
 
-font pango:Squarea, Font Awesome 5 Free Solid 15
-#Sanidana, Squarea, Inconsolata, Overpass
+font pango: Squarea 15
+#Sanidana/Squarea, Inconsolata/FiraCode, Overpass, Font Awesome 5 Free Solid
 
 default_border pixel 1
 gaps inner 15
@@ -145,7 +145,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Ctrl+v sticky toggle
 bindsym $mod+$alt+z split toggle
 bindsym $mod+c split toggle
-bindsym $mod+z layout toggle splith tabbed splitv
+bindsym $mod+z layout toggle splith splitv tabbed
 # tiling/floating managing
 bindsym $mod+Ctrl+f floating toggle; sticky enable
 bindsym $mod+$alt+Ctrl+f exec $modetgl $mode default
