@@ -65,7 +65,12 @@ noremap <C-Up> <C-w>k
 noremap <C-l> <C-w>l
 
 " quick writings
+nnoremap - za
+nnoremap = zi
+nnoremap _ zM
+nnoremap + zR
 noremap <M-F> :Autoformat<CR>
+inoremap <M-F> <Esc>:Autoformat<CR>i
 noremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>a
 nnoremap <M-s> i<silent> <Esc><C-Left>
@@ -75,6 +80,10 @@ inoremap <M-s> <silent> <Esc><C-Left>
 nnoremap r :redo<CR>
 noremap <C-z> :undo<CR>
 noremap <C-y> :redo<CR>
+
+" Remap for rename current word
+nmap <F2> <Plug>(coc-rename)
+nmap <C-R> <Plug>(coc-rename)
 
 " FzF
 nnoremap cc :Commands<CR>

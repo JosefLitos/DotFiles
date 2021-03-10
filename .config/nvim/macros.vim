@@ -1,5 +1,4 @@
 " Macros
-inoremap ,os ß
 
 "	HTML
 autocmd FileType html inoremap ,b <b></b><Space><++><Esc>FbT>i
