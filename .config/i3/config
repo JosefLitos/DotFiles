@@ -17,8 +17,8 @@ set $modetgl --no-startup-id ~/.config/i3/modetoggle
 set $term st
 exec sleep 10 && $term -e paru
 
-font pango: Squarea 15
-#Sanidana/Squarea, Inconsolata/FiraCode, Overpass, Font Awesome 5 Free Solid
+font pango: Nova Square 15
+#Squarea/Stick, Inconsolata/FiraCode, Overpass/Exo 2, Font Awesome 5 Free Solid, JoyPixels
 
 default_border pixel 1
 gaps inner 15
@@ -43,19 +43,28 @@ client.background #00000000
 exec --no-startup-id picom
 bindsym $mod+p exec --no-startup-id pgrep -x "picom" && killall picom || picom
 
-set $feh --no-startup-id feh --no-fehbg --bg-fill -z ~/Pictures/screen
+set $feh --no-startup-id feh --no-fehbg --bg-fill -rz ~/Pictures/screen
 bindsym $mod+u mode ""
 mode "" {
 	bindsym $mod+u mode "default"
 	bindsym Escape mode "default"
-	bindsym c exec $feh/cars/
-	bindsym a exec $feh/animals/
-	bindsym d exec $feh/simpledark/
-	bindsym u exec $feh/unsplash/
-	bindsym b exec $feh/best/
-	bindsym n exec $feh/nature/
+	bindsym c exec $feh/cars
+	bindsym a exec $feh/animals
+	bindsym d exec $feh/distros
+	bindsym t exec $feh/top
+	bindsym e exec $feh/anime
+	bindsym h exec $feh/human
+	bindsym n exec $feh/natural
+	bindsym 1 exec $feh/natural/blue
+	bindsym 2 exec $feh/natural/green
+	bindsym 3 exec $feh/natural/nature
+	bindsym 4 exec $feh/natural/red
+	bindsym 5 exec $feh/natural/pink
+	bindsym 6 exec $feh/natural/yellow
+	bindsym 7 exec $feh/natural/white
+	bindsym 0 exec $feh/natural/dark
 }
-exec $feh/unsplash/
+exec $feh
 #normal image displaying
 #feh -. -B black -| /path/to/image
 
@@ -66,7 +75,7 @@ exec $feh/unsplash/
 # start app launcher
 #exec i3-dmenu-desktop
 bindsym $mod+r exec --no-startup-id rofi -show drun
-bindsym Menu exec --no-startup-id rofi -show drun
+#bindsym Menu exec --no-startup-id rofi -show drun
 
 # quick app starter
 # engrampa for .zip, vlc for .mp4, pinta for .jpg
@@ -314,8 +323,9 @@ assign [class="NetBeans"] $w5
 
 set $Exit "C: L: D: Q: S: P: R: Esc:"
 bindsym $mod+Escape mode $Exit
-bindsym $mod+Shift+q mode $Exit
 bindsym $mod+x mode $Exit
+bindsym $mod+Shift+x exec i3lock-fancy-rapid 10 2
+bindsym --release $mod+$alt+x exec --no-startup-id [ "$(xrandr --verbose | grep -m 1 CRTC:)" ] && xrandr --output LVDS1 --off || xrandr --auto && xrandr -r 50; mode default
 
 mode $Exit {
 	bindsym c exec $modetgl $mode reload; mode default
@@ -324,7 +334,7 @@ mode $Exit {
 #bindsym l exec i3lock_blur
 	bindsym --release d exec --no-startup-id [ "$(xrandr --verbose | grep -m 1 CRTC:)" ] && xrandr --output LVDS1 --off || xrandr --auto && xrandr -r 50; mode default
 	bindsym q exit
-	bindsym s exec systemctl suspend; mode default
+	bindsym s mode default; exec systemctl suspend
 	bindsym p exec poweroff
 	bindsym r exec reboot
 	bindsym Escape mode default
@@ -338,12 +348,12 @@ bar {
 	mode dock
 	modifier $mod+$alt
 	i3bar_command i3bar --transparency
-	separator_symbol "|"
+	separator_symbol " "
 	position top
 
 	colors {
-		statusline #ffffff
-		separator #aaaaaa
+#		statusline #ffffff
+#		separator #aaaaaa
 		background $bg
 		focused_workspace $bg $bg #77ff00
 		inactive_workspace $bg $bg #881eaa
@@ -359,7 +369,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id nm-applet
 exec --no-startup-id xrandr -r 50
 exec_always --no-startup-id xset r rate 225 25
-#exec --no-startup-id xbacklight = 30
 
 # screenshot
 bindsym $mod+Print exec --no-startup-id scrot 'Pictures/scrshot/%m-%d_%H:%M:%S.png'

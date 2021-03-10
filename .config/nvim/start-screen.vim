@@ -31,6 +31,8 @@ let g:startify_bookmarks = [
 			\ { 'ib': '~/.config/i3blocks/' },
 			\ { 'pi': '~/.config/picom/picom.conf' },
 			\ { 'ra': '~/.config/ranger/rc.conf' },
+			\ { 'rf': '~/.config/rofi/config.rasi' },
+			\ { 'fn': '~/.config/fontconfig/fonts.conf' },
 			\ { 'fc': '~/.config/fish/config.fish' },
 			\ { 'vi': '~/.config/nvim/' }
 			\ ]
