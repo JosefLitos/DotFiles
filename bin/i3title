@@ -19,10 +19,11 @@ def print_window_title(container):
     title = container.name
     if not title:
         print("")
+        sys.stdout.flush()
         return
     if args.truncate and len(title) > args.truncate:
         title = title[:truncate_to] + '...'
-    print(title)
+    print(" " + title)
     sys.stdout.flush()
 
 def on_window_focus(i3, e):

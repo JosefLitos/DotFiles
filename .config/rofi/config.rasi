@@ -4,7 +4,7 @@ configuration {
 	lines: 15;
 	location: 0;
 //	columns: 1;
-	font: "Inconsolata 16";
+	font: "FiraCode 14";
 	show-icons: true;
 	terminal: "st";
 /*	window-command: "wmctrl -i -R {window}";*/
