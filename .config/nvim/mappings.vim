@@ -64,11 +64,14 @@ noremap <C-Down> <C-w>j
 noremap <C-Up> <C-w>k
 noremap <C-l> <C-w>l
 
-" quick writings
+" folding
 nnoremap - za
 nnoremap = zi
 nnoremap _ zM
 nnoremap + zR
+
+" quick writings
+inoremap <C-BS> <C-W>
 noremap <M-F> :Autoformat<CR>
 inoremap <M-F> <Esc>:Autoformat<CR>i
 noremap <C-s> :w<CR>
