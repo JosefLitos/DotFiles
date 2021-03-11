@@ -47,7 +47,7 @@ set cursorline cursorcolumn
 set norelativenumber number
 set tabstop=3 shiftwidth=3 smarttab
 set linebreak breakindent autoindent smartindent
-set foldmethod=syntax foldnestmax=3 foldcolumn=1 foldlevel=10 nofoldenable
+set foldmethod=indent foldnestmax=3 foldcolumn=0 foldlevel=10 nofoldenable
 let javaScript_fold=1
 let g:python3_host_prog='/usr/bin/python'
 "set timeoutlen=500 updatetime=1000
@@ -98,6 +98,7 @@ hi OPTIONAL    term=bold      guibg=green guifg=white ctermbg=green  ctermfg=bla
 hi Normal      guibg=NONE     ctermbg=NONE
 hi SignColumn  guibg=NONE     ctermbg=NONE
 hi Folded      term=standout  guibg=NONE  guifg=#77ff00 ctermbg=black ctermfg=green
+hi FoldColumn  guibg=NONE     ctermbg=black
 call matchadd('TODO','TODO')
 call matchadd('NOTE','NOTE')
 call matchadd('NEXT', 'NEXT')

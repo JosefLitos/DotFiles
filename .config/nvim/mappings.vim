@@ -75,6 +75,7 @@ noremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>a
 nnoremap <M-s> i<silent> <Esc><C-Left>
 inoremap <M-s> <silent> <Esc><C-Left>
+noremap :Q :q!
 
 " Undotree
 nnoremap r :redo<CR>
@@ -83,7 +84,7 @@ noremap <C-y> :redo<CR>
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
-nmap <C-R> <Plug>(coc-rename)
+nmap <C-r> <Plug>(coc-rename)
 
 " FzF
 nnoremap cc :Commands<CR>
