@@ -3,16 +3,16 @@
 
 case "$1" in
 	"vol")
-		pactl set-sink-volume @DEFAULT_SINK@ $2%
+		pactl set-sink-volume 0 $2%
 		pkill -RTMIN+10 i3blocks;;
 	"mute")
-		pactl set-sink-mute @DEFAULT_SINK@ $2
+		pactl set-sink-mute 0 $2
 		pkill -RTMIN+10 i3blocks;;
 	"light")
 		xbacklight $2 $3
 		sleep 0.2
 		pkill -RTMIN+11 i3blocks;;
 	"kb")
-		setxkbmap -layout $([ $(setxkbmap -query | awk '/^l/ { print $2 }') == cz ] && echo us || echo cz)
+		setxkbmap -option compose:102 -layout $([ $(setxkbmap -query | awk '/^l/ { print $2 }') == cz ] && echo us || echo cz)
 		pkill -RTMIN+12 i3blocks;;
 esac

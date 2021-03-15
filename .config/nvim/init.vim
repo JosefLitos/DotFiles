@@ -45,6 +45,7 @@ set undofile undodir="~/.vim/undo/"
 set nobackup nowritebackup noswapfile
 set cursorline cursorcolumn
 set norelativenumber number
+set signcolumn=yes
 set tabstop=3 shiftwidth=3 smarttab
 set linebreak breakindent autoindent smartindent
 set foldmethod=indent foldnestmax=3 foldcolumn=0 foldlevel=10 nofoldenable
@@ -54,8 +55,8 @@ let g:python3_host_prog='/usr/bin/python'
 
 " Color Scheme, and design
 let g:airline_powerline_fonts=0
-let g:gruvbox_italic=1
-let g:gruvbox_transparent_bg=1
+ let g:gruvbox_italic=1
+ let g:gruvbox_transparent_bg=1
 set background=dark
 colorscheme gruvbox
 
@@ -84,21 +85,22 @@ autocmd BufRead,BufNewFile *config,*.conf set filetype=config
 autocmd BufRead,BufNewFile */X11/xorg* set filetype=xf86conf
 autocmd BufRead,BufNewFile */i3/*conf* set filetype=i3config
 autocmd BufRead,BufNewFile */fish* set filetype=sh
+autocmd BufRead,BufNewFile *.txt setlocal nonumber signcolumn=no nocursorline nocursorcolumn
 
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 
 " Special highlighting
-hi DELETE      term=standout  guibg=white guifg=red   ctermbg=black  ctermfg=red
-hi TODO        term=standout  guifg=green guibg=LightGray ctermbg=green ctermfg=black
-hi NOTE        term=standout  guifg=blue  guibg=white ctermbg=green  ctermfg=red
-hi NEXT        term=standout  guifg=red   guibg=green ctermbg=blue   ctermfg=red
+hi DELETE      term=standout  guibg=LightGray guifg=red   ctermbg=black  ctermfg=red
+hi TODO        term=standout  guibg=LightGray guifg=green ctermbg=green ctermfg=black
+hi NOTE        term=standout  guibg=LightGray guifg=blue  ctermbg=green  ctermfg=red
+hi NEXT        term=standout  guibg=LightGray guifg=red   ctermbg=blue   ctermfg=red
 hi IMPORTANT   term=bold      guibg=red   guifg=white ctermbg=red    ctermfg=black
 hi OPTIONAL    term=bold      guibg=green guifg=white ctermbg=green  ctermfg=black
 hi Normal      guibg=NONE     ctermbg=NONE
 hi SignColumn  guibg=NONE     ctermbg=NONE
-hi Folded      term=standout  guibg=NONE  guifg=#77ff00 ctermbg=black ctermfg=green
-hi FoldColumn  guibg=NONE     ctermbg=black
+hi Folded      term=standout  guibg=NONE  guifg=#339900 ctermbg=black ctermfg=green
+" hi FoldColumn  guibg=NONE     ctermbg=black
 call matchadd('TODO','TODO')
 call matchadd('NOTE','NOTE')
 call matchadd('NEXT', 'NEXT')

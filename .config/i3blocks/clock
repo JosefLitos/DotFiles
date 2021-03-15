@@ -9,7 +9,7 @@ else
 fi
 ~/.config/i3blocks/colorcode $[($(date +%H | sed "s/^0//")*3600+$(date +%M | sed "s/^0//"))/432]
 
-if [[ $(date +"%H") -ge 20 ]]; then
+if [[ $(date +"%H") -ge 21 ]]; then
 	xrandr --output LVDS1 --gamma 1:0.85:0.75 >> /dev/null
 fi
 

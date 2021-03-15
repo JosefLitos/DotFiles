@@ -1,59 +1,33 @@
 #!/bin/sh
 #Memory usage, total mem usage on click
 
-TEXT=$(awk -v type=$BLOCK_INSTANCE '
-/^MemTotal:/ {
-	mem_total=$2
-}
-/^MemFree:/ {
-	mem_free=$2
-}
-/^Buffers:/ {
-	mem_free+=$2
-}
-/^Cached:/ {
-	mem_free+=$2
-}
-/^SwapTotal:/ {
-	swap_total=$2
-}
-/^SwapFree:/ {
-	swap_free=$2
-}
-END {
-#	if (type == "swap") {
-#		free=swap_free/1024/1024
-#		used=(swap_total-swap_free)/1024/1024
-#		total=swap_total/1024/1024
-#	} else {
-		free=mem_free/1024/1024
-		used=(mem_total-mem_free)/1024
-		if (used >= 1000) {
-			used/=1024
-			type="G"
-		} else {
-			type="M"
-		}
-		total=mem_total/1024/1024
-#	}
+declare -i MTotal MUsed STotal SUsed
+while read -a line; do
+	case ${line[0]} in
+		"Mem:") MTotal=${line[1]}; MUsed=${line[2]}+${line[4]};;
+		"Swap") STotal=${line[1]}; SUsed=${line[2]};;
+	esac
+done <<< $(free -m)
 
-	pct=0
-	if (total > 0) {
-		if (type == "G" ) {
-			pct=used/total*100
-		} else {
-			pct=used/total*0.1
-		}
-	}
+if [ "$BLOCK_INSTANCE" == "swap" ]; then
+	USED=$SUsed
+	TOTAL=$(bc <<< "scale=1;$STotal/1024")
+	PCT=$(bc <<< "scale=1;$SUsed/$STotal*100")
+else
+	USED=$MUsed
+	TOTAL=$(bc <<< "scale=1;$MTotal/1024")
+	PCT=$(bc <<< "scale=1;$MUsed*100/$MTotal")
+fi
 
-	printf("%.1f%s/%.1fG %.1f", used, type, total, pct)
-}
-' /proc/meminfo)
+if [ $USED -ge 1000 ]; then
+	TYPE="G"; USED=$(bc <<< "scale=1;$USED/1024")
+else
+	TYPE="M"
+fi
 
-PCT=$(echo $TEXT | sed 's/^.* //')
 # Nice icons:  
 if [[ $button -eq 1 ]]; then
-	TEXT=" $(echo $TEXT | sed 's/ / (/')%)"
+	TEXT=" $USED$TYPE/${TOTAL}G ($PCT%)"
 elif [[ $button -eq 3 ]]; then
 	ps axo rss,comm \
                 | awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
@@ -67,4 +41,4 @@ else
 fi
 echo $TEXT
 echo $TEXT
-~/.config/i3blocks/colorcode $[100-$(echo $PCT | awk '{printf "%.f", $1}')]
+~/.config/i3blocks/colorcode $[100-${PCT/.*/}]

@@ -2,9 +2,9 @@
 #Volume detection script
 #Nice icons:       
 if [[ $button -ge 4 ]]; then
-	pactl set-sink-volume @DEFAULT_SINK@ $([[ $button -eq 4 ]] && echo \+ || echo \-)10% >> /dev/null
+	pactl set-sink-volume 0 $([[ $button -eq 4 ]] && echo \+ || echo \-)10% >> /dev/null
 elif [[ $button -eq 1 ]]; then
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	pactl set-sink-mute 0 toggle
 elif [[ $button -eq 3 ]]; then
 	amixer set Capture toggle >> /dev/null
 elif [[ $button -eq 2 ]]; then

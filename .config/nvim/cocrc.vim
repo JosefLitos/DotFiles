@@ -33,7 +33,7 @@ set nowritebackup
 set shortmess+=c
 
 " always show signcolumns
-set signcolumn=yes
+"set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.

@@ -112,7 +112,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 3;
 
 /* bg opacity */
-float alpha = 0.3;
+float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -407,6 +407,7 @@ static Key key[] = {
    { XK_Tab,         ControlMask|ShiftMask,          "\033[9;6u",    0,  0},
    { XK_Tab,         Mod1Mask|ControlMask,           "\033[9;7u",    0,  0},
    { XK_Tab,         Mod1Mask|ControlMask|ShiftMask, "\033[9;8u",    0,  0},
+   { XK_Return,      ShiftMask,                      "\033[13;2u",   0,  0},
    { XK_Return,      Mod1Mask,                       "\033[13;3u",   0,  0},
    { XK_Return,      Mod1Mask|ShiftMask,             "\033[13;4u",   0,  0},
    { XK_Return,      ControlMask,                    "\033[13;5u",   0,  0},
@@ -490,21 +491,21 @@ static Key key[] = {
    { XK_Home,        Mod1Mask|ControlMask,           "\033[1;7H",    0,  0},
    { XK_Home,        Mod1Mask|ControlMask|ShiftMask, "\033[1;8H",    0,  0},
    { XK_Insert,      XK_NO_MOD,                      "\033[2~",      0,  0},
-   { XK_Insert,      ShiftMask,                      "\033[99;2u",   0,  0},
-   { XK_Insert,      Mod1Mask,                       "\033[99;3u",   0,  0},
-   { XK_Insert,      Mod1Mask|ShiftMask,             "\033[99;4u",   0,  0},
-   { XK_Insert,      ControlMask,                    "\033[99;5u",   0,  0},
-   { XK_Insert,      ControlMask|ShiftMask,          "\033[99;6u",   0,  0},
-   { XK_Insert,      Mod1Mask|ControlMask,           "\033[99;7u",   0,  0},
-   { XK_Insert,      Mod1Mask|ControlMask|ShiftMask, "\033[99;8u",   0,  0},
+   { XK_Insert,      ShiftMask,                      "\033[2;2~",   0,  0},
+   { XK_Insert,      Mod1Mask,                       "\033[2;3~",   0,  0},
+   { XK_Insert,      Mod1Mask|ShiftMask,             "\033[2;4~",   0,  0},
+   { XK_Insert,      ControlMask,                    "\033[2;5~",   0,  0},
+   { XK_Insert,      ControlMask|ShiftMask,          "\033[2;6~",   0,  0},
+   { XK_Insert,      Mod1Mask|ControlMask,           "\033[2;7~",   0,  0},
+   { XK_Insert,      Mod1Mask|ControlMask|ShiftMask, "\033[2;8~",   0,  0},
    { XK_Delete,      XK_NO_MOD,                      "\033[3~",      0,  0},
-   { XK_Delete,      ShiftMask,                      "\033[255;2u",  0,  0},
-   { XK_Delete,      Mod1Mask,                       "\033[255;3u",  0,  0},
-   { XK_Delete,      Mod1Mask|ShiftMask,             "\033[255;4u",  0,  0},
-   { XK_Delete,      ControlMask,                    "\033[255;5u",  0,  0},
-   { XK_Delete,      ControlMask|ShiftMask,          "\033[255;6u",  0,  0},
-   { XK_Delete,      Mod1Mask|ControlMask,           "\033[255;7u",  0,  0},
-   { XK_Delete,      Mod1Mask|ControlMask|ShiftMask, "\033[255;8u",  0,  0},
+   { XK_Delete,      ShiftMask,                      "\033[3;2~",  0,  0},
+   { XK_Delete,      Mod1Mask,                       "\033[3;3~",  0,  0},
+   { XK_Delete,      Mod1Mask|ShiftMask,             "\033[3;4~",  0,  0},
+   { XK_Delete,      ControlMask,                    "\033[3;5~",  0,  0},
+   { XK_Delete,      ControlMask|ShiftMask,          "\033[3;6~",  0,  0},
+   { XK_Delete,      Mod1Mask|ControlMask,           "\033[3;7~",  0,  0},
+   { XK_Delete,      Mod1Mask|ControlMask|ShiftMask, "\033[3;8~",  0,  0},
    { XK_End,         XK_NO_MOD,                      "\033[4~",      0,  0},
    { XK_End,         ShiftMask,                      "\033[1;2F",    0,  0},
    { XK_End,         Mod1Mask,                       "\033[1;3F",    0,  0},

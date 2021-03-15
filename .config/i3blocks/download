@@ -1,18 +1,20 @@
 #!/bin/sh
 
 # Use the provided interface, otherwise the device used for the default route.
-if [[ -z $INTERFACE ]] && [[ -n $BLOCK_INSTANCE ]]; then
+if [[ -z $INTERFACE && -n $BLOCK_INSTANCE ]]; then
   INTERFACE=$BLOCK_INSTANCE
 elif [[ -z $INTERFACE ]]; then
-  INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
+	while read -a line; do
+		[ ${line[0]} == 'default' ] && INTERFACE=${line[4]} && break
+	done <<< $(ip route)
 fi
 # Exit if there is no default route
-[[ -z "$INTERFACE" ]] && exit
+[ "$INTERFACE" ] || exit
 
 # Issue #36 compliant.
 if ! [ -e "/sys/class/net/$INTERFACE/operstate" ] || \
-    (! [ "$TREAT_UNKNOWN_AS_UP" = "1" ] &&
-	 ! [ "$(cat /sys/class/net/$INTERFACE/operstate)" = "up" ])
+     [ "$TREAT_UNKNOWN_AS_UP" != "1" ] && \
+	  [ "$(cat /sys/class/net/$INTERFACE/operstate)" != "up" ]
 then
     echo " "
     echo " "
@@ -21,7 +23,7 @@ then
 fi
 
 # path to store the old results in
-path="/dev/shm/$(basename $0)-$INTERFACE"
+path="/dev/shm/${0##*/}-$INTERFACE"
 
 # grabbing data for each adapter.
 read rx < "/sys/class/net/$INTERFACE/statistics/rx_bytes"
@@ -42,13 +44,13 @@ old=($(cat "$path"))
 echo "$time $rx" > "$path"
 
 # calc time passed
-time_diff=$[time-${old[0]}]
+time_diff=$[time-old[0]]
 
 # sanity check: has a positive amount of time passed
-[[ "$time_diff" -gt 0 ]] || exit
+[ $time_diff -gt 0 ] || exit
 
 # calc bytes transferred, and their rate in byte/s
-rx_diff=$[rx-${old[1]}]
+rx_diff=$[rx-old[1]]
 rx_rate=$[rx_diff/time_diff]
 
 # shift by 10 bytes to get KiB/s. If the value is larger than
@@ -56,8 +58,8 @@ rx_rate=$[rx_diff/time_diff]
 
 # incoming
 rx_KiB=$[rx_rate>>10]
-if [[ "$rx_KiB" -ge 1000 ]]; then
-	TEXT=" $(echo "scale=1; $rx_KiB / 1024" | bc | sed 's/^\./0./')M"
+if [ $rx_KiB -ge 1000 ]; then
+	TEXT=" $(bc <<< "scale=1; $rx_KiB / 1024" | sed 's/^\./0./')M"
 else
 	TEXT=" ${rx_KiB}K"
 fi

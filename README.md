@@ -5,15 +5,15 @@ I include source code for my terminal of choice: st, as well as used themes for 
 
 # Dotfiles in this repo
 
-- i3
-- i3blocks
-- nvim
-- picom
-- rofi
-- fish
-- vlc
-- htop
-- handmade lockscreen lock icons
+-  i3
+-  i3blocks
+-  nvim
+-  picom
+-  rofi
+-  fish
+-  vlc
+-  htop
+-  handmade lockscreen lock icons
 
 ![screenshot](screenshot.png)
 
@@ -46,6 +46,7 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | notepadqq          | linux replacement for notepad++; editor |
 | npm                | packages provider for nvim              |
 | otf-overpass       | well-readable and looking font for UI   |
+| pacman-contrib     | contains 'checkupdates' used in script  |
 | paru               | aur packages helper                     |
 | pavucontrol        | gui way to control pulse audio          |
 | pcmanfm-gtk3       | file manager                            |
