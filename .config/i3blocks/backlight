@@ -1,12 +1,12 @@
-#!/bin/sh
-#Backlight detection
-if [[ $button -eq 1 ]] || [[ $button -eq 4 ]]; then
-	xbacklight + 10
-elif [[ $button -eq 3 ]] || [[ $button -eq 5 ]]; then
-	xbacklight - 10
+#!/usr/bin/env bash
+# Backlight detection
+if [ "$button" -a "$button" != 2 ]; then
+	[ $button -eq 1 -o $button -eq 4 ] &&
+		xbacklight + 10 || xbacklight - 10
 fi
 
-TEXT=$(xbacklight | awk '{ printf("%.f", $1) }')
-echo "<b> $TEXT%</b>"
-echo " $TEXT%"
-~/.config/i3blocks/colorcode $TEXT
+LIGHT=$(xbacklight)
+LIGHT=${LIGHT%.*}
+TEXT="<b> $LIGHT%</b>"
+printf "%s\n%s\n" "$TEXT" "$TEXT"
+~/.config/i3blocks/colorcode $LIGHT

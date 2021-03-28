@@ -24,6 +24,7 @@ Plug 'Chiel92/vim-autoformat'                               " autoformats file, 
 " Misc
 Plug 'vim-airline/vim-airline'                              " bottom status bar
 Plug 'mhinz/vim-startify'                                   " gives vim pretty start screen (bye bye Uganda), manages stored vim sessions
+Plug 'vimwiki/vimwiki'
 "Plug 'liuchengxu/vim-which-key'                            " guide for key bindings
 call plug#end()
 
@@ -46,7 +47,7 @@ set nobackup nowritebackup noswapfile
 set cursorline cursorcolumn
 set norelativenumber number
 set signcolumn=yes
-set tabstop=3 shiftwidth=3 smarttab
+set tabstop=2 shiftwidth=2 smarttab
 set linebreak breakindent autoindent smartindent
 set foldmethod=indent foldnestmax=3 foldcolumn=0 foldlevel=10 nofoldenable
 let javaScript_fold=1

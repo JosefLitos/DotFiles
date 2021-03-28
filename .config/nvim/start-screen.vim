@@ -1,9 +1,8 @@
 let g:startify_custom_header = [
-			\'  _          _          \/   _                                     ',
-			\' | |    °  _| |_  ___  ____ || ____       __     __ °              ',
-			\' | |   |¯||_   _|/ _ \/ ___||// ___|      \ \   / /|¯| \¯\¯\¯\     ',
-			\' | |__ | |  | |  ||_||\___ \  \___ \       \ \_/ / | | | | | |     ',
-			\' |____||_|  |_|  \___/|____/  |____/        \___/  |_| |_|_|_|     ',
+			\'   ___  __  _____  ____  ___ _____',
+			\'    |   /   |      |   \  |  |    ',
+			\'    |==<    |====  |===/  |  |===|',
+			\'   _|_  \_  |____ _|_    _|_ ____|',
 			\]
 
 
@@ -34,7 +33,9 @@ let g:startify_bookmarks = [
 			\ { 'rf': '~/.config/rofi/config.rasi' },
 			\ { 'fn': '~/.config/fontconfig/fonts.conf' },
 			\ { 'fc': '~/.config/fish/config.fish' },
-			\ { 'vi': '~/.config/nvim/' }
+			\ { 'vi': '~/.config/nvim/' },
+			\ { 'ds': '~/Documents/School/' },
+			\ { 'dp': '~/Documents/PG/' }
 			\ ]
 
 let g:startify_change_to_vcs_root = 1

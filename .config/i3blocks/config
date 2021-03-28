@@ -13,135 +13,64 @@ command=i3title -s
 interval=-3
 color=#4488ff
 
-[updates]
-interval=3600
-
-[separator]
-#background=#5c5c5c88
-color=#00000088
-full_text= 
-
 [wifi]
 interval=60
 #instance=wlp3s0
 background=#00000088
 
-[separator]
-background=#00000088
-color=#5c5c5c88
-full_text= 
-
 [bandwidth]
 interval=5
 background=#5c5c5c88
 
-#[separator]
-#background=#5c5c5c88
-#color=#00000088
-#full_text= 
-#
 #[upload]
 #interval=3
 #background=#00000088
 #
-#[separator]
-#background=#00000088
-#color=#5c5c5c88
-#full_text= 
-#
 #[download]
 #interval=3
 #background=#5c5c5c88
-
-[separator]
-background=#5c5c5c88
-color=#00000088
-full_text= 
 
 [memory]
 interval=20
 instance=ram
 background=#00000088
 
-[separator]
-background=#00000088
-color=#5c5c5c88
-full_text= 
-
 [cpu]
 interval=5
 background=#5c5c5c88
-
-[separator]
-background=#5c5c5c88
-color=#00000088
-full_text= 
 
 [cpu_temp]
 interval=5
 background=#00000088
 
-[separator]
-background=#00000088
-color=#5c5c5c88
-full_text= 
-
 [fan]
 interval=10
 background=#5c5c5c88
 
-[separator]
-background=#5c5c5c88
-color=#00000088
-full_text= 
+[fan_temp]
+interval=10
 
 [volume]
 signal=10
 background=#00000088
 
-[separator]
-background=#00000088
-color=#5c5c5c88
-full_text= 
-
 [backlight]
 signal=11
 background=#5c5c5c88
-
-[separator]
-background=#5c5c5c88
-color=#00000088
-full_text= 
 
 [battery]
 interval=60
 background=#00000088
 
-[separator]
-background=#00000088
-color=#5c5c5c88
-full_text= 
-
 [date]
 command=date +" %a %d.%m."
 background=#5c5c5c88
-
-[separator]
-background=#5c5c5c88
-color=#00000088
-full_text= 
 
 [clock]
 interval=60
 background=#00000088
 
-[separator]
-background=#00000088
-color=#5c5c5c88
-full_text= 
-
 [help]
 full_text=
 background=#5c5c5c88
 interval=undefined
-

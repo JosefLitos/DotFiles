@@ -1,31 +1,35 @@
-#!/bin/sh
-#Volume detection script
+#!/usr/bin/env bash
+# Volume script
 #Nice icons:       
-if [[ $button -ge 4 ]]; then
-	pactl set-sink-volume 0 $([[ $button -eq 4 ]] && echo \+ || echo \-)10% >> /dev/null
-elif [[ $button -eq 1 ]]; then
-	pactl set-sink-mute 0 toggle
-elif [[ $button -eq 3 ]]; then
-	amixer set Capture toggle >> /dev/null
-elif [[ $button -eq 2 ]]; then
-	i3 exec pavucontrol >> /dev/null
+if [ $button ]; then
+  if [ $button -ge 4 ]; then
+		pactl set-sink-volume 0	$([ $button -eq 4 ] && echo \+ || echo \-)10% &>/dev/null
+	elif [ $button -eq 1 ]; then
+		pactl set-sink-mute 0 toggle
+	elif [ $button -eq 3 ]; then
+		amixer set Capture toggle &>/dev/null
+	elif [ $button -eq 2 ]; then
+		i3 exec pavucontrol &>/dev/null
+	fi
 fi
 
-TEXT=$(pacmd list-sinks | awk '/front-left:/ { print $5 } /muted:/ { print $2; exit }' | sed "s/\%//")
-NUM=$(echo $TEXT | awk '{ print $1 }')
+INFO=()
+while read -a LINE; do
+	[ "${LINE[0]}" = 'volume:' ] && INFO[0]=${LINE[4]//%} ||
+	[ "${LINE[0]}" = 'muted:' ] && INFO[1]=${LINE[1]} && break
+done <<< $(pacmd list-sinks)
 
-if [[ $TEXT == *"yes"* ]]; then
+if [ ${INFO[1]} = yes ]; then
 	ICON=
-elif [[ $NUM -ge 70 ]]; then
+elif [ ${INFO[0]} -ge 70 ]; then
 	ICON=
-elif [[ $NUM -ge 35 ]]; then
+elif [ ${INFO[0]} -ge 35 ]; then
 	ICON=
 else
 	ICON=
 fi
 
-echo "$ICON<b> $NUM%</b>"
-echo "$ICON $NUM%"
-#echo "$COLOR"
-~/.config/i3blocks/colorcode $NUM
+echo "$ICON<b> ${INFO[0]}%</b>"
+echo "$ICON ${INFO[0]}%"
+~/.config/i3blocks/colorcode ${INFO[0]}
 

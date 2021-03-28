@@ -1,23 +1,21 @@
-#!/bin/sh
-# CPU usage, CPU frequency on click
+#!/usr/bin/env bash
+# CPU usage, CPU frequency on click script
+# FontAwesome icons fitting:  
 
-c=0;t=0
+while read -a LINE; do
+	[ "${LINE[0]}" = '%Cpu(s):' ] && PCT=${LINE[1]/,/.} && break
+done <<< $(top -bn 1)
 
-SPEED=$(awk '/MHz/ {print $4}' < /proc/cpuinfo | (while read -r i
-do
-    t=$(echo "scale=2; $t + $i" | bc)
-    let c++
-done
-echo "scale=0; $t / $c" | bc))
-MAXSPEED=$(lscpu | awk '/CPU max/ { print $4 }' | sed 's/\,....//')
-
-PCT=$(top -bn 1 | awk '/Cpu/ {print $2; exit}' | sed 's/\,/./')
-
-if [[ $button -eq 1 ]]; then
-	TEXT=" "$(echo "scale=1; $SPEED / 1000" | bc)"G/"$(echo "scale=1; $MAXSPEED / 1000" | bc)"G ($PCT%)"
+if [ "$button" = 1 ]; then
+	while read -a LINE; do
+		case ${LINE[1]} in
+			'MHz:') SPEED=${LINE[2]%.*};;
+			'max.') MAXSPEED=${LINE[3]%,*}; break;;
+		esac
+	done <<< $(lscpu)
+	TEXT=" "$(bc <<< "scale=1;$SPEED/1000")"G/"$(bc <<< "scale=1;$MAXSPEED/1000")"G ($PCT%)"
 else
 	TEXT=" <b>$PCT%</b>"
 fi
-echo $TEXT
-echo $TEXT
-~/.config/i3blocks/colorcode $[100-$(echo $PCT | awk '{printf "%.f", $1}')]
+printf '%s\n%s\n' "$TEXT" "$TEXT"
+~/.config/i3blocks/colorcode $[100-${PCT%.*}]

@@ -19,21 +19,24 @@ function fish_title
 end
 
 function fish_prompt
-	set_color "0D0" --bold
-		printf "%s" "$USER"
-#	set_color green
-#		printf "@"
-#	set_color magenta --bold
-#		printf "%s" "$hostname"
-	set_color "FF0"
-		printf "|"
+	set -l last_status $status
+	set_color -b '#111'
+	[ $last_status = 0 ] && set_color '#77ff00' -o || set_color '#dc1e0e' -o
+		printf '%s ' $last_status
 	set_color normal
-	set_color "F0A"
-		printf (basename $PWD)
-	set_color "F00" --bold
-		printf ":"
+	set_color -b '#111'
+	set_color '#bb1eaa'
+		printf (basename $PWD)' '
+	if [ "$USER" = 'root' ]
+		set_color '#dc1e0e' -o
+			printf '#'
+	else
+		set_color '#ffee00' -o
+		printf '$'
+	end
 	set_color normal
-		printf " "
+	set_color '#111'
+		printf ' '
 
 	# del key does not work properly by itself
 	printf '\033[?1h\033=' >/dev/tty

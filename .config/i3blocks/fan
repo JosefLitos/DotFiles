@@ -1,9 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# Fan speed script
 
-SPEED=$(sensors | grep fan1 | awk '{print $2; exit}')
+while read -a LINE; do
+	[ "${LINE[0]}" = 'fan1:' ] && SPEED=${LINE[1]} && break
+done <<< $(sensors)
 
-if [ "$SPEED" != "" ]; then
-	speed_round=$(echo "scale=1;$SPEED/1000" | bc -l )
+if [ $SPEED ]; then
+	speed_round=$(bc <<< "scale=1;$SPEED/1000")
 	TEXT=" <b>"$speed_round"k</b>"
 else
    TEXT=""

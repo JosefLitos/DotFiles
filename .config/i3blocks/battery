@@ -1,33 +1,33 @@
-#!/bin/sh
-#Battery status detection
+#!/usr/bin/env bash
+#Battery status script
 #FontAwesome icons for use
 #       ⚡ 
-TEXT=$(acpi | cut -d " " -f3-5 | sed "s/,//g;s/Discharging//;s/Charging//;s/Unknown//;s/Full//;s/:..$//;s/ 0/ /g")
+TEXT=$(acpi)
+read -a LINE <<< "$TEXT"
+TEXT=${LINE[2]:0:1} STATE=${LINE[3]%\%,} TIME=${LINE[4]%:??}
+#TEXT=$(acpi | cut -d " " -f3-5 | sed "s/,//g;s/Discharging//;s/Charging//;s/Unknown//;s/Full//;s/:..$//;s/ 0/ /g")
 
-if ! [ "$TEXT" ] || [[ "$TEXT" == *"rate"* ]]; then
+if [ -z "$TEXT" -o "$TEXT" = 'rate' ]; then
 	TEXT=
 else
-	KNOWN=true
-	STATE=$(echo "$TEXT" | sed "s/^. //;s/\%.*//")
-	if [ $STATE -le 20 ]; then
-		TEXT=$(echo $TEXT | sed "s///")
-	elif [ $STATE -le 40 ]; then
-		TEXT=$(echo $TEXT | sed "s///")
-	elif [ $STATE -le 60 ]; then
-		TEXT=$(echo $TEXT | sed "s///")
-	elif [ $STATE -le 80 ]; then
-		TEXT=$(echo $TEXT | sed "s///")
-	fi
-	if [ $STATE -gt 15 ] && ! [[ $TEXT == *""* ]] && ! [ $button -eq 1 ]; then
-		TEXT=$(echo $TEXT | sed "s/ ..%//")
-	elif [ $STATE -le 6 ] && [[ $TEXT != *""* ]]; then
-		case "$(echo -en "I'll plug it in\nSuspend\nPower off" | rofi -dmenu -l 3 -p " $STATE%")" in
-			"Suspend") systemctl suspend;;
-			"Power off") systemctl poweroff;;
-		esac
-	fi
+	case "$TEXT" in
+		'D')
+			[ $STATE -le 20 ] && TEXT= ||
+			[ $STATE -le 40 ] && TEXT= ||
+			[ $STATE -le 60 ] && TEXT= ||
+			[ $STATE -le 80 ] && TEXT= || TEXT=
+			if [ $STATE -le 6 ]; then
+				case "$(rofi -dmenu -l 3 -p " $STATE%" <<< "I\'ll plug it in\nSuspend\nPower off")" in
+					"Suspend") systemctl suspend;;
+					"Power off") systemctl poweroff;;
+				esac
+			fi;;
+		'C') TEXT=;;
+		'F') TEXT=;;
+		*) TEXT=;;
+	esac
+	TEXT="$TEXT $STATE% $TIME"
 fi
 
-echo $TEXT
-echo $TEXT
+printf "%s\n%s\n" "$TEXT" "$TEXT"
 ~/.config/i3blocks/colorcode $STATE

@@ -1,26 +1,38 @@
-#!/bin/sh
-#WiFi stat script
+#!/usr/bin/env bash
+# Internet status script
 
 #Nice icons:    
 if [[ $button -eq 1 ]]; then
 	NAME="$(nmcli d wifi list | sed -n 's/^\*//;/:/p' | awk '{ print $8"\t"$2 }' | rofi -dmenu -location 3 -p  | awk '{ print $2 }')"
 	if [ "$NAME" ]; then
 		PASSWD="$(rofi -dmenu -location 3 -l 0 -passowrd -p )"
-		if [ "$PASSWD" ]; then
-			nmcli d wifi connect "$NAME" password "$PASSWD" >> /dev/null
+		if [ -z "$PASSWD" ]; then
+			notify-send $(nmcli d wifi connect "$NAME")
 		else
-			nmcli d wifi connect "$NAME" >> /dev/null
+			notify-send $(nmcli d wifi connect "$NAME" password "$PASSWD")
 		fi
 	fi
 fi
-ON=$(ip a s wlp3s0 | grep "<.*UP.*>")
-QUALITY=$(grep wlp /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
-if [ $QUALITY ]; then
-	SSID=$(nmcli | awk '{ print $4; exit }')
+
+if [ $BLOCK_INSTANCE ]; then
+	read -a LINE <<< $(ip a s $BLOCK_INSTANCE)
+else
+	while read -a LINE; do
+		[[ "${LINE[1]}" = wlp* ]] && break
+	done <<< $(ip a)
+	BLOCK_INSTANCE=wlp
 fi
-TEXT=$([ "$ON" ] && ([ $QUALITY ] && echo " $QUALITY%: $SSID" || echo "" ) || echo "")
+[[ "${LINE[2]}" = *UP* ]] && ON=1
+if [ $ON ]; then
+	while read -a LINE; do
+		[[ "${LINE[0]}" = "$BLOCK_INSTANCE"* ]] &&\
+			QUALITY=$[${LINE[2]%.*}*10/7] && break
+	done < /proc/net/wireless
+	[ $QUALITY ] && read -a LINE <<< $(nmcli) && SSID=${LINE[-1]}
+fi
+TEXT=$([ $ON ] && ([ $QUALITY ] && echo " $QUALITY%: $SSID" || echo "" ) || echo "")
 
 echo "$TEXT"
 echo "$TEXT"
-~/.config/i3blocks/colorcode $([[ -z $QUALITY && "$ON" ]] && echo 0 || echo $QUALITY)
+~/.config/i3blocks/colorcode $([ -z "$QUALITY" -a "$ON" ] && echo 0 || echo $QUALITY)
 

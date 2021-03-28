@@ -1,5 +1,5 @@
-#!/bin/sh
-#Basic guide for my i3 setup usage
+#!/usr/bin/env bash
+ #Basic guide for my i3 setup, help script
 
 SELECTED=$(echo \
 "Mod+R          Rofi app launcher

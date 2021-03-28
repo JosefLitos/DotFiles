@@ -1,15 +1,15 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Use the provided interface, otherwise the device used for the default route.
-if [[ -z $INTERFACE && -n $BLOCK_INSTANCE ]]; then
+if [ -z $INTERFACE -a "$BLOCK_INSTANCE" ]; then
   INTERFACE=$BLOCK_INSTANCE
 elif [ -z $INTERFACE ]; then
-	while read -a line; do
-		[ ${line[0]} == 'default' ] && INTERFACE=${line[4]} && break
+	while read -a LINE; do
+		[ ${LINE[0]} = 'default' ] && INTERFACE=${LINE[4]} && break
 	done <<< $(ip route)
 fi
 # Exit if there is no default route
-[ "$INTERFACE" ] || exit
+[ $INTERFACE ] || exit
 
 # Issue #36 compliant.
 if ! [ -e "/sys/class/net/$INTERFACE/operstate" ] || \
@@ -33,7 +33,7 @@ time=$(date +%s)
 
 # write current data if file does not exist. Do not exit, this will cause
 # problems if this file is sourced instead of executed as another process.
-if ! [[ -f "$path" ]]; then
+if ! [ -f "$path" ]; then
   echo "$time $tx" > "$path"
   chmod 0666 "$path"
 fi

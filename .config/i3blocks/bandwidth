@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# Bandwidth script
 
 # Use the provided interface, otherwise the device used for the default route.
-if [[ -z $INTERFACE && -n $BLOCK_INSTANCE ]]; then
+if [ -z $INTERFACE -a "$BLOCK_INSTANCE" ]; then
 	INTERFACE=$BLOCK_INSTANCE
 elif [ -z $INTERFACE ]; then
-	while read -a line; do
-		[ ${line[0]} == 'default' ] && INTERFACE=${line[4]} && break
+	while read -a LINE; do
+		[ ${LINE[0]} = 'default' ] && INTERFACE=${LINE[4]} && break
 	done <<< $(ip route)
 fi
 # Exit if there is no default route
@@ -33,7 +34,7 @@ time=$(date +%s)
 
 # write current data if file does not exist. Do not exit, this will cause
 # problems if this file is sourced instead of executed as another process.
-if ! [[ -f "$path" ]]; then
+if ! [ -f "$path" ]; then
 	echo "$time $rx $tx" > "$path"
 	chmod 0666 "$path"
 fi
@@ -76,4 +77,4 @@ fi
 echo $TEXT
 echo $TEXT
 #divide by number of MB available on your connection
-~/.config/i3blocks/colorcode $[100-$([ $[rx_KiB/48*10] -gt $tx_KiB ] && echo $[rx_KiB/48*10] || echo $tx_KiB)*100/1024]
+~/.config/i3blocks/colorcode $[100-(rx_KiB/48*10>tx_KiB?rx_KiB/48*10:tx_KiB)*100/1024]

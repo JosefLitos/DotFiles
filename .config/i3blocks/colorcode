@@ -1,61 +1,32 @@
-#!/bin/sh
-#Author: Josef Litoš
-#Echos a color between red and green (0 for red, 100 for green)
+#!/usr/bin/env bash
+# Color generator, default from redtogreen, rainbow if $2=rainbow
 
-#OPACITY=$(printf '%x\n' 200)
-
-fix() {
-	echo "$([[ $1 -le 16 ]] && echo 0)$(printf '%x\n' $1)"
-}
-
-#input in format: color [0-255] [0-255] [0-255]
-color() {
-	echo "#$(fix $1)$(fix $2)$(fix $3)"
-}
-
-if [[ -z $1 ]]; then
-	echo "#881eaa"
-	exit
-elif [[ $1 -ge 200 ]] || [[ $1 -le 0 ]]; then
-	x=0
-elif [[ $1 -gt 100 ]]; then
-	x=$((200-$1))
+if [ -z $1 ]; then
+	printf '#881eaa\n' && exit 0
+elif [ $1 -ge 200 -o $1 -le 0 ]; then
+	declare -i x=0
+elif [ $1 -gt 100 ]; then
+	declare -i x=200-$1
 else
-	x=$1
+	declare -i x=$1
 fi
 
-#x ranged to [0-190]
+#x ranged to [0-190] for avoiding edge-brightness colors
 
 # normal 0=red 100=green
 redtogreen() {
-	if [[ $x -le 50 ]]; then
-		let x=$x*380/100+30
-		color 220 $x 30
-	else
-		let x=(100-$x)*380/100+30
-		color $x 220 30
-	fi
+	[ $x -le 50 ] && printf '#%02x%02x%02x\n' 220 $[x*38/10+30] 30 ||
+		printf '#%02x%02x%02x\n' $[(100-x)*38/10+30] 220 30
 }
 
 #rainbow mod 0=red 40=green 80=blue 100=violet
 rainbow() {
-	if [[ $x -le 20 ]]; then
-		let x=$x*95/10+30
-		color 220 $x 30
-	elif [[ $x -le 40 ]]; then
-		let x=(40-$x)*95/10+30
-		color $x 220 30
-	elif [[ $x -le 60 ]]; then
-		let x=($x-40)*95/10+30
-		color 30 220 $x
-	elif [[ $x -le 80 ]]; then
-		let x=(80-$x)*95/10+30
-		color 30 $x 220
-	else
-		let x=($x-80)*95/10+30
-		color $x 30 220
-	fi
+	[ $x -le 20 ] && printf '#%02x%02x%02x\n' 220 $[x*95/10+30] 30 ||
+	[ $x -le 40 ] && printf '#%02x%02x%02x\n' $[(40-x)*95+30] 220 30 ||
+	[ $x -le 60 ] && printf '#%02x%02x%02x\n' 30 220 $[(x-40)*95/10+30] ||
+	[ $x -le 80 ] && printf '#%02x%02x%02x\n' 30 $[(80-x)*95/10+30] 220 ||
+		printf '#%02x%02x%02x\n' $[(x-80)*95/10+30] 30 220
 }
 
-redtogreen
+[ "$2" = 'rainbow' ] && rainbow || redtogreen
 

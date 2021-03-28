@@ -1,15 +1,13 @@
-#!/bin/sh
-#Clock script
-if [[ $button -eq 1 ]]; then
+#!/usr/bin/env bash
+# Clock script
+if [ "$button" = 1 ]; then
 	date +" %H:%M:%S"
 	date +" %H:%M:%S"
 else
 	date +" %H:%M"
 	date +" %H:%M"
 fi
-~/.config/i3blocks/colorcode $[($(date +%H | sed "s/^0//")*3600+$(date +%M | sed "s/^0//"))/432]
+~/.config/i3blocks/colorcode $(bc <<< "($(date +%H)*3600+$(date +%M))/432")
 
-if [[ $(date +"%H") -ge 21 ]]; then
-	xrandr --output LVDS1 --gamma 1:0.85:0.75 >> /dev/null
-fi
+[ $(date +"%H") -ge 21 ] && xrandr --output LVDS1 --gamma 1:0.85:0.75 || exit 0
 

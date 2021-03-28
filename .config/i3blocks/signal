@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #Signal managing script for statusbar
 
 case "$1" in
@@ -13,6 +13,6 @@ case "$1" in
 		sleep 0.2
 		pkill -RTMIN+11 i3blocks;;
 	"kb")
-		setxkbmap -option compose:102 -layout $([ $(setxkbmap -query | awk '/^l/ { print $2 }') == cz ] && echo us || echo cz)
+		setxkbmap -option compose:102 -layout $([ $(setxkbmap -query | awk '/^l/ { print $2 }') = cz ] && echo us || echo cz)
 		pkill -RTMIN+12 i3blocks;;
 esac
