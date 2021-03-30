@@ -19,8 +19,11 @@ else
 	PCT=$(bc <<< "scale=1;$MUsed*100/$MTotal")
 fi
 
+TOTAL=${TOTAL/#./0.}
+PCT=${PCT/#./0.}
+
 [ $USED -ge 1000 ] &&	TYPE="G" && USED=$(bc <<< "scale=1;$USED/1024")\
-	|| TYPE="M"
+	&& USED=${USED/#./0.} || TYPE="M"
 
 # Nice icons:  
 if [ "$button" = 1 ]; then

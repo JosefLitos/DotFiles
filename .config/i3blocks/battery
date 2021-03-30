@@ -2,8 +2,7 @@
 #Battery status script
 #FontAwesome icons for use
 #       ⚡ 
-TEXT=$(acpi)
-read -a LINE <<< "$TEXT"
+LINE=($(acpi))
 TEXT=${LINE[2]:0:1} STATE=${LINE[3]%\%,} TIME=${LINE[4]%:??}
 #TEXT=$(acpi | cut -d " " -f3-5 | sed "s/,//g;s/Discharging//;s/Charging//;s/Unknown//;s/Full//;s/:..$//;s/ 0/ /g")
 

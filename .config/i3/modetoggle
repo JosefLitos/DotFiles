@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # Toggles between i3 default tiling, or floating, mode
 
 mode=none
@@ -15,11 +15,10 @@ esac
 rm ~/.config/i3/config
 cp ~/.config/i3/def.config ~/.config/i3/config
 sed -i '9iset $mode '$mode ~/.config/i3/config
-if [ $mode == "floating" ]; then
-	echo "
-for_window [class=\".*\"] floating enable"	>> ~/.config/i3/config
+if [ $mode = 'floating' ]; then
+	printf "\nfor_window [class=\".*\"] floating enable\n"	>> ~/.config/i3/config
 fi
-if [ $2 == "restart" ]; then
+if [ $2 = 'restart' ]; then
 	i3 restart
 else
 	i3 reload

@@ -15,8 +15,10 @@ fi
 
 INFO=()
 while read -a LINE; do
-	[ "${LINE[0]}" = 'volume:' ] && INFO[0]=${LINE[4]//%} ||
-	[ "${LINE[0]}" = 'muted:' ] && INFO[1]=${LINE[1]} && break
+	case "${LINE[0]}" in
+		'volume:') INFO[0]=${LINE[4]//%};;
+		'muted:') INFO[1]=${LINE[1]} && break;;
+	esac
 done <<< $(pacmd list-sinks)
 
 if [ ${INFO[1]} = yes ]; then

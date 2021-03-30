@@ -20,22 +20,28 @@ end
 
 function fish_prompt
 	set -l last_status $status
-	set_color -b '#111'
+	set_color -b '#181818'
 	[ $last_status = 0 ] && set_color '#77ff00' -o || set_color '#dc1e0e' -o
-		printf '%s ' $last_status
+		printf "$last_status "
 	set_color normal
-	set_color -b '#111'
+	set_color -b '#181818'
+	set_color '#1166ff'
+		printf '@'
+	set_color '#22aaff'
+		printf $hostname
+	set_color '#ffee00'
+		printf ':'
 	set_color '#bb1eaa'
 		printf (basename $PWD)' '
 	if [ "$USER" = 'root' ]
 		set_color '#dc1e0e' -o
 			printf '#'
 	else
-		set_color '#ffee00' -o
+		set_color '#77ff00' -o
 		printf '$'
 	end
 	set_color normal
-	set_color '#111'
+	set_color '#181818'
 		printf ' '
 
 	# del key does not work properly by itself

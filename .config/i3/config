@@ -20,9 +20,9 @@ exec sleep 10 && checkupdates | grep '^linux ' &> /dev/null && $term -e paru
 font pango: Nova Square 15
 # Squarea/Stick, Inconsolata/FiraCode, Overpass/Exo 2, Font Awesome 5 Free Solid, JoyPixels
 
-default_border pixel 1
-for_window [floating] border pixel 1
-# gaps inner 10
+default_border pixel 2
+for_window [floating] border pixel 2
+gaps inner 10
 # gaps outer 10
 
 bindsym $mod+g gaps inner current plus 5
@@ -130,8 +130,10 @@ for_window [class="scrcpy"] focus; floating enable; move position -1 191; resize
 ## Termination
 # kill focused window
 bindsym $mod+q kill
+bindsym $mod+BackSpace kill
 # force kill window on select
 bindsym --release $alt+F4 exec xkill
+bindsym --release $mod+Shift+BackSpace exec xkill
 bindsym --release $mod+$alt+F4 exec --no-startup-id killall -9 $(pgrep -u $USER -l | sed 's/^[0-9]* //' | sort | rofi -dmenu -p "force kill")
 
 ## Focus
@@ -178,17 +180,13 @@ bindsym $mod+Shift+Down exec $floatpos down shift
 bindsym $mod+Shift+Up exec $floatpos up shift
 bindsym $mod+Shift+Right exec $floatpos right shift
 # resize
-bindsym $mod+$alt+Left resize grow left 80 or 4
-bindsym $mod+$alt+Down resize grow down 80 or 4
-bindsym $mod+$alt+Up resize grow up 80 or 4
-bindsym $mod+$alt+Right resize grow right 80 or 4
-bindsym $mod+$alt+Shift+Left resize shrink right 80 or 4
-bindsym $mod+$alt+Shift+Down resize shrink up 80 or 4
-bindsym $mod+$alt+Shift+Up resize shrink down 80 or 4
-bindsym $mod+$alt+Shift+Right resize shrink left 80 or 4
+bindsym $mod+$alt+Left resize shrink width 80 or 4
+bindsym $mod+$alt+Down resize grow height 80 or 4
+bindsym $mod+$alt+Up resize shrink height 80 or 4
+bindsym $mod+$alt+Right resize grow width 80 or 4
 # focus workspace
-bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right workspace next
 # move container to workspace
 bindsym $mod+Ctrl+Down move workspace prev; workspace prev
 bindsym $mod+Ctrl+Up move workspace back_and_forth; workspace back_and_forth
@@ -212,12 +210,12 @@ bindsym $mod+Shift+s move down
 bindsym $mod+Shift+w move up
 bindsym $mod+Shift+d move right
 # focus workspace
-bindsym $mod+Ctrl+d workspace next
 bindsym $mod+Ctrl+a workspace prev
+bindsym $mod+Ctrl+d workspace next
 # move container to workspace
-bindsym $mod+Ctrl+w move workspace next; workspace next
-bindsym $mod+Ctrl+s move workspace prev; workspace prev
-bindsym $mod+Ctrl+Shift+s move workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Ctrl+s move workspace <F4>prev, workspace prev
+bindsym $mod+Ctrl+w move workspace next, workspace next
+bindsym $mod+Shift+f move workspace back_and_forth, workspace back_and_forth
 
 #------------+
 # Right Hand |
@@ -238,11 +236,11 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 # focus workspace
-bindsym $mod+Ctrl+j workspace prev
+bindsym $mod+Ctrl+h workspace prev
+bindsym $mod+Ctrl+l workspace next
 # move container to workspace
-bindsym $mod+Ctrl+l move workspace next; workspace next
-bindsym $mod+Ctrl+h move workspace prev; workspace prev
-bindsym $mod+Ctrl+k move workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Ctrl+j move workspace next, workspace next
+bindsym $mod+Ctrl+k move workspace back_and_forth, workspace back_and_forth
 
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -369,8 +367,8 @@ bindsym $mod+i bar mode toggle
 # System stuff on launch
 set $barsig --no-startup-id ~/.config/i3blocks/signal
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id dunst
-#exec --no-startup-id nm-applet
+# exec --no-startup-id dunst
+# exec --no-startup-id nm-applet
 exec --no-startup-id xrandr -r 50
 exec_always --no-startup-id xset r rate 225 25
 

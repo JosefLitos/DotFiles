@@ -31,17 +31,17 @@ fi
 # bottom=1
 
 # autodetection for bar size and position, adjusts itself
-while read -a line; do
-	case "${line[0]}${line[2]}" in
-		"AbsoluteY:") bottom=${line[-1]};;
-		"Height:") bar=${line[-1]};;
+while read -a LINE; do
+	case "${LINE[0]}${LINE[2]}" in
+		"AbsoluteY:") bottom=${LINE[-1]};;
+		"Height:") bar=${LINE[-1]};;
 		"MapIsUnMapped") bar=0 && break;;
 		"MapIsViewable") break;
 	esac
 done <<< $(xwininfo -id $(xdotool search --class "i3bar"))
 
 # window border
-border=1
+border=2
 
 # get window pos and size
 
@@ -54,7 +54,7 @@ declare -i win=($(xwininfo -id $(xdotool getactivewindow) | sed -n \
 
 # # get windetails without sed
 # declare -i win=()
-# while read -a line; do
+# while read -a LINE; do
 # 	break
 # done <<< $(xwininfo -id $(xdotool getactivewindow))
 

@@ -1,8 +1,8 @@
 command=~/.config/i3blocks/$BLOCK_NAME
-#separator_block_width=15
-#separator=true
-separator=false
-separator_block_width=0
+separator_block_width=15
+separator=true
+# separator=false
+# separator_block_width=0
 markup=pango
 color=#881eaa
 interval=once
@@ -13,64 +13,61 @@ command=i3title -s
 interval=-3
 color=#4488ff
 
+[updates]
+interval=3600
+
 [wifi]
 interval=60
-#instance=wlp3s0
-background=#00000088
+# instance=wlp3s0
 
 [bandwidth]
 interval=5
-background=#5c5c5c88
 
-#[upload]
-#interval=3
-#background=#00000088
-#
-#[download]
-#interval=3
-#background=#5c5c5c88
+# [upload]
+# interval=3
+
+# [download]
+# interval=3
 
 [memory]
 interval=20
 instance=ram
-background=#00000088
 
 [cpu]
 interval=5
-background=#5c5c5c88
 
 [cpu_temp]
 interval=5
-background=#00000088
 
 [fan]
 interval=10
-background=#5c5c5c88
 
 [fan_temp]
 interval=10
 
 [volume]
 signal=10
-background=#00000088
 
 [backlight]
 signal=11
-background=#5c5c5c88
 
 [battery]
 interval=60
-background=#00000088
+
+[gpu_dri]
+# icons:   
+command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*:.*/\1/p' | sed 's/intel/I/;s/nvidia/N/;s/modesetting/M/')
+
+[kb]
+command=echo  $(setxkbmap -query | awk '/^l/ { print toupper($2) }')
+signal=12
 
 [date]
 command=date +" %a %d.%m."
-background=#5c5c5c88
 
 [clock]
 interval=60
-background=#00000088
 
 [help]
 full_text=
-background=#5c5c5c88
 interval=undefined
