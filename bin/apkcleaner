@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Uninstalls every disabled app from your android phone
+for apk in $(adb shell pm list packages -d | sed 's/package://'); do
+	adb uninstall --user 0 $apk;
+done

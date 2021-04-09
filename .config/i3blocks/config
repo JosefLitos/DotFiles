@@ -1,8 +1,6 @@
 command=~/.config/i3blocks/$BLOCK_NAME
 separator_block_width=15
 separator=true
-# separator=false
-# separator_block_width=0
 markup=pango
 color=#881eaa
 interval=once
@@ -42,9 +40,6 @@ interval=5
 [fan]
 interval=10
 
-[fan_temp]
-interval=10
-
 [volume]
 signal=10
 
@@ -56,7 +51,7 @@ interval=60
 
 [gpu_dri]
 # icons:   
-command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: \(.*\) .*:.*/\1/p' | sed 's/intel/I/;s/nvidia/N/;s/modesetting/M/')
+command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: //p' | sed 's/ .*//;s/intel/I/;s/nvidia/N/;s/modesetting/M/')
 
 [kb]
 command=echo  $(setxkbmap -query | awk '/^l/ { print toupper($2) }')

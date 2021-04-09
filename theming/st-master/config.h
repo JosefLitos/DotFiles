@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "FiraCode:pixelsize=19:antialias=true:autohint=true";
+static char *font = "mono:pixelsize=19:antialias=true:autohint=true";
 static char *font2[] = {
    "Font Awesome 5 Free Solid:pixelsize=17:antialias=true:autohint=true",
    "Inconsolata Nerd Font:pixelsize=17:antialias=true:autohint=false",
@@ -109,7 +109,7 @@ char *termname = "st-256color";
  *
  * stty tabs
  */
-unsigned int tabspaces = 3;
+unsigned int tabspaces = 2;
 
 /* bg opacity */
 float alpha = 0.8;
@@ -169,7 +169,7 @@ static unsigned int rows = 24;
  * Default colour and shape of the mouse cursor
  */
 static unsigned int mouseshape = XC_xterm;
-static unsigned int mousefg = 7;
+static unsigned int mousefg = 256;
 static unsigned int mousebg = 0;
 
 /*

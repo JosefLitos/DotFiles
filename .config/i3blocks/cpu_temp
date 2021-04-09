@@ -4,7 +4,7 @@
 declare -i c=0 t=0
 while read -a LINE; do
 	[ "${LINE[0]}" = 'Core' ] && t+=${LINE[2]:1:2} && c+=1
-done <<< $(sensors)
+done <<< $(sensors -A)
 declare -i TEMP=t/c
 
 if [ $TEMP -le 45 ]; then
