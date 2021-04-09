@@ -57,10 +57,13 @@ I include source code for my terminal of choice: st, as well as used themes for 
 | st                 | terminal, based on LukeSmith's build    |
 | ranger             | terminal file browser                   |
 | rofi               | dmenu replacement                       |
+| ttf-exo2           | better UI font                          |
 | ttf-firacode       | better monospace font                   |
 | ttf-font-awesome   | font with custom                        |
 | ttf-joypixels      | font with full emoji support            |
+| ttf-nova           | font of many interesting shapes         |
 | udisks2            | diskmanagement utility                  |
+| ueberzug           | image displayer for ranger              |
 | xclip              | clipboard                               |
 | xdotool            | used in scripts controls X windows      |
 | xf86-video-intel   | video drivers                           |

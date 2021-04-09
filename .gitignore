@@ -1,7 +1,7 @@
 theming/st-master/st
 theming/st-master/st.o
 theming/st-master/x.o
-theming/st-master/boxdraw.o
 theming/st-master/hb.o
+theming/st-master/boxdraw.o
 .config/nvim/plugged
 .config/fish/fish_variables

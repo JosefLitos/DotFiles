@@ -30,9 +30,9 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 ## Installation for newbs
 
 ```
-git clone https://github.com/JosefLitos/st
-cd st
-sudo make clean install
+git clone https://github.com/JosefLitos/DotFiles
+cd DotFiles/theming/st-master
+sudo make clean instal
 ```
 
 Obviously, `make` is required to build. `fontconfig` is required for the default build, since it asks `fontconfig` for your system monospace font.  It might be obvious, but `libX11` and `libXft` are required as well. Chances are, you have all of this installed already.
