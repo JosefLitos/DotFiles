@@ -40,9 +40,7 @@ function _G.lsp_setup(server, opts)
 	opts.capabilities = capabilities
 	opts.on_attach = function(client, bufnr)
 		if on_attach then on_attach(client, bufnr) end
-		if server ~= 'tailwindls' and server ~= 'sumneko_lua' then
-			require'folding'.on_attach()
-		end
+		if server ~= 'tailwindls' and server ~= 'sumneko_lua' then require'folding'.on_attach() end
 		client.resolved_capabilities.document_formatting =
 						(opts.settings and opts.settings.documentFormatting)
 		if client.resolved_capabilities.document_highlight then
@@ -83,5 +81,5 @@ function _G.format_code(mode)
 	else
 		vim.lsp.buf.formatting(options)
 	end
-	return ' \b'
+	return vim.api.nvim_replace_termcodes('<C-l>', true, true, true)
 end

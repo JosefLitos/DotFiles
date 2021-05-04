@@ -1,21 +1,22 @@
--- Example configuations here: https://github.com/mattn/efm-langserver
 -- tsserver/web javascript react, vue, json, html, css, yaml
--- You can look for project scope Prettier and Eslint with e.g. vim.fn.glob("node_modules/.bin/prettier") etc. If it is not found revert to global Prettier where needed.
--- local prettier = {formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true}
 local tsserver = {
-	-- {
-	-- formatCommand = "prettier --use-tabs --print-width 100 --stdin-filepath ${INPUT}",
-	-- formatStdin = true
-	-- },
-	{
+	--[[{
 		lintCommand = "eslint_d -f unix --fix-to-stdout --stdin --stdin-filename ${INPUT}",
 		lintIgnoreExitCode = true,
 		lintStdin = true,
 		lintFormats = {"%f:%l:%c: %m"}
 		-- formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
 		-- formatStdin = true
-	},
-	{formatCommand = "prettier --use-tabs --stdin-filepath ${INPUT}", formatStdin = true}
+	},]]
+	{
+		formatCommand = table.concat({
+			"prettier --print-width=",
+			vim.o.textwidth,
+			(vim.o.expandtab or " --use-tabs"),
+			" --stdin-filepath ${INPUT}"
+		}),
+		formatStdin = true
+	}
 }
 
 require"lspconfig".efm.setup({
@@ -41,18 +42,27 @@ require"lspconfig".efm.setup({
 		rootMarkers = {'.git/', 'package.json'},
 		languages = {
 			python = {
-				{
+				--[[{
 					LintCommand = "flake8 --ignore=E501 --stdin-display-name ${INPUT} -",
 					lintStdin = true,
 					lintFormats = {"%f:%l:%c: %m"}
-				},
+				},]]
 				-- {formatCommand = "isort --quiet -", formatStdin = true},
 				{formatCommand = "yapf --quiet", formatStdin = true}
 				-- {formatCommand = "black --quiet -", formatStdin = true}
 			},
 			lua = {
 				{
-					formatCommand = "lua-format -i --column-limit=80 --use-tab --tab-width=2 --indent-width=1 --chop-down-table --no-align-table-field",
+					formatCommand = table.concat({
+						"lua-format -i --column-limit=",
+						vim.o.textwidth,
+						(vim.o.expandtab or " --use-tab"),
+						" --tab-width=",
+						vim.o.tabstop,
+						" --indent-width=",
+						(vim.o.expandtab and vim.o.shiftwidth or 1),
+						" --chop-down-table --no-align-table-field --no-extra-sep-at-table-end"
+					}),
 					-- formatCommand = "luafmt --stdin -i 2 -l 100 --use-tabs",
 					formatStdin = true
 				}
@@ -70,7 +80,10 @@ require"lspconfig".efm.setup({
 			css = tsserver,
 			json = tsserver,
 			markdown = {
-				{formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', formatStdin = true} --[[{
+				{
+					formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=' .. vim.o.tabstop,
+					formatStdin = true
+				} --[[{
     -- TODO default to global lintrc
     -- lintcommand = 'markdownlint -s -c ./markdownlintrc',
     lintCommand = 'markdownlint -s',

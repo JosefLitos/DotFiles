@@ -9,21 +9,10 @@ utils.define_augroups({
 		}
 	},
 	_java = {
-		{
-			'FileType',
-			'java',
-			[[lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})]]
-		},
-		{
-			'FileType',
-			'java',
-			'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'
-		}
+		{'FileType', 'java', [[lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})]]},
+		{'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'}
 	},
-	_markdown = {
-		{'FileType', 'markdown', 'setlocal wrap'},
-		{'FileType', 'markdown', 'setlocal spell'}
-	},
+	_markdown = {{'FileType', 'markdown', 'setlocal wrap'}, {'FileType', 'markdown', 'setlocal spell'}},
 	--[[_solidity = {
 		{'BufWinEnter', '.sol', 'setlocal filetype=solidity'},
 		{'BufRead', '*.sol', 'setlocal filetype=solidity'},
@@ -36,11 +25,7 @@ utils.define_augroups({
 	},]]
 	_buffer_bindings = {
 		{'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
-		{
-			'FileType',
-			'text',
-			'imap <silent> <expr> <buffer> <Enter> v:lua.enter_or_list()'
-		}
+		{'FileType', 'text', 'imap <silent> <expr> <buffer> <Enter> v:lua.enter_or_list()'}
 	}
 
 	-- _auto_formatters = {

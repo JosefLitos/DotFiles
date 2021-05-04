@@ -200,11 +200,9 @@ nmap('i', '<C-S-Space>', '<C-o>:Lspsaga signature_help<CR>')
 nmap('n', '<C-p>', ':Lspsaga diagnostic_jump_prev<CR>')
 nmap('n', '<C-n>', ':Lspsaga diagnostic_jump_next<CR>')
 -- scroll down hover doc or scroll in definition preview
-nmap('n', '<C-f>',
-     ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
+nmap('n', '<C-f>', ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
 -- scroll up hover doc
-nmap('n', '<C-b>',
-     ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+nmap('n', '<C-b>', ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
 
 nmap('i', '<C-Space>', "compe#complete('<C-Space>')", {expr = true})
 nmap('i', '<CR>', 'v:lua.autopairs_confirm()', {expr = true})
