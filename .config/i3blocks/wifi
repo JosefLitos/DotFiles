@@ -3,15 +3,7 @@
 
 #Nice icons:    
 if [[ $button -eq 1 ]]; then
-	NAME="$(nmcli d wifi list | sed -n 's/^\*//;/:/p' | awk '{ print $8"\t"$2 }' | rofi -dmenu -location 3 -p  | awk '{ print $2 }')"
-	if [ "$NAME" ]; then
-		PASSWD="$(rofi -dmenu -location 3 -l 0 -passowrd -p )"
-		if [ -z "$PASSWD" ]; then
-			notify-send $(nmcli d wifi connect "$NAME")
-		else
-			notify-send $(nmcli d wifi connect "$NAME" password "$PASSWD")
-		fi
-	fi
+	i3 exec -- st -e nmtui &>/dev/null
 fi
 
 if [ $BLOCK_INSTANCE ]; then

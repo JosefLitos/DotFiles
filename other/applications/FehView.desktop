@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Feh Viewer
+Comment=Better feh options
+Exec=feh --draw-exif -d --draw-tinted --edit -. -B black -| %f
+Categories=Graphics;
+Icon=feh
+MimeType=image/png;image/jpeg;image/webp;
+Terminal=false

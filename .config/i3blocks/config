@@ -5,21 +5,23 @@ markup=pango
 color=#881eaa
 interval=once
 
-[activewin]
-label=:
-command=i3title -s
-interval=-3
-color=#4488ff
+# [activewin]
+# label=:
+# command=i3title -s
+# interval=-3
+# color=#4488ff
+# align=center
+# min_width=850
 
 [updates]
 interval=3600
 
-[wifi]
-interval=60
+# [wifi]
+# interval=60
 # instance=wlp3s0
 
-[bandwidth]
-interval=5
+# [bandwidth]
+# interval=5
 
 # [upload]
 # interval=3
@@ -27,18 +29,18 @@ interval=5
 # [download]
 # interval=3
 
-[memory]
-interval=20
-instance=ram
+# [memory]
+# interval=20
+# instance=ram
 
-[cpu]
-interval=5
+# [cpu]
+# interval=5
 
-[cpu_temp]
-interval=5
+# [cpu_temp]
+# interval=2
 
-[fan]
-interval=10
+# [fan]
+# interval=5
 
 [volume]
 signal=10
@@ -46,16 +48,16 @@ signal=10
 [backlight]
 signal=11
 
-[battery]
-interval=60
+# [battery]
+# interval=60
 
-[gpu_dri]
-# icons:   
-command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: //p' | sed 's/ .*//;s/intel/I/;s/nvidia/N/;s/modesetting/M/')
+# [gpu_dri]
+# # icons:   
+# command=echo  $(inxi -Gc 0 | sed -n '/Display/s/.* loaded: //p' | sed 's/ .*//;s/intel/I/;s/nvidia/N/;s/modesetting/M/')
 
-[kb]
-command=echo  $(setxkbmap -query | awk '/^l/ { print toupper($2) }')
-signal=12
+# [kb]
+# command=echo  $(setxkbmap -query | awk '/^l/ { print toupper($2) }')
+# signal=12
 
 [date]
 command=date +" %a %d.%m."
@@ -63,6 +65,7 @@ command=date +" %a %d.%m."
 [clock]
 interval=60
 
-[help]
-full_text=
-interval=undefined
+# [help]
+# full_text=
+# interval=undefined
+

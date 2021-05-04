@@ -14,11 +14,12 @@ if [ "$BLOCK_INSTANCE" = 'swap' ]; then
 	USED=$SUsed
 	TOTAL=$(bc <<< "scale=1;$STotal/1024")
 	PCT=$(bc <<< "scale=1;$SUsed/$STotal*100")
+	[ $[MUsed*100/MTotal] -lt 70 ] && sudo swapoff /swapfile
 else
 	USED=$MUsed
 	TOTAL=$(bc <<< "scale=1;$MTotal/1024")
 	PCT=$(bc <<< "scale=1;$MUsed*100/$MTotal")
-	[ ${PCT/.} -ge 900 -a -z "$(swapon --show=NAME)" ] && sudo swapon /swapfile
+	[ $[MUsed*100/MTotal] -ge 90 -a -z "$(swapon --show=NAME)" ] && sudo swapon /swapfile
 fi
 
 TOTAL=${TOTAL/#./0.}

@@ -4,22 +4,22 @@
 
 p2="$2"
 #for usage in tiling mode
-if [[ "$(xprop -id $(xdotool getactivewindow) I3_FLOATING_WINDOW)"\
-	!= I3_FLOATING*1 ]]; then
+if [[ "$(xprop -id $(xdotool getactivewindow) I3_FLOATING_WINDOW)" != \
+I3_FLOATING*1 ]]; then
 	if [ "$p2" = "shift" ]; then
 		case "$1" in
-			"up") i3 focus up;;
-			"down") i3 focus down;;
-			"left") i3 focus left;;
-			"right") i3 focus right;;
+			"up") i3 focus up ;;
+			"down") i3 focus down ;;
+			"left") i3 focus left ;;
+			"right") i3 focus right ;;
 		esac
 	else
 		case "$1" in
-			"up") i3 move up;;
-			"down") i3 move down;;
-			"left") i3 move left;;
-			"right") i3 move right;;
-			"c") i3 split h,layout tabbed;;
+			"up") i3 move up ;;
+			"down") i3 move down ;;
+			"left") i3 move left ;;
+			"right") i3 move right ;;
+			"c") i3 split h,layout tabbed ;;
 		esac
 	fi
 	exit 0
@@ -30,15 +30,18 @@ fi
 # # top or bottom panel
 # bottom=1
 
-# autodetection for bar size and position, adjusts itself
-while read -a LINE; do
-	case "${LINE[0]}${LINE[2]}" in
-		"AbsoluteY:") bottom=${LINE[-1]};;
-		"Height:") bar=${LINE[-1]};;
-		"MapIsUnMapped") bar=0 && break;;
-		"MapIsViewable") break;
-	esac
-done <<< $(xwininfo -id $(xdotool search --class "i3bar"))
+# # autodetection for bar size and position, adjusts itself
+# while read -a LINE; do
+# 	case "${LINE[0]}${LINE[2]}" in
+# 		"AbsoluteY:") bottom=${LINE[-1]};;
+# 		"Height:") bar=${LINE[-1]};;
+# 		"MapIsUnMapped") bar=0 && break;;
+# 		"MapIsViewable") break;
+# 	esac
+# done <<< $(xwininfo -id $(xdotool search --class "i3bar"))
+
+bottom=1
+bar=24
 
 # window border
 border=2
@@ -50,7 +53,7 @@ declare -i win=($(xwininfo -id $(xdotool getactivewindow) | sed -n \
 	-e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/\1/p" \
 	-e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/\1/p" \
 	-e "s/^ \+Width: \+\([0-9]\+\).*/\1/p" \
-	-e "s/^ \+Height: \+\([0-9]\+\).*/\1/p" ))
+	-e "s/^ \+Height: \+\([0-9]\+\).*/\1/p"))
 
 # # get windetails without sed
 # declare -i win=()
@@ -63,20 +66,19 @@ win[1]+=-$border
 win[2]+=$border*2
 win[3]+=$border*2
 
-declare -i dim=()
-IFS=',' read -a dim < /sys/class/graphics/fb0/virtual_size
+declare -i dim=(1920 1080)
+# IFS=',' read -a dim < /sys/class/graphics/fb0/virtual_size
 
 # available height
-dim[1]=$[dim[1]-bar]
-dim[2]=$[dim[0]/2]
-dim[3]=$[dim[1]/2]
+dim[1]=$((dim[1] - bar))
+dim[2]=$((dim[0] / 2))
+dim[3]=$((dim[1] / 2))
 halves=($([ $bottom = 0 ] && echo $bar || echo 0))
-halves[1]=$[halves[0]+dim[3]]
+halves[1]=$((halves[0] + dim[3]))
 
 #Setts window to quarter of the screen and centers it
 defsize() {
-	i3 resize set ${dim[2]} ${dim[3]},\
-		move position center
+	i3 resize set ${dim[2]} ${dim[3]}, move position center
 }
 
 #Manages 'up' action
@@ -85,20 +87,18 @@ up() {
 		i3 move position ${win[0]} ${halves[0]}
 	elif [ ${win[1]} -le ${halves[0]} ]; then
 		case "${win[3]}" in
-			"${dim[1]}") i3 resize set height ${dim[3]};;
+			"${dim[1]}") i3 resize set height ${dim[3]} ;;
 			*)
-				i3 move position 0 ${halves[0]},\
-					resize set ${dim[0]} ${dim[1]};;
+				i3 move position 0 ${halves[0]}, resize set ${dim[0]} ${dim[1]}
+				;;
 		esac
-	elif [ $[win[1]+win[3]] = ${dim[1]} ]; then
-		if [ ${win[2]} -gt $[dim[0]*5/7] ]; then
+	elif [ $((win[1] + win[3])) = ${dim[1]} ]; then
+		if [ ${win[2]} -gt $((dim[0] * 5 / 7)) ]; then
 			defsize
-		elif [ ${win[3]} -le $[dim[1]*3/5] ]; then
-			i3 move position ${win[0]} ${halves[0]},\
-				resize set height ${dim[1]}
+		elif [ ${win[3]} -le $((dim[1] * 3 / 5)) ]; then
+			i3 move position ${win[0]} ${halves[0]}, resize set height ${dim[1]}
 		else
-			i3 move position ${win[0]} ${halves[0]},\
-				resize set height ${dim[3]}
+			i3 move position ${win[0]} ${halves[0]}, resize set height ${dim[3]}
 		fi
 	else
 		i3 move position ${win[0]} ${halves[0]}
@@ -108,21 +108,19 @@ up() {
 #Manages 'down' action
 down() {
 	if [ "$p2" = "shift" ]; then
-		i3 move position ${win[0]} $[dim[1]-win[3]]
+		i3 move position ${win[0]} $((dim[1] - win[3]))
 	elif [ ${win[1]} = ${halves[0]} ]; then
-		if [ ${win[2]} -gt $[dim[0]*5/7] ]; then
+		if [ ${win[2]} -gt $((dim[0] * 5 / 7)) ]; then
 			defsize
 		elif [ ${win[3]} = ${dim[1]} ]; then
-			i3 move position ${win[0]} ${halves[1]},\
-				resize set height ${dim[3]}
+			i3 move position ${win[0]} ${halves[1]}, resize set height ${dim[3]}
 		else
 			i3 resize set height ${dim[1]}
 		fi
-	elif [ $[${win[1]}+${win[3]}] = ${dim[1]} ]; then
-		i3 move position 0 ${halves[1]},\
-			resize set ${dim[0]} ${dim[3]}
+	elif [ $((${win[1]} + ${win[3]})) = ${dim[1]} ]; then
+		i3 move position 0 ${halves[1]}, resize set ${dim[0]} ${dim[3]}
 	else
-		i3 move position ${win[0]} $[dim[1]-win[3]]
+		i3 move position ${win[0]} $((dim[1] - win[3]))
 	fi
 }
 
@@ -130,37 +128,32 @@ down() {
 left() {
 	if [ "$p2" = "shift" ]; then
 		i3 move position 0 ${win[1]}
-	elif [ ${win[0]} = 0 ]\
-		&& [ ${win[2]} -le $[dim[0]*5/7] ]; then
-		i3 move position $[dim[0]-win[2]] ${win[1]}
-	elif [ ${win[0]} -gt $[${dim[0]}*3/7] ]; then
+	elif [ ${win[0]} = 0 ] && [ ${win[2]} -le $((dim[0] * 5 / 7)) ]; then
+		i3 move position $((dim[0] - win[2])) ${win[1]}
+	elif [ ${win[0]} -gt $((${dim[0]} * 3 / 7)) ]; then
 		defsize
 	else
-		i3 move position 0 ${halves[0]},\
-			resize set ${dim[2]} ${dim[1]}
+		i3 move position 0 ${halves[0]}, resize set ${dim[2]} ${dim[1]}
 	fi
 }
 
 #Manages 'right' action
 right() {
 	if [ "$p2" = "shift" ]; then
-		i3 move position $[dim[0]-win[2]] ${win[1]}
-	elif [ $[win[0]+win[2]] = ${dim[0]} ]\
-		&& [ ${win[2]} -le $[dim[0]*5/7] ]; then
+		i3 move position $((dim[0] - win[2])) ${win[1]}
+	elif [ $((win[0] + win[2])) = ${dim[0]} ] && [ ${win[2]} -le $((dim[0] * 5 / 7)) ]; then
 		i3 move position 0 ${win[1]}
-	elif [ $[win[0]+win[2]] -le $[dim[0]*4/7] ]; then
+	elif [ $((win[0] + win[2])) -le $((dim[0] * 4 / 7)) ]; then
 		defsize
 	else
-		i3 move position ${dim[2]} ${halves[0]},\
-			resize set ${dim[2]} ${dim[1]}
+		i3 move position ${dim[2]} ${halves[0]}, resize set ${dim[2]} ${dim[1]}
 	fi
 }
 
 case "$1" in
-	"up") up;;
-	"down") down;;
-	"left") left;;
-	"right") right;;
-	"c") i3 move position center;;
+	"up") up ;;
+	"down") down ;;
+	"left") left ;;
+	"right") right ;;
+	"c") i3 move position center ;;
 esac
-

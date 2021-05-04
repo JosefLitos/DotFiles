@@ -4,8 +4,8 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 # use bat to color man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 
-#set PATH $PATH (du "$HOME/bin" | cut -f2 | tr '\n' ':')
 set -x READER nvim
 set -x EDITOR nvim
 set -x BROWSER firefox
@@ -58,48 +58,31 @@ abbr jctl 		"journalctl -p 3 -xb"
 
 # pacman
 abbr p 			"paru"
-abbr pc 			"paru -Sc"
-abbr pror 		"paru -Rscn (paru -Qqtd)"
-abbr pss 		"paru -Slq | fzf -m --preview 'paru -Si {1}'  --preview-window="wrap" | xargs -ro  paru -S"
-abbr psr 		"paru -Qeq | fzf -m --preview 'paru -Si {1}'  --preview-window="wrap" | xargs -ro  paru -Rscn"
+abbr pc 		"paru -Sc"
+abbr pror 	"paru -Rscn (paru -Qqtd)"
+abbr pss 		"paru -S (paru -Slq | fzf -m --preview 'paru -Si {1}'  --preview-window="wrap")"
+abbr psr 		"paru -Rscn (paru -Qeq | fzf -m --preview 'paru -Si {1}'  --preview-window="wrap")"
 
 # navigation
-abbr ..  		"cd .."
-abbr ... 		"cd ../.."
+abbr fd 		'ranger --choosedir=/dev/shm/rdir; cd (cat /dev/shm/rdir)'
+abbr gt 		'cd (dirname (fzf))'
+abbr of			'$EDITOR (fzf -e)'
+abbr ...    'cd ../..'
 abbr cu 		"cd /usr/"
 abbr ce 		"cd /etc/"
 abbr cds 		"cd ~/Documents/AvAvA/server/src/"
+abbr cdq 		"cd ~/Documents/PG/QuickNodeRequests"
 
 # quick program fetch
-abbr xp 		" xprop | grep -e '^_NET_WM_WINDOW_TYPE' -e '^WM_NAME' -e '^WM_CLASS' | sed 's/^.*_\(.*\)(.*) = /\1 = /'"
+abbr xp 		"xprop | grep -e '^_NET_WM_WINDOW_TYPE' -e '^WM_NAME' -e '^WM_CLASS' | sed 's/^.*_\(.*\)(.*) = /\1 = /'"
 # detect keys pressed
 abbr xev 		"xev | grep keysym | awk '{ print \$7 }' | sed 's/),//'"
 # wifi
-abbr il 			"nmcli device wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
-abbr ic 			"nmcli device wifi connect"
-
-# git \ abbr push 		"git remote | xargs -L1 git push --all"
+abbr il 		"nmcli device wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
+abbr ic 		"nmcli device wifi connect"
 
 function fish_user_key_bindings
 	fzf_key_bindings
-end
-
-function fzf-dir-cd
-	cd (dirname (locate home media | fzf -i -e))
-end
-
-function fzf-full-cd
-	cd (dirname (locate / | fzf -i -e))
-end
-
-function fzf-file-edit
-	find ~/.config ~/.local ~/.scripts ~/* -type f | fzf -i -e | xargs -r $EDITOR
-end
-
-bind \cg fzf-file-edit
-
-if bind -M insert > /dev/null 2>&1
-	bind -M insert \cg fzf-file-edit
 end
 
 function ramuse

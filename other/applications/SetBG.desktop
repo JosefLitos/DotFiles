@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Feh SetBG
+Exec=feh --no-fehbg --bg-fill %f
+Categories=Graphics;
+Icon=image
+MimeType=image/png;image/jpeg;image/webp;
+Terminal=false

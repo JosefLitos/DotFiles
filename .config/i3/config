@@ -37,8 +37,8 @@ set $bg #1c1c1caa
 # class                 border  bg  text    indic.  child_border
 #client.focused          #0c8c0c $bg #ffffff #881eaa #0c8c0c
 client.focused          #77ff00 $bg #ffffff #881eaa #77ff00
-client.focused_inactive $bg     $bg #ffffff #32302d $bg
-client.unfocused        $bg     $bg #ffffff #22201d $bg
+client.focused_inactive $bg     $bg #ffffff #32302d #1c1c1cdd
+client.unfocused        $bg     $bg #ffffff #22201d #1c1c1cdd
 client.background #00000000
 
 exec --no-startup-id picom
@@ -51,6 +51,7 @@ mode "" {
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 	bindsym r exec $feh
+	bindsym u exec $feh
 	bindsym c exec $feh/cars
 	bindsym a exec $feh/animals
 	bindsym d exec $feh/distros
@@ -92,19 +93,21 @@ bindsym $mod+3 exec $term
 bindsym $mod+4 exec lof discord discord
 bindsym $mod+5 exec lof netbeans NetBeans
 bindsym $mod+6 exec lof libreoffice libreoffice
-set $7 "[V]lc [P]inta [I]nkscape [G]imp [S]tay"
+set $7 "[V]lc [I]nkscape [G]imp [K]denlive"
 bindsym $mod+7 mode $7, workspace $w7
 mode $7 {
 	bindsym s mode default
 	bindsym v exec vlc, mode default
-	bindsym p exec pinta, mode default
 	bindsym i exec inkscape, mode default
 	bindsym g exec gimp, mode default
+	bindsym k exec prime kdenlive, mode default
 	bindsym Escape mode default, workspace back_and_forth
 	bindsym q mode default
 }
+bindsym $mod+8 exec lof thunderbird Thunderbird
 bindsym $mod+9 exec lof "prime minecraft-launcher" ".*craft.*" ".*craft.*"
 bindsym $mod+e exec pcmanfm
+bindsym $mod+Shift+e exec spacefm
 bindsym $mod+$alt+e exec $term ranger
 #bindsym $mod+Shift+e exec sudo pcmanfm
 # managing/control
@@ -119,6 +122,7 @@ for_window [title=".*vzhled.*"] floating enable
 for_window [window_type="utility"] floating enable sticky enable
 for_window [class="Cairo-clock"] floating enable sticky enable move position 1798 -5
 for_window [window_type="dialog"] floating enable
+for_window [class="Thunderbird" instance="Calendar"] floating enable
 for_window [title=".*[dD]okončeno"] floating enable
 for_window [title=".*[vV]ytv.*"] floating enable
 for_window [title=".*[kK]opírov.*"] floating enable
@@ -157,12 +161,13 @@ floating_modifier $mod
 bindsym $mod+f fullscreen toggle
 bindsym F11 fullscreen toggle
 # container types
-bindsym $mod+$alt+space sticky toggle
+bindsym $mod+Ctrl+space sticky toggle
+bindsym $mod+Ctrl+v sticky toggle
 bindsym $mod+c split toggle
 bindsym $mod+z layout toggle splith splitv tabbed
 # tiling/floating managing
-bindsym $mod+Ctrl+f floating toggle; sticky toggle
-bindsym $mod+Ctrl+space floating toggle; sticky toggle
+bindsym $mod+Ctrl+f floating toggle, sticky toggle
+bindsym $mod+Shift+space floating toggle, sticky toggle
 bindsym $mod+$alt+Ctrl+f exec $modetgl $mode default
 
 #--------+
@@ -212,11 +217,11 @@ bindsym $mod+Shift+s move down
 bindsym $mod+Shift+w move up
 bindsym $mod+Shift+d move right
 # focus workspace
-bindsym $mod+Ctrl+a workspace prev
-bindsym $mod+Ctrl+d workspace next
+bindsym $mod+Ctrl+s workspace prev
+bindsym $mod+Ctrl+w workspace next
 # move container to workspace
-bindsym $mod+Ctrl+s move workspace prev, workspace prev
-bindsym $mod+Ctrl+w move workspace next, workspace next
+bindsym $mod+Ctrl+a move workspace prev, workspace prev
+bindsym $mod+Ctrl+d move workspace next, workspace next
 bindsym $mod+Shift+f move workspace back_and_forth, workspace back_and_forth
 
 #------------+
@@ -317,6 +322,7 @@ assign [class="vlc"] $w7
 assign [class="Gimp"] $w7
 assign [class="Pinta"] $w7
 assign [title=".*LibreOffice.*"] $w6
+assign [class="Thunderbird"] $w6
 assign [class="NetBeans"] $w5
 
 #--------------+
@@ -326,16 +332,16 @@ assign [class="NetBeans"] $w5
 set $Exit "C: L: D: Q: S: H: P: R: Esc:"
 bindsym $mod+Escape mode $Exit
 bindsym $mod+x mode $Exit
-bindsym $mod+Shift+x exec i3lock-fancy-rapid 50 2 -fe
+bindsym $mod+Shift+x exec i3lock-fancy-rapid 50 5 -fe
 bindsym --release $mod+$alt+x exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || (xrandr --auto && xrandr -r 50)
 mode $Exit {
 	bindsym c exec $modetgl $mode reload, mode default
 	bindsym Shift+c exec $modetgl $mode restart, mode default
-	bindsym l exec i3lock-fancy-rapid 10 2 -fe, mode default
+	bindsym l exec i3lock-fancy-rapid 10 5 -fe, mode default
 	bindsym --release d exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || (xrandr --auto && xrandr -r 50), mode default
 	bindsym q exit
 	bindsym s mode default, exec systemctl suspend
-	bindsym h mode default, exec systemctl hibernate
+	bindsym h mode default, exec i3lock-fancy-rapid 10 5 -fe && systemctl hibernate
 	bindsym p exec poweroff
 	bindsym r exec reboot
 	bindsym Escape mode default
@@ -391,9 +397,9 @@ bindsym $mod+n exec --no-startup-id $barsig kb
 bindsym $mod+$alt+p exec --no-startup-id /usr/local/bin/DrivePowerOff
 
 # hibernate
-bindsym XF86Launch1 exec --no-startup-id i3lock-fancy-rapid 15 5 -fe && systemctl hibernate
+bindsym XF86Launch1 exec i3lock-fancy-rapid 15 5 -fe && systemctl hibernate
 # lockscreen
-bindsym XF86ScreenSaver exec --no-startup-id i3lock-fancy-rapid 15 5 -fe
+bindsym XF86ScreenSaver exec i3lock-fancy-rapid 15 5 -fe
 
 # Change gamma manually, "redshift manually"
 bindsym $mod+$alt+n exec --no-startup-id xrandr --output LVDS1 --gamma 1:0.85:0.75
@@ -407,9 +413,9 @@ bindsym $alt+Ctrl+Down exec xrandr -o inverted
 
 # Change brightness
 bindsym XF86MonBrightnessUp exec $barsig light + $(bc <<< $(xbacklight)/2+3)
-bindsym $mod+b exec $barsig light + 10
+bindsym $mod+b exec $barsig light + $(bc <<< $(xbacklight)/2+3)
 bindsym XF86MonBrightnessDown exec $barsig light - $(bc <<< $(xbacklight)/2.2+1)
-bindsym $mod+Shift+b exec $barsig light - 10
+bindsym $mod+Shift+b exec $barsig light - $(bc <<< $(xbacklight)/2.2+1)
 
 # Audio manipulation
 bindsym XF86AudioRaiseVolume exec $barsig vol +5
@@ -433,7 +439,7 @@ bindsym $mod+Shift+m exec --no-startup-id mpris-ctl prev
 bindsym Insert exec [ "$(swapon --show=NAME)" ] && sudo swapoff /swapfile || sudo swapon /swapfile
 
 # Keypad
-bindsym KP_Begin exec --no-startup-id mpris-ctl pp
+bindsym KP_Subtract exec --no-startup-id mpris-ctl pp
 bindsym KP_Divide exec $barsig vol -5
 bindsym KP_Multiply exec $barsig vol +5
-
+bindsym KP_Add workspace back_and_forth

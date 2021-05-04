@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Icon=root
+Name=Open as root
+Terminal=false
+Categories=System;
+MimeTypes=inode/directory;
+SelectionCount=1
+Exec=sudo pcmanfm %f
