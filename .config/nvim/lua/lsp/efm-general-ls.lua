@@ -81,7 +81,13 @@ require"lspconfig".efm.setup({
 			json = tsserver,
 			markdown = {
 				{
-					formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=' .. vim.o.tabstop,
+					formatCommand = table.concat({
+						'pandoc -f markdown -t gfm -s',
+						(vim.o.expandtab or 'p'),
+						' --tab-stop=4',
+						' --columns=',
+						vim.o.textwidth
+					}),
 					formatStdin = true
 				} --[[{
     -- TODO default to global lintrc

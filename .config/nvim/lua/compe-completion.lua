@@ -28,7 +28,7 @@ vim.lsp.protocol.CompletionItemKind = {
 }
 
 vim.o.completeopt = 'menuone,noselect'
-vim.g.loaded_compe_emoji = true
+-- vim.g.loaded_compe_emoji = true
 require'compe'.setup {
 	enabled = true,
 	min_length = 2,
@@ -52,10 +52,9 @@ require'compe'.setup {
 		-- vim_dadbod_completion = true,
 		-- snippets_nvim = {kind = "  "},
 		-- ultisnips = {kind = "  "},
-		-- treesitter = {kind = "  "},
-		emoji = false
-		-- emoji = {kind = " ﲃ ", filetypes = {"markdown", "text"}}
-		-- for emoji press : (idk if that in compe tho)
+		treesitter = {kind = "  "},
+		emoji = {menu = " ﲃ", filetypes = {"markdown", "text"}}
+		-- for emoji press :
 	}
 }
 vim.cmd("hi link CompeDocumentation Pmenu")

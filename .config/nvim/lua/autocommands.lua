@@ -12,7 +12,7 @@ utils.define_augroups({
 		{'FileType', 'java', [[lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})]]},
 		{'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'}
 	},
-	_markdown = {{'FileType', 'markdown', 'setlocal wrap'}, {'FileType', 'markdown', 'setlocal spell'}},
+	_markdown = {{'FileType', 'markdown', 'setlocal spell ts=4 sw=4'}},
 	--[[_solidity = {
 		{'BufWinEnter', '.sol', 'setlocal filetype=solidity'},
 		{'BufRead', '*.sol', 'setlocal filetype=solidity'},
@@ -43,9 +43,9 @@ utils.commands([[
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man setlocal filetype=groff
 	autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
 	autocmd BufRead,BufNewFile *config,*.conf setlocal filetype=config
+	autocmd BufRead,BufNewFile *fontconfig/* setlocal filetype=xml
 	autocmd BufRead,BufNewFile */i3/*conf* setlocal filetype=i3config
 	autocmd BufRead,BufNewFile */X11/xorg* setlocal filetype=xf86conf
 	autocmd BufRead,BufNewFile */fish* setlocal filetype=sh
 	autocmd FileType text setlocal nonumber signcolumn=no nocursorline nocursorcolumn spell
-	autocmd BufRead * setlocal tabstop=2 shiftwidth=2 noexpandtab
 ]])

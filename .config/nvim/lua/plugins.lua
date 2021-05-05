@@ -38,6 +38,8 @@ return require("packer").startup(function(use)
 	require_plugin("lspsaga.nvim")
 	use {"kabouzeid/nvim-lspinstall", opt = true}
 	require_plugin("nvim-lspinstall")
+	use {"kevinhwang91/nvim-bqf", opt = true}
+	require_plugin("nvim-bqf")
 	-- use "mfussenegger/nvim-jdtls"
 
 	-- Telescope
@@ -59,6 +61,10 @@ return require("packer").startup(function(use)
 	require_plugin("vim-vsnip")
 	use "hrsh7th/vim-vsnip-integ"
 	-- use {"rafamadriz/friendly-snippets", opt = true}
+	
+	-- Formatting
+	use 'pierreglaser/folding-nvim'
+	use 'terrortylor/nvim-comment'
 
 	-- Treesitter
 	use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
@@ -75,33 +81,18 @@ return require("packer").startup(function(use)
 	require_plugin("nvim-tree.lua")
 	use "kevinhwang91/rnvimr"
 
-	-- use {"lewis6991/gitsigns.nvim", opt = true}
-	-- require_plugin("gitsigns.nvim")
-	-- use {"liuchengxu/vim-which-key", opt = true}
-	-- require_plugin("vim-which-key")
-	use "mhinz/vim-startify"
-	-- use {"ChristianChiarulli/dashboard-nvim", opt = true}
-	-- require_plugin("dashboard-nvim")
-	use {"terrortylor/nvim-comment", opt = true}
-	require_plugin("nvim-comment")
-	use {"kevinhwang91/nvim-bqf", opt = true}
-	require_plugin("nvim-bqf")
-
 	-- Color
-	use 'morhetz/gruvbox'
+	use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 	use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
 	use 'mboughaba/i3config.vim'
-	use 'pierreglaser/folding-nvim'
 
 	-- Icons
-	use {"kyazdani42/nvim-web-devicons", opt = true}
-	require_plugin("nvim-web-devicons")
+	use 'kyazdani42/nvim-web-devicons'
+	-- use 'lewis6991/gitsigns.nvim'
 
 	-- Status Line and Bufferline
-	-- use 'ojroques/nvim-hardline'
-	use {"glepnir/galaxyline.nvim", opt = true}
-	require_plugin("galaxyline.nvim")
+	use 'mhinz/vim-startify'
+	use 'glepnir/galaxyline.nvim'
 	use {"romgrk/barbar.nvim", opt = true}
 	require_plugin("barbar.nvim")
-
 end)

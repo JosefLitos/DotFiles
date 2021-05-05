@@ -85,9 +85,9 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/galaxyline.nvim"
   },
-  gruvbox = {
+  ["gruvbox.nvim"] = {
     loaded = true,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/gruvbox"
+    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/gruvbox.nvim"
   },
   ["i3config.vim"] = {
     loaded = true,
@@ -97,6 +97,10 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/lush.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = false,

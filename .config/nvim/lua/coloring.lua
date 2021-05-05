@@ -15,15 +15,15 @@ end
 
 -- Statusline colors
 _G.colors = {
-	dark = {"#181818", "#2f2d2b"},
-	light = {"#827974", "#f9f6e7"},
-	purple = {"#b14286", "#ed49a1"},
-	red = {"#cc3725", "#fe3921"},
-	orange = {"#d2731f", "#fca529"},
-	yellow = {"#d79921", "#faed2f"},
-	green = {"#669900", "#a5ea11"},
-	cyan = {"#458c77", "#60dca8"},
-	blue = {"#356588", "#3989e9"}
+	dark =  {"#181818", "#454340"},
+	light = {"#9d9c99", "#f0eeec"},
+	purple ={"#9d3586", "#f24ccd"},
+	red =   {"#cc3725", "#ff4f32"},
+	orange ={"#d2731f", "#fca52f"},
+	yellow ={"#d59921", "#ffec2c"},
+	green = {"#669900", "#9aec00"},
+	cyan =  {"#458c77", "#65d7b5"},
+	blue =  {"#356088", "#4c88d0"}
 }
 colors.hi = colors.green
 
@@ -36,7 +36,7 @@ vim.g.gruvbox_transparent_bg = 1
 vim.cmd('colorscheme gruvbox')
 hi('Normal', nil, 'NONE')
 hi('SignColumn', nil, 'NONE')
-hi('Folded', '#669900', 'NONE', 'term=standout')
+hi('Folded', colors.hi[1], 'NONE', 'term=standout')
 
 hi("Pmenu", colors.light[2], 'NONE')
 hi("PmenuSel", colors.dark[1], colors.hi[1])

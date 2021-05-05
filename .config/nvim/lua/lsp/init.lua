@@ -78,8 +78,13 @@ function _G.format_code(mode)
 		end
 		-- currently not working, idk why
 		-- vim.lsp.buf.range_formatting(options, start, finish)
+		return '\\'
 	else
 		vim.lsp.buf.formatting(options)
+		if mode == 'n' then
+			return vim.api.nvim_replace_termcodes('<C-l>', true, true, true)
+		else
+			return vim.api.nvim_replace_termcodes('<C-o><C-l>', true, true, true)
+		end
 	end
-	return vim.api.nvim_replace_termcodes('<C-l>', true, true, true)
 end
