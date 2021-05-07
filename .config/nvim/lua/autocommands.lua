@@ -39,6 +39,7 @@ utils.define_augroups({
 })
 
 -- Filetype presets
+	-- autocmd BufRead,BufNewFile * setlocal number signcolumn=yes cursorline cursorcolumn ts=2 tw=2
 utils.commands([[
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man setlocal filetype=groff
 	autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
@@ -47,5 +48,5 @@ utils.commands([[
 	autocmd BufRead,BufNewFile */i3/*conf* setlocal filetype=i3config
 	autocmd BufRead,BufNewFile */X11/xorg* setlocal filetype=xf86conf
 	autocmd BufRead,BufNewFile */fish* setlocal filetype=sh
-	autocmd FileType text setlocal nonumber signcolumn=no nocursorline nocursorcolumn spell
-]])
+	autocmd FileType text setlocal nonumber signcolumn=no nocursorline nocursorcolumn
+]]) -- all files when entered directly from shell for whatever reason don't have

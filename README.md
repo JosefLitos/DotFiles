@@ -52,6 +52,7 @@ applications’ configurations (vlc, pcmanfm)
 | pavucontrol        | gui way to control pulse audio                    |
 | pcmanfm-gtk3       | file manager                                      |
 | picom-ibhagwan-git | compositor with great blur method                 |
+| pynvim             | used for rnvimr ranger plugin for neovim          |
 | qt5ct              | use gtk3 theme for qt                             |
 | scrot              | tool for taking screenshot                        |
 | st                 | [best terminal](https://github.com/JosefLitos/st) |

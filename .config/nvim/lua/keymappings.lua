@@ -9,7 +9,7 @@ local function map(mode, _in, _out, opts)
 	mapper(mode, _in, _out, opts, {noremap = false, silent = true})
 end
 
-nmap('n', '<Space>', '')
+nmap('n', '<Space>', ' ')
 vim.g.mapleader = ' '
 
 -- Move selected line / block of text in visual mode
@@ -166,7 +166,7 @@ nmap("i", "<C-BS>", "<C-W>")
 nmap("i", "<C-S-Del>", "<C-o>ce")
 nmap("i", "<M-Enter>", "<C-o>o")
 nmap("i", "<M-S-Enter>", "<C-o>O")
-nmap("i", "<C-a>", "<C-o><C-a>") -- add value
+nmap("i", "<C-a>", "<C-o><C-a>") -- increase value
 nmap("i", "<C-d>", "<C-o><C-x>") -- decrease value
 
 -- Exploring
@@ -179,6 +179,7 @@ nmap('n', '<Leader>n', ':enew | Startify<CR>')
 nmap('n', '<Leader>e', ":NvimTreeToggle<CR>")
 nmap('n', '<Leader>r', ':RnvimrToggle<CR>')
 nmap('i', '<C-o>', '<C-o>:RnvimrToggle<CR>')
+nmap('t', '<C-q>', '<C-\\><C-n>:RnvimrToggle<CR>')
 nmap('n', '<Leader>s', ":Lspsaga open_floaterm<CR>")
 nmap('t', '<C-d>', "<C-\\><C-n>:Lspsaga close_floaterm<CR>")
 -- LSP bindings
@@ -216,9 +217,9 @@ nmap('i', '<C-e>', "compe#close('<C-e>')", {expr = true})
 nmap('i', '<Esc>', "compe#close('<Esc>')", {expr = true})
 nmap('i', '<C-f>', "compe#scroll({ 'delta': +4 })", {expr = true})
 nmap('i', '<C-b>', "compe#scroll({ 'delta': -4 })", {expr = true})
-nmap("n", "<M-F>", "v:lua.format_code('n')", {expr = true})
+nmap("n", "<M-F>", ":lua format_code('n')<CR>")
 -- nmap("v", "<M-F>", "v:lua.format_code('v')", {expr = true}) -- not working right now
-nmap("i", "<M-F>", "v:lua.format_code('i')", {expr = true})
+nmap("i", "<M-F>", "<C-o>:lua format_code('i')<CR>")
 
 nmap("n", "<F5>", ":e<CR>")
 nmap("i", "<F5>", "<C-o>:e<CR>")

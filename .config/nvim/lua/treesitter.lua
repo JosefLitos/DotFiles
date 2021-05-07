@@ -25,6 +25,6 @@ require'nvim-treesitter.configs'.setup {
 	-- indent = {enable = {"javascriptreact"}},
 	autotag = {enable = true},
 	autopairs = {enable = true},
-	rainbow = {enable = true, disable = {"bash"}, extended_mode = true, max_file_lines = 1000}
+	rainbow = {enable = false, disable = {"bash"}, extended_mode = true, max_file_lines = 1000}
 }
 

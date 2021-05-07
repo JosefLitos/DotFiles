@@ -5,35 +5,34 @@ local gls = gl.section
 gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer', 'startify', 'help', 'ranger'}
 
 local mode_color = {
-	n = colors.blue[1],
-	i = colors.green[1],
+	n = colors.con[1],
+	i = colors.hi[1],
 	v = colors.yellow[1],
 	[''] = colors.yellow[1],
 	V = colors.yellow[1],
-	c = colors.red[1],
-	no = colors.blue[2],
+	c = colors.red[2],
+	no = colors.con[2],
 	s = colors.orange[1],
 	S = colors.orange[1],
 	[''] = colors.orange[1],
 	ic = colors.yellow[1],
 	R = colors.red[1],
 	Rv = colors.red[1],
-	cv = colors.blue[2],
+	cv = colors.blue[1],
 	ce = colors.blue[2],
 	r = colors.cyan[1],
-	rm = colors.cyan[1],
-	['r?'] = colors.cyan[1],
+	rm = colors.cyan[2],
+	['r?'] = colors.cyan[2],
 	['!'] = colors.blue[1],
-	t = colors.red[2]
+	t = colors.red[1]
 }
 gls.left[1] = {
 	ViMode = {
 		provider = function()
 			-- auto change color according the vim mode
-			vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
+			hi('GalaxyViMode', mode_color[vim.fn.mode()])
 			return '▊'
-		end,
-		highlight = {colors.red[2], colors.dark[1]}
+		end
 	}
 }
 vim.fn.getbufvar(0, 'ts')
@@ -97,7 +96,7 @@ gls.right = {
 			condition = function() return vim.bo.filetype == '' or vim.bo.filetype == 'text' end,
 			separator = ' ',
 			separator_highlight = {'NONE', colors.dark[1]},
-			highlight = {colors.purple[1], colors.dark[1]}
+			highlight = {colors.magenta[1], colors.dark[1]}
 		}
 	},
 	{
@@ -135,7 +134,7 @@ gls.right = {
 			icon = ' ',
 			separator = ' ',
 			separator_highlight = {'NONE', colors.dark[1]},
-			highlight = {colors.purple[1], colors.dark[1]}
+			highlight = {colors.magenta[1], colors.dark[1]}
 		}
 	},
 	{

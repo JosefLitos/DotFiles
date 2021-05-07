@@ -1,11 +1,13 @@
+vim.cmd('syntax on') -- enable simple syntax highlighting
+
 function _G.hi(group, fg, bg, extra)
 	if fg then
-		fg = string.format(" guifg=%s", fg)
+		fg = " guifg=" .. fg
 	else
 		fg = ''
 	end
 	if bg then
-		bg = string.format(" guibg=%s", bg)
+		bg = " guibg=" .. bg
 	else
 		bg = ''
 	end
@@ -13,32 +15,143 @@ function _G.hi(group, fg, bg, extra)
 	vim.cmd(string.format("hi %s%s%s %s", group, fg, bg, extra))
 end
 
--- Statusline colors
-_G.colors = {
-	dark =  {"#181818", "#454340"},
-	light = {"#9d9c99", "#f0eeec"},
-	purple ={"#9d3586", "#f24ccd"},
-	red =   {"#cc3725", "#ff4f32"},
-	orange ={"#d2731f", "#fca52f"},
-	yellow ={"#d59921", "#ffec2c"},
-	green = {"#669900", "#9aec00"},
-	cyan =  {"#458c77", "#65d7b5"},
-	blue =  {"#356088", "#4c88d0"}
-}
-colors.hi = colors.green
-
-vim.cmd('syntax on') -- enable simple syntax highlighting
 -- Colorscheme
 vim.g.gruvbox_contrast_dark = 'hard'
 vim.g.gruvbox_invert_selection = '1'
 vim.g.gruvbox_italic = 1
 vim.g.gruvbox_transparent_bg = 1
-vim.cmd('colorscheme gruvbox')
+-- vim.cmd('colorscheme gruvbox')
+
+-- my colors
+_G.colors = {
+	dark =   {"#1c1c1c", "#4a4846"},
+	light =  {"#868380", "#f0eeec"},
+	violet = {"#8d57a8", "#c075f5"},
+	magenta ={"#8d2088", "#d032c5"},
+	pink =   {"#bd5878", "#f09aa5"},
+	red =    {"#cc0600", "#f02500"},
+	orange = {"#d26d00", "#f08500"},
+	yellow = {"#d8af00", "#f0e500"},
+	green =  {"#669900", "#85e000"},
+	cyan =   {"#45ac87", "#75e7ad"},
+	blue =   {"#1a6ab8", "#52a8f0"}
+}
+colors.hi = colors.green --highlight
+colors.con = colors.magenta --contrast
+hi('Black', colors.dark[1])
+hi('Grey', colors.dark[2])
+hi('LightGrey', colors.light[1])
+hi('White', colors.light[2])
+hi('Violet', colors.violet[1])
+hi('LightViolet', colors.violet[2])
+hi('Magenta', colors.magenta[1])
+hi('LightMagenta', colors.magenta[2])
+hi('Pink', colors.pink[1])
+hi('LightPink', colors.pink[2])
+hi('Red', colors.red[1])
+hi('LightRed', colors.red[2])
+hi('Orange', colors.orange[1])
+hi('LightOrange', colors.orange[2])
+hi('Yellow', colors.yellow[1])
+hi('LightYellow', colors.yellow[2])
+hi('Green', colors.green[1])
+hi('LightGreen', colors.green[2])
+hi('Cyan', colors.cyan[1])
+hi('LightCyan', colors.cyan[2])
+hi('Blue', colors.blue[1])
+hi('LightBlue', colors.blue[2])
+hi('Highlight', colors.hi[1])
+hi('LightHighlight', colors.hi[2])
+hi('Contrast', colors.con[1])
+hi('LightContrast', colors.con[2])
+
+-- vim.g.terminal_color_0 = nil
+-- vim.g.terminal_color_1 = nil
+-- vim.g.terminal_color_2 = nil
+-- vim.g.terminal_color_3 = nil
+-- vim.g.terminal_color_4 = nil
+-- vim.g.terminal_color_5 = nil
+-- vim.g.terminal_color_6 = nil
+-- vim.g.terminal_color_7 = nil
+-- vim.g.terminal_color_8 = nil
+-- vim.g.terminal_color_9 = colors.red[2]
+-- vim.g.terminal_color_10 = nil
+-- vim.g.terminal_color_11 = nil
+-- vim.g.terminal_color_12 = nil
+-- vim.g.terminal_color_13 = nil
+-- vim.g.terminal_color_14 = nil
+-- vim.g.terminal_color_15 = nil
+
+hi('Pmenu', colors.light[2], 'NONE')
+hi('PmenuSel', colors.dark[1], colors.hi[1])
+hi('PmenuSbar', nil, 'NONE')
+hi('PmenuThumb', nil, colors.hi[1])
+
 hi('Normal', nil, 'NONE')
 hi('SignColumn', nil, 'NONE')
-hi('Folded', colors.hi[1], 'NONE', 'term=standout')
+hi('Folded', colors.hi[1], colors.dark[1], 'term=standout')
+hi('CursorColumn', nil, colors.dark[1])
+hi('CursorLine', nil, colors.dark[1])
 
-hi("Pmenu", colors.light[2], 'NONE')
-hi("PmenuSel", colors.dark[1], colors.hi[1])
-hi("PmenuSbar", nil, 'NONE')
-hi("PmenuThumb", nil, colors.hi[1])
+hi('Comment', colors.light[1], nil, 'gui=italic')
+hi('MatchParen', colors.red[2], colors.dark[2], 'gui=bold')
+hi('VertSplit', colors.dark[1], colors.light[1])
+hi('Error', colors.red[2], colors.dark[2], 'gui=underline')
+hi('Todo', colors.magenta[2], colors.dark[2], 'gui=underline')
+vim.cmd([[
+hi! link Normal White
+hi! link LineNr Grey
+hi! link CursorLineNr LightGrey
+hi! link StatusLine LightGrey
+hi! link NonText Grey
+hi! link Title Orange
+hi! link Type Pink
+hi! link Special LightCyan
+hi! link Delimiter LightRed
+hi! link Operator Red
+hi! link Statement Cyan
+hi! link Define PreProc
+hi! link PreProc Cyan
+hi! link Conditional LightBlue
+hi! link Keyword Blue
+hi! link Function LightGreen
+hi! link Method LightGreen
+hi! link String Yellow
+hi! link Character LightOrange
+hi! link Number LightPink
+hi! link Boolean LightPink
+hi! link Constant Pink
+hi! link Identifier Normal
+hi! link Variable Green
+hi link TSField Variable
+hi link TSVariable Variable
+]])
+
+-- NvimTree
+hi('NvimTreeExecFile', colors.green[2], nil, "gui=bold")
+hi('Directory', colors.green[1], nil, "gui=bold")
+hi('NvimTreeSymlink', colors.cyan[1], nil, "gui=bold")
+vim.cmd([[
+hi link NvimTreeIndentMarker Magenta
+hi link NvimTreeImageFile Yellow
+]])
+
+-- i3Config
+vim.cmd([[
+hi link i3ConfigString String
+hi link i3ConfigNumber Number
+hi link i3ConfigVariable Variable
+]])
+
+-- Startify
+vim.cmd([[
+hi link StartifyHeader LightContrast
+hi link StartifySection LightHighlight
+hi link StartifyBracket Grey
+hi link StartifyNumber Red
+hi link StartifySpecial Black
+hi link StartifyFooter Black
+hi link StartifyPath LightGrey
+hi link StartifySlash LightGrey
+hi link StartifyFile White
+]])

@@ -3,6 +3,7 @@ vim.fn.sign_define("LspDiagnosticsSignError", {
 	text = "",
 	numhl = "LspDiagnosticsSignError"
 })
+hi('LspDiagnosticsDefaultError', colors.red[2])
 hi('LspDiagnosticsSignError', colors.red[2])
 hi('LspDiagnosticsVirtualTextError', colors.red[2], nil, "gui=undercurl")
 
@@ -11,14 +12,16 @@ vim.fn.sign_define("LspDiagnosticsSignWarning", {
 	text = "",
 	numhl = "LspDiagnosticsSignWarning"
 })
-hi('LspDiagnosticsSignWarning', colors.purple[2])
-hi('LspDiagnosticsVirtualTextWarning', colors.purple[2], nil, "gui=undercurl")
+hi('LspDiagnosticsDefaultWarning', colors.magenta[1])
+hi('LspDiagnosticsSignWarning', colors.magenta[1])
+hi('LspDiagnosticsVirtualTextWarning', colors.magenta[1], nil, "gui=undercurl")
 
 vim.fn.sign_define("LspDiagnosticsSignHint", {
 	texthl = "LspDiagnosticsSignHint",
 	text = "",
 	numhl = "LspDiagnosticsSignHint"
 })
+hi('LspDiagnosticsDefaultHint', colors.light[1])
 hi('LspDiagnosticsSignHint', colors.light[1])
 hi('LspDiagnosticsVirtualTextHint', colors.light[1])
 
@@ -27,6 +30,7 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", {
 	text = "",
 	numhl = "LspDiagnosticsSignInformation"
 })
+hi('LspDiagnosticsDefaultInformation', colors.green[2])
 hi('LspDiagnosticsSignInformation', colors.green[2])
 hi('LspDiagnosticsVirtualTextInformation', colors.green[2])
 
@@ -78,13 +82,8 @@ function _G.format_code(mode)
 		end
 		-- currently not working, idk why
 		-- vim.lsp.buf.range_formatting(options, start, finish)
-		return '\\'
 	else
 		vim.lsp.buf.formatting(options)
-		if mode == 'n' then
-			return vim.api.nvim_replace_termcodes('<C-l>', true, true, true)
-		else
-			return vim.api.nvim_replace_termcodes('<C-o><C-l>', true, true, true)
-		end
 	end
+	return ''
 end

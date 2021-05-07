@@ -81,9 +81,8 @@ _G.packer_plugins = {
     path = "/home/kepis/.local/share/nvim/site/pack/packer/start/folding-nvim"
   },
   ["galaxyline.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/galaxyline.nvim"
+    loaded = true,
+    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["gruvbox.nvim"] = {
     loaded = true,
@@ -113,15 +112,18 @@ _G.packer_plugins = {
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-bqf"
   },
   ["nvim-comment"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-comment"
+    loaded = true,
+    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/nvim-comment"
   },
   ["nvim-compe"] = {
     after_files = { "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_buffer.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_calc.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_emoji.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_luasnip.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lsp.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lua.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_omni.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_path.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_snippets_nvim.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_spell.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_tags.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_treesitter.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_ultisnips.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsc.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsp.vim", "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vsnip.vim" },
     loaded = false,
     needs_bufread = false,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe"
+  },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
   },
   ["nvim-lspconfig"] = {
     loaded = false,
@@ -152,9 +154,8 @@ _G.packer_plugins = {
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons"
+    loaded = true,
+    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

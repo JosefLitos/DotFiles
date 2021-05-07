@@ -34,10 +34,11 @@ return require("packer").startup(function(use)
 	-- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
 	use {"neovim/nvim-lspconfig", opt = true}
 	require_plugin("nvim-lspconfig")
-	use {"glepnir/lspsaga.nvim", opt = true}
-	require_plugin("lspsaga.nvim")
 	use {"kabouzeid/nvim-lspinstall", opt = true}
 	require_plugin("nvim-lspinstall")
+	use {"glepnir/lspsaga.nvim", opt = true}
+	require_plugin("lspsaga.nvim")
+	use 'kosayoda/nvim-lightbulb'
 	use {"kevinhwang91/nvim-bqf", opt = true}
 	require_plugin("nvim-bqf")
 	-- use "mfussenegger/nvim-jdtls"

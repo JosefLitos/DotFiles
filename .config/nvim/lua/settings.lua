@@ -3,10 +3,10 @@ vim.o.expandtab = false -- Convert tabs to spaces
 vim.o.tabstop = 2 -- Tab size in spaces
 vim.o.shiftwidth = 2 -- Spaces inserted for a tab
 vim.o.wrap = true
-vim.cmd('set iskeyword+=- shortmess+=ca formatoptions-=cro formatoptions+=n')
+vim.cmd('set iskeyword+=- shortmess+=ca formatoptions-=cro')
 vim.o.incsearch = true
-TERMINAL = vim.fn.expand('$TERMINAL')
-vim.cmd('let &titleold="' .. TERMINAL .. '"')
+-- TERMINAL = vim.fn.expand('$TERMINAL')
+-- vim.cmd('let &titleold="' .. TERMINAL .. '"')
 vim.o.title = true
 vim.o.titlestring = "%{expand('%:t')} - NVim"
 vim.o.fileencoding = "utf-8" -- The encoding written to file

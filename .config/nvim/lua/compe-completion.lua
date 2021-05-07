@@ -6,8 +6,8 @@ vim.lsp.protocol.CompletionItemKind = {
 	"  ", -- Constructor
 	"  ", -- Field
 	"  ", -- Variable
-	"  ", -- Class
-	" ﰮ ", -- Interface
+	" ﰮ ", -- Class
+	"  ", -- Interface
 	"  ", -- Module
 	" 襁", -- Property
 	"  ", -- Unit
