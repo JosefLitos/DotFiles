@@ -12,3 +12,4 @@ vim.g.rnvimr_layout = {
 	col = 0,
 	row = 0,
 }
+-- Rnvimr yw: current dir to Neovim's cwd; gw: goto Neovim's cwd

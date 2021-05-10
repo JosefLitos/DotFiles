@@ -132,7 +132,7 @@ hi! link Include Keyword
 hi! link Function LightGreen
 hi! link Method LightGreen
 hi! link String Yellow
-hi! link Character LightOrange
+hi! link Character LightYellow
 hi! link Number LightPink
 hi! link Boolean LightPink
 hi! link Constant Pink
@@ -198,19 +198,5 @@ hi! link LspDiagnosticsDefaultHint LightGrey
 hi! link LspDiagnosticsDefaultInformation LightGreen
 hi! link LspSagaFinderSelection LightGreen
 hi! link LspSagaSagaBorderTitle Green
-hi! link LspFloatWinBorder LightPink
+hi! link LspFloatWinBorder LightContrast
 ]])
-
--- i3Config
-vim.cmd([[
-hi! link i3ConfigFontSeparator Operator
-hi! link i3ConfigFontKeyword Keyword
-hi! link i3ConfigFontNamespace Type
-hi! link i3ConfigFontContent String
-hi! link i3ConfigFont String
-hi! link i3ConfigString String
-hi! link i3ConfigNumber Number
-hi! link i3ConfigVariable Variable
-
-]])
-
