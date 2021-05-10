@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
  #Basic guide for my i3 setup, help script
 
-SELECTED=$(echo \
+selected=$(echo \
 "Mod+R          Rofi app launcher
 Mod+E          PcManFM
 Mod+1          Firefox
@@ -14,7 +14,7 @@ Mod+Q          Close window
 Mod+Esc/X      Session options" | rofi -dmenu -location 3 -l 10 -p "select action" | sed -e "s/^...............//")
 
 start() {
-	case "$SELECTED" in
+	case "$selected" in
 		"Rofi app launcher") rofi -show drun -location 3 &;;
 		"PcManFM") pcmanfm &;;
 		"Firefox") firefox &;;

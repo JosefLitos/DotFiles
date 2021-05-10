@@ -36,7 +36,7 @@ set $bg #1c1c1caa
 
 # class                 border  bg  text    indic.  child_border
 #client.focused          #0c8c0c $bg #ffffff #881eaa #0c8c0c
-client.focused          #77ff00 $bg #ffffff #881eaa #77ff00
+client.focused          #85e000 $bg #ffffff #8d2088 #85e000
 client.focused_inactive $bg     $bg #ffffff #32302d #1c1c1cdd
 client.unfocused        $bg     $bg #ffffff #22201d #1c1c1cdd
 client.background #00000000
@@ -363,9 +363,9 @@ bar {
 		#separator #aaaaaa
 		background $bg
 		# name             border  bg      fg
-		focused_workspace  $bg     $bg     #77ff00
-		inactive_workspace $bg     $bg     #881eaa
-		urgent_workspace   $bg     $bg     #ff0800
+		focused_workspace  $bg     $bg     #85e000
+		inactive_workspace $bg     $bg     #8d2088
+		urgent_workspace   $bg     $bg     #f01f00
 	}
 }
 
