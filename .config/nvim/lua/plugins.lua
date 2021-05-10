@@ -38,9 +38,9 @@ return require("packer").startup(function(use)
 	require_plugin("nvim-lspinstall")
 	use {"glepnir/lspsaga.nvim", opt = true}
 	require_plugin("lspsaga.nvim")
-	use 'kosayoda/nvim-lightbulb'
-	use {"kevinhwang91/nvim-bqf", opt = true}
-	require_plugin("nvim-bqf")
+	-- use 'kosayoda/nvim-lightbulb'
+	-- use {"kevinhwang91/nvim-bqf", opt = true}
+	-- require_plugin("nvim-bqf")
 	-- use "mfussenegger/nvim-jdtls"
 
 	-- Telescope
@@ -72,8 +72,8 @@ return require("packer").startup(function(use)
 	require_plugin("nvim-treesitter")
 	use {"windwp/nvim-autopairs", opt = true}
 	require_plugin("nvim-autopairs")
-	use {"p00f/nvim-ts-rainbow", opt = true}
-	require_plugin("nvim-ts-rainbow")
+	-- use {"p00f/nvim-ts-rainbow", opt = true}
+	-- require_plugin("nvim-ts-rainbow")
 	use {"windwp/nvim-ts-autotag", opt = true}
 	require_plugin("nvim-ts-autotag")
 
@@ -83,9 +83,9 @@ return require("packer").startup(function(use)
 	use "kevinhwang91/rnvimr"
 
 	-- Color
-	use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+	--use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 	use {'rrethy/vim-hexokinase', run = 'make hexokinase'}
-	use 'mboughaba/i3config.vim'
+	use 'JosefLitos/nvim-i3config'
 
 	-- Icons
 	use 'kyazdani42/nvim-web-devicons'

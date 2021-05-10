@@ -15,26 +15,26 @@ function _G.hi(group, fg, bg, extra)
 	vim.cmd(string.format("hi %s%s%s %s", group, fg, bg, extra))
 end
 
--- Colorscheme
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.g.gruvbox_invert_selection = '1'
-vim.g.gruvbox_italic = 1
-vim.g.gruvbox_transparent_bg = 1
--- vim.cmd('colorscheme gruvbox')
+-- -- Colorscheme
+-- vim.g.gruvbox_contrast_dark = 'hard'
+-- vim.g.gruvbox_invert_selection = '1'
+-- vim.g.gruvbox_italic = 1
+-- vim.g.gruvbox_transparent_bg = 1
+-- -- vim.cmd('colorscheme gruvbox')
 
 -- my colors
 _G.colors = {
-	dark =   {"#1c1c1c", "#4a4846"},
-	light =  {"#868380", "#f0eeec"},
-	violet = {"#8d57a8", "#c075f5"},
-	magenta ={"#8d2088", "#d032c5"},
+	dark =   {"#222222", "#4a4846"},
+	light =  {"#868380", "#e5eedc"},
+	violet = {"#9547b0", "#b555f0"},
+	magenta ={"#9d2098", "#d032c5"},
 	pink =   {"#bd5878", "#f09aa5"},
-	red =    {"#cc0600", "#f02500"},
-	orange = {"#d26d00", "#f08500"},
-	yellow = {"#d8af00", "#f0e500"},
-	green =  {"#669900", "#85e000"},
-	cyan =   {"#45ac87", "#75e7ad"},
-	blue =   {"#1a6ab8", "#52a8f0"}
+	red =    {"#cc0615", "#f02522"},
+	orange = {"#d26d15", "#f08522"},
+	yellow = {"#d8af15", "#f0e522"},
+	green =  {"#669915", "#85f022"},
+	cyan =   {"#45ac87", "#75f0aa"},
+	blue =   {"#1a6ab8", "#2798f0"}
 }
 colors.hi = colors.green --highlight
 colors.con = colors.magenta --contrast
@@ -87,33 +87,48 @@ hi('PmenuSel', colors.dark[1], colors.hi[1])
 hi('PmenuSbar', nil, 'NONE')
 hi('PmenuThumb', nil, colors.hi[1])
 
-hi('Normal', nil, 'NONE')
-hi('SignColumn', nil, 'NONE')
+hi('Normal', colors.light[2], 'NONE')
+hi('Title', colors.yellow[2], nil, 'gui=bold')
+hi('Search', colors.dark[1], colors.yellow[1], 'gui=bold')
+hi('IncSearch', colors.dark[1], colors.orange[1], 'gui=bold')
+hi('Visual', nil, colors.dark[1], 'gui=reverse')
+hi('SignColumn', colors.dark[2], 'NONE')
+hi('FoldColumn', colors.dark[2], 'NONE')
 hi('Folded', colors.hi[1], colors.dark[1], 'term=standout')
 hi('CursorColumn', nil, colors.dark[1])
 hi('CursorLine', nil, colors.dark[1])
-
+hi('ColorColumn', nil, colors.dark[1])
 hi('Comment', colors.light[1], nil, 'gui=italic')
 hi('MatchParen', colors.red[2], colors.dark[2], 'gui=bold')
-hi('VertSplit', colors.dark[1], colors.light[1])
-hi('Error', colors.red[2], colors.dark[2], 'gui=underline')
-hi('Todo', colors.magenta[2], colors.dark[2], 'gui=underline')
+hi('VertSplit', colors.light[1], colors.dark[1], 'gui=NONE')
+hi('StatusLineNC', colors.dark[1], colors.light[1])
+hi('ErrorMsg', colors.red[2], 'NONE', 'gui=bold')
+hi('WarningMsg', colors.orange[2], 'NONE', 'gui=bold')
+hi('Question', colors.yellow[2], 'NONE', 'gui=bold')
+hi('Error', colors.dark[1], colors.red[2], 'gui=bold,underline')
+hi('Todo', colors.dark[1], colors.magenta[2], 'gui=bold,underline')
+hi('DiffAdd', colors.dark[1], colors.green[1], 'gui=NONE')
+hi('DiffChange', colors.dark[1], colors.cyan[1], 'gui=NONE')
+hi('DiffDelete', colors.dark[1], colors.red[1], 'gui=NONE')
+hi('DiffText', colors.dark[1], colors.yellow[1], 'gui=NONE')
 vim.cmd([[
-hi! link Normal White
 hi! link LineNr Grey
 hi! link CursorLineNr LightGrey
-hi! link StatusLine LightGrey
+hi! link StatusLine LightGrey 
 hi! link NonText Grey
-hi! link Title Orange
-hi! link Type Pink
-hi! link Special LightCyan
+hi! link SpecialKey NonText
+hi! link Type LightCyan
+hi! link Special Violet
 hi! link Delimiter LightRed
 hi! link Operator Red
-hi! link Statement Cyan
-hi! link Define PreProc
+hi! link Statement Keyword
 hi! link PreProc Cyan
-hi! link Conditional LightBlue
+hi! link Command LightBlue
 hi! link Keyword Blue
+hi! link Define PreProc
+hi! link Conditional Command
+hi! link Repeat Command
+hi! link Include Keyword
 hi! link Function LightGreen
 hi! link Method LightGreen
 hi! link String Yellow
@@ -123,35 +138,79 @@ hi! link Boolean LightPink
 hi! link Constant Pink
 hi! link Identifier Normal
 hi! link Variable Green
-hi link TSField Variable
-hi link TSVariable Variable
+hi! link TSField Variable
+hi! link TSVariable Variable
+hi! link TSMath Number
 ]])
 
 -- NvimTree
 hi('NvimTreeExecFile', colors.green[2], nil, "gui=bold")
 hi('Directory', colors.green[1], nil, "gui=bold")
 hi('NvimTreeSymlink', colors.cyan[1], nil, "gui=bold")
+hi('NvimTreeSpecialFile', colors.pink[1], nil, "gui=bold")
+hi('NvimTreeOpenedFile', colors.violet[1], nil, "gui=bold")
 vim.cmd([[
-hi link NvimTreeIndentMarker Magenta
-hi link NvimTreeImageFile Yellow
-]])
-
--- i3Config
-vim.cmd([[
-hi link i3ConfigString String
-hi link i3ConfigNumber Number
-hi link i3ConfigVariable Variable
+hi! link NvimTreeIndentMarker Magenta
+hi! link NvimTreeImageFile Yellow
+hi! link NvimTreeGitDirty DiffDelete
+hi! link NvimTreeGitDeleted DiffDelete
+hi! link NvimTreeGitMerge DiffChange
+hi! link NvimTreeGitRenamed DiffChange
+hi! link NvimTreeGitStaged DiffAdd
+hi! link NvimTreeGitNew DiffAdd
+hi! link NvimTreeRootFolder LightMagenta
+hi! link NvimTreeFolderIcon Green
 ]])
 
 -- Startify
 vim.cmd([[
-hi link StartifyHeader LightContrast
-hi link StartifySection LightHighlight
-hi link StartifyBracket Grey
-hi link StartifyNumber Red
-hi link StartifySpecial Black
-hi link StartifyFooter Black
-hi link StartifyPath LightGrey
-hi link StartifySlash LightGrey
-hi link StartifyFile White
+hi! link StartifyHeader LightContrast
+hi! link StartifySection LightHighlight
+hi! link StartifyBracket Grey
+hi! link StartifyNumber Red
+hi! link StartifySpecial Black
+hi! link StartifyFooter Black
+hi! link StartifyPath LightGrey
+hi! link StartifySlash LightGrey
+hi! link StartifyFile White
 ]])
+
+-- BufferLine
+vim.cmd([[
+hi! link BufferVisible White
+hi! link BufferVisibleMod LightOrange
+hi! link BufferVisibleSign LightContrast
+hi! link BufferCurrent White
+hi! link BufferCurrentMod LightRed
+hi! link BufferCurrentSign LightHighlight
+hi! link BufferInactive LightGrey
+hi! link BufferInactiveMod Orange
+hi! link BufferInactiveSign LightGrey
+]])
+
+-- Lsp
+hi('LspDiagnosticsVirtualTextError', colors.red[2], nil, "gui=undercurl")
+hi('LspDiagnosticsVirtualTextWarning', colors.violet[2], nil, "gui=undercurl")
+vim.cmd([[
+hi! link LspDiagnosticsDefaultError LightRed
+hi! link LspDiagnosticsDefaultWarning LightViolet
+hi! link LspDiagnosticsDefaultHint LightGrey
+hi! link LspDiagnosticsDefaultInformation LightGreen
+hi! link LspSagaFinderSelection LightGreen
+hi! link LspSagaSagaBorderTitle Green
+hi! link LspFloatWinBorder LightPink
+]])
+
+-- i3Config
+vim.cmd([[
+hi! link i3ConfigFontSeparator Operator
+hi! link i3ConfigFontKeyword Keyword
+hi! link i3ConfigFontNamespace Type
+hi! link i3ConfigFontContent String
+hi! link i3ConfigFont String
+hi! link i3ConfigString String
+hi! link i3ConfigNumber Number
+hi! link i3ConfigVariable Variable
+
+]])
+

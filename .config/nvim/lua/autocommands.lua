@@ -12,7 +12,7 @@ utils.define_augroups({
 		{'FileType', 'java', [[lua require('jdtls').start_or_attach({cmd = {'java-lsp.sh'}})]]},
 		{'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'}
 	},
-	_markdown = {{'FileType', 'markdown', 'setlocal spell ts=4 sw=4'}},
+	_markdown = {{'FileType', 'markdown', 'setlocal ts=4 sw=4'}},
 	--[[_solidity = {
 		{'BufWinEnter', '.sol', 'setlocal filetype=solidity'},
 		{'BufRead', '*.sol', 'setlocal filetype=solidity'},

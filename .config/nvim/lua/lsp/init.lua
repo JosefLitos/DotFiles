@@ -3,36 +3,24 @@ vim.fn.sign_define("LspDiagnosticsSignError", {
 	text = "",
 	numhl = "LspDiagnosticsSignError"
 })
-hi('LspDiagnosticsDefaultError', colors.red[2])
-hi('LspDiagnosticsSignError', colors.red[2])
-hi('LspDiagnosticsVirtualTextError', colors.red[2], nil, "gui=undercurl")
 
 vim.fn.sign_define("LspDiagnosticsSignWarning", {
 	texthl = "LspDiagnosticsSignWarning",
 	text = "",
 	numhl = "LspDiagnosticsSignWarning"
 })
-hi('LspDiagnosticsDefaultWarning', colors.magenta[1])
-hi('LspDiagnosticsSignWarning', colors.magenta[1])
-hi('LspDiagnosticsVirtualTextWarning', colors.magenta[1], nil, "gui=undercurl")
 
 vim.fn.sign_define("LspDiagnosticsSignHint", {
 	texthl = "LspDiagnosticsSignHint",
 	text = "",
 	numhl = "LspDiagnosticsSignHint"
 })
-hi('LspDiagnosticsDefaultHint', colors.light[1])
-hi('LspDiagnosticsSignHint', colors.light[1])
-hi('LspDiagnosticsVirtualTextHint', colors.light[1])
 
 vim.fn.sign_define("LspDiagnosticsSignInformation", {
 	texthl = "LspDiagnosticsSignInformation",
 	text = "",
 	numhl = "LspDiagnosticsSignInformation"
 })
-hi('LspDiagnosticsDefaultInformation', colors.green[2])
-hi('LspDiagnosticsSignInformation', colors.green[2])
-hi('LspDiagnosticsVirtualTextInformation', colors.green[2])
 
 _G.capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true

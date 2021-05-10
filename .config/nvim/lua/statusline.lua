@@ -30,7 +30,7 @@ gls.left[1] = {
 	ViMode = {
 		provider = function()
 			-- auto change color according the vim mode
-			hi('GalaxyViMode', mode_color[vim.fn.mode()])
+			hi('GalaxyViMode', mode_color[vim.fn.mode()], colors.dark[1])
 			return '▊'
 		end
 	}

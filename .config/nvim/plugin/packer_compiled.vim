@@ -47,8 +47,8 @@ local function save_profiles(threshold)
 end
 
 time("Luarocks path setup", true)
-local package_path_str = "/home/kepis/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?.lua;/home/kepis/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?/init.lua;/home/kepis/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?.lua;/home/kepis/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/kepis/.cache/nvim/packer_hererocks/2.0.5/lib/lua/5.1/?.so"
+local package_path_str = "/home/kepis/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/kepis/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/kepis/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/kepis/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/kepis/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -84,32 +84,15 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/gruvbox.nvim"
-  },
-  ["i3config.vim"] = {
-    loaded = true,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/i3config.vim"
-  },
   ["lspsaga.nvim"] = {
     loaded = false,
     needs_bufread = false,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
   },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/lush.nvim"
-  },
   ["nvim-autopairs"] = {
     loaded = false,
     needs_bufread = false,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
-  },
-  ["nvim-bqf"] = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-bqf"
   },
   ["nvim-comment"] = {
     loaded = true,
@@ -121,9 +104,9 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-compe"
   },
-  ["nvim-lightbulb"] = {
+  ["nvim-i3config"] = {
     loaded = true,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+    path = "/home/kepis/.local/share/nvim/site/pack/packer/start/nvim-i3config"
   },
   ["nvim-lspconfig"] = {
     loaded = false,
@@ -147,11 +130,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag"
-  },
-  ["nvim-ts-rainbow"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/kepis/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
