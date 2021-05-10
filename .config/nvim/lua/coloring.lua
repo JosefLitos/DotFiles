@@ -25,7 +25,7 @@ end
 -- my colors
 _G.colors = {
 	dark =   {"#222222", "#4a4846"},
-	light =  {"#868380", "#e5eedc"},
+	light =  {"#868380", "#f0e8e0"},
 	violet = {"#9547b0", "#b555f0"},
 	magenta ={"#9d2098", "#d032c5"},
 	pink =   {"#bd5878", "#f09aa5"},
@@ -88,7 +88,7 @@ hi('PmenuSbar', nil, 'NONE')
 hi('PmenuThumb', nil, colors.hi[1])
 
 hi('Normal', colors.light[2], 'NONE')
-hi('Title', colors.yellow[2], nil, 'gui=bold')
+hi('Title', colors.hi[2], nil, 'gui=bold')
 hi('Search', colors.dark[1], colors.yellow[1], 'gui=bold')
 hi('IncSearch', colors.dark[1], colors.orange[1], 'gui=bold')
 hi('Visual', nil, colors.dark[1], 'gui=reverse')
@@ -197,6 +197,16 @@ hi! link LspDiagnosticsDefaultWarning LightViolet
 hi! link LspDiagnosticsDefaultHint LightGrey
 hi! link LspDiagnosticsDefaultInformation LightGreen
 hi! link LspSagaFinderSelection LightGreen
-hi! link LspSagaSagaBorderTitle Green
-hi! link LspFloatWinBorder LightContrast
+hi! link LspFloatWinBorder Contrast
+]])
+
+-- Git
+vim.cmd([[
+hi! link diffAdded DiffAdd
+hi! link diffChanged DiffChange
+hi! link diffDiffer DiffChange
+hi! link diffBDiffer diffDiffer
+hi! link diffRemoved DiffRemove
+hi! link gitcommitSummary Title
+hi! link gitcommitHeader Title
 ]])
