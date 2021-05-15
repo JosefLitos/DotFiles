@@ -25,7 +25,7 @@ end
 -- my colors
 _G.colors = {
 	dark =   {"#222222", "#4a4846"},
-	light =  {"#868380", "#f0e8e0"},
+	light =  {"#868380", "#f0ece0"},
 	violet = {"#9547b0", "#b555f0"},
 	magenta ={"#9d2098", "#d032c5"},
 	pink =   {"#bd5878", "#f09aa5"},

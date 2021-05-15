@@ -2,7 +2,6 @@ command=~/.config/i3blocks/$BLOCK_NAME
 separator_block_width=15
 separator=true
 markup=pango
-color=#9d2098
 interval=once
 
 # [activewin]
@@ -61,9 +60,11 @@ signal=11
 
 [date]
 command=date +" %a %d.%m."
+color=#9d2098
 
 [clock]
 interval=60
+color=#9d2098
 
 # [help]
 # full_text=

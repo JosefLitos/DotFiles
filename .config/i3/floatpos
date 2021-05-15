@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#i3/floatpos -i3 floating mode tiling functionality like in Windows
+#i3/floatpos -i3 floating mode tiling functionality similar to Windows
 # Made by Kepis, enjoy your linux i3floatingWM setup
 
 p2="$2"
@@ -25,28 +25,29 @@ I3_FLOATING*1 ]]; then
 	exit 0
 fi
 
-# # statusbar height
-# bar=24
-# # top or bottom panel
-# bottom=1
-
-# # autodetection for bar size and position, adjusts itself
-# while read -a LINE; do
-# 	case "${LINE[0]}${LINE[2]}" in
-# 		"AbsoluteY:") bottom=${LINE[-1]};;
-# 		"Height:") bar=${LINE[-1]};;
-# 		"MapIsUnMapped") bar=0 && break;;
-# 		"MapIsViewable") break;
-# 	esac
-# done <<< $(xwininfo -id $(xdotool search --class "i3bar"))
-
-bottom=1
+# statusbar height
 bar=24
-
+# top or bottom panel
+bottom=1
 # window border
 border=2
 
-# get window pos and size
+# # autodetection for bar size and position, adjusts itself
+# while read -a line; do
+# 	case "${line[0]}${line[2]}" in
+# 		"AbsoluteY:") bottom=${line[-1]} ;;
+# 		"Height:") bar=${line[-1]} ;;
+# 		"MapIsUnMapped") bar=0 && break ;;
+# 		"MapIsViewable") break ;;
+# 	esac
+# done <<<$(xwininfo -id $(xdotool search --class "i3bar"))
+
+# # autodetection for window border based on your i3config
+# while read -r line; do
+# 	case "$line" in
+# 		"for_window [floating] border pixel"*) border=${line#* } break;;
+# 	esac
+# done <~/.config/i3/config
 
 # get windetails using sed
 declare -i win=($(xwininfo -id $(xdotool getactivewindow) | sed -n \
@@ -57,7 +58,7 @@ declare -i win=($(xwininfo -id $(xdotool getactivewindow) | sed -n \
 
 # # get windetails without sed
 # declare -i win=()
-# while read -a LINE; do
+# while read -a line; do
 # 	break
 # done <<< $(xwininfo -id $(xdotool getactivewindow))
 

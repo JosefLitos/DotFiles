@@ -3,7 +3,7 @@
 #Nice icons:       
 if [ $button ]; then
   if [ $button -ge 4 ]; then
-		pactl set-sink-volume 0	$([ $button -eq 4 ] && echo \+ || echo \-)10% &>/dev/null
+		pactl set-sink-volume 0	$([ $button -eq 4 ] && echo + || echo -)10% &>/dev/null
 	elif [ $button -eq 1 ]; then
 		pactl set-sink-mute 0 toggle
 	elif [ $button -eq 3 ]; then
@@ -14,10 +14,10 @@ if [ $button ]; then
 fi
 
 INFO=()
-while read -a LINE; do
-	case "${LINE[0]}" in
-		'volume:') INFO[0]=${LINE[4]//%};;
-		'muted:') INFO[1]=${LINE[1]} && break;;
+while read -a line; do
+	case "${line[0]}" in
+		'volume:') INFO[0]=${line[4]//%};;
+		'muted:') INFO[1]=${line[1]} && break;;
 	esac
 done <<< $(pacmd list-sinks)
 

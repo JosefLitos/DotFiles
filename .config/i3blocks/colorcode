@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Color generator, default from redtogreen, rainbow if $2=rainbow
-
+exit 0
 if [ -z $1 ]; then
-	printf '#8d2088\n' && exit 0
+	printf '#9d2098\n' && exit 0
 elif [ $1 -ge 200 -o $1 -le 0 ]; then
 	declare -i x=0
 elif [ $1 -gt 100 ]; then

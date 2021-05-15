@@ -21,23 +21,25 @@ end
 function fish_prompt
 	set -l last_status $status
 	set_color -b '#181818'
-	[ $last_status = 0 ] && set_color '#77ff00' -o || set_color '#dc1e0e' -o
+	[ $last_status = 0 ] && set_color brgreen -o || set_color brred -o
 		printf "$last_status "
 	set_color normal
 	set_color -b '#181818'
-	set_color '#1166ff'
+	set_color blue
 		printf '@'
-	set_color '#22aaff'
+	set_color brblue
 		printf $hostname
-	set_color '#ffee00'
+	set_color bryellow -o	
 		printf ':'
-	set_color '#bb1eaa'
+	set_color normal
+	set_color -b '#181818'
+	set_color brmagenta
 		printf (basename $PWD)' '
 	if [ "$USER" = 'root' ]
-		set_color '#dc1e0e' -o
+		set_color red -o
 			printf '#'
 	else
-		set_color '#77ff00' -o
+		set_color brgreen -o
 		printf '$'
 	end
 	set_color normal
@@ -48,10 +50,11 @@ function fish_prompt
 	printf '\033[?1h\033=' >/dev/tty
 end
 
-abbr sr 			"sudo ranger"
-abbr s 				"sensors"
-abbr cp 			"cp -i"
-abbr mv 			"mv -i"
+abbr sr 		"sudo ranger"
+abbr s 			"sensors"
+abbr cp 		"cp -i"
+abbr mv 		"mv -i"
+abbr smci		"sudo make clean install"
 
 # get error messages from journalctl
 abbr jctl 		"journalctl -p 3 -xb"
@@ -73,11 +76,11 @@ abbr ce 		"cd /etc/"
 abbr cds 		"cd ~/Documents/AvAvA/server/src/"
 abbr cdq 		"cd ~/Documents/PG/QuickNodeRequests"
 
-# quick program fetch
+# quick program info fetch
 abbr xp 		"xprop | grep -e '^_NET_WM_WINDOW_TYPE' -e '^WM_NAME' -e '^WM_CLASS' | sed 's/^.*_\(.*\)(.*) = /\1 = /'"
 # detect keys pressed
 abbr xev 		"xev | grep keysym | awk '{ print \$7 }' | sed 's/),//'"
-# wifi
+# wifi - nmtui is better, but this is hand-made
 abbr il 		"nmcli device wifi | sed -n 's/^\*//;/:/p' | awk '{ print \$8\"\t\"\$2 }'"
 abbr ic 		"nmcli device wifi connect"
 

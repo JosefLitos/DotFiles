@@ -47,7 +47,7 @@ require'compe'.setup {
 		vsnip = {kind = "  "},
 		nvim_lsp = true,
 		nvim_lua = {kind = "  "},
-		-- spell = {menu = "  "},
+		spell = {menu = "  "},
 		-- tags = {kind = "  "},
 		-- vim_dadbod_completion = true,
 		-- snippets_nvim = {kind = "  "},
