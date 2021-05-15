@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Color generator, default from redtogreen, rainbow if $2=rainbow
-exit 0
 if [ -z $1 ]; then
 	printf '#9d2098\n' && exit 0
 elif [ $1 -ge 200 -o $1 -le 0 ]; then
@@ -11,7 +10,10 @@ else
 	declare -i x=$1
 fi
 
-#x ranged to [0-190] for avoiding edge-brightness colors
+# currently disabled for my use
+exit 0
+
+#x scaled to [0-190] for avoiding edge-brightness colors
 
 # normal 0=red 100=green
 redtogreen() {
@@ -19,7 +21,7 @@ redtogreen() {
 		printf '#%02x%02x%02x\n' $[(100-x)*38/10+30] 220 30
 }
 
-#rainbow mod 0=red 40=green 80=blue 100=violet
+#rainbow mod 0=red 40=green 80=blue 100=purple
 rainbow() {
 	[ $x -le 20 ] && printf '#%02x%02x%02x\n' 220 $[x*95/10+30] 30 ||
 	[ $x -le 40 ] && printf '#%02x%02x%02x\n' $[(40-x)*95+30] 220 30 ||

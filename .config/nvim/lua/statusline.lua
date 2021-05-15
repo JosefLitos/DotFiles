@@ -130,7 +130,7 @@ gls.right = {
 	{
 		ShowLspClient = {
 			provider = 'GetLspClient',
-			-- condition = condition.hide_in_width,
+			condition = condition.hide_in_width,
 			icon = ' ',
 			separator = ' ',
 			separator_highlight = {'NONE', colors.dark[1]},
@@ -140,7 +140,7 @@ gls.right = {
 	{
 		BufferType = {
 			provider = function() return vim.bo.filetype end,
-			condition = condition.hide_in_width,
+			-- condition = condition.hide_in_width,
 			separator = ' ',
 			separator_highlight = {'NONE', colors.dark[1]},
 			highlight = {colors.orange[1], colors.dark[1]}

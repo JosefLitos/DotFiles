@@ -45,6 +45,7 @@ function _G.lsp_setup(server, opts)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
+			setlocal signcolumn=yes
     ]], false)
 		end
 	end

@@ -21,7 +21,6 @@ vim.o.foldnestmax = 1
 vim.o.foldcolumn = '0' -- width of fold tree column
 vim.o.foldlevel = 100
 vim.o.foldenable = true
-vim.o.signcolumn = "yes" -- Always show the signcolumn
 ]]--[[
 vim.bo.textwidth = 100
 vim.bo.expandtab = false -- Convert tabs to spaces
@@ -45,15 +44,14 @@ vim.wo.foldnestmax = 1
 vim.wo.foldcolumn = '0' -- width of fold tree column
 vim.wo.foldlevel = 100
 vim.wo.foldenable = true
-vim.wo.signcolumn = "yes" -- Always show the signcolumn
 ]]
 vim.cmd([[
 set tw=100 noet ts=2 sw=2 sts=2
 set wrap undofile noswapfile
 set cc=0 cul cuc nu nornu
 set lbr bri ai si fdm=indent fdn=1 fdc=0 fdl=100 nofen
-set signcolumn=yes
 ]])
+vim.o.signcolumn = "no" -- Always show the signcolumn
 vim.cmd('set iskeyword+=- shortmess+=ca formatoptions-=cro')
 vim.o.incsearch = true
 -- TERMINAL = vim.fn.expand('$TERMINAL')

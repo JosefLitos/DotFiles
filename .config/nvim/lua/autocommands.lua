@@ -45,8 +45,8 @@ utils.commands([[
 	autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
 	autocmd BufRead,BufNewFile *config,*.conf setlocal filetype=config
 	autocmd BufRead,BufNewFile *fontconfig/* setlocal filetype=xml
-	autocmd BufRead,BufNewFile */i3/*conf* setlocal filetype=i3config tw=0
 	autocmd BufRead,BufNewFile */X11/xorg* setlocal filetype=xf86conf
 	autocmd BufRead,BufNewFile */fish* setlocal filetype=sh
 	autocmd FileType text setlocal nonumber signcolumn=no nocursorline nocursorcolumn tw=0
+	autocmd FileType i3config setlocal tw=0
 ]]) -- all files when entered directly from shell for whatever reason don't have
