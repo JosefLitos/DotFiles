@@ -76,6 +76,8 @@ abbr ce 		"cd /etc/"
 abbr cds 		"cd ~/Documents/AvAvA/server/src/"
 abbr cdb 		"cd ~/Documents/BookExchange/backend"
 abbr cdq 		"cd ~/Documents/PG/QuickNodeRequests"
+abbr cdd 		"cd ~/dotfiles"
+abbr dup 		"cd ~/dotfiles; git pull"
 
 # quick program info fetch
 abbr xp 		"xprop | grep -e '^_NET_WM_WINDOW_TYPE' -e '^WM_NAME' -e '^WM_CLASS' | sed 's/^.*_\(.*\)(.*) = /\1 = /'"
