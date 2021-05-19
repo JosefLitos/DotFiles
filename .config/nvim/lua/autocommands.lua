@@ -25,7 +25,8 @@ utils.define_augroups({
 	},]]
 	_buffer_bindings = {
 		{'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
-		{'FileType', 'text', 'imap <silent> <expr> <buffer> <Enter> v:lua.enter_or_list()'}
+		{'FileType', 'text', 'imap <silent> <expr> <buffer> <Enter> v:lua.enter_or_list()'},
+		{'FileType', 'text', 'imap <silent> <buffer> <S-Tab> <Home><Del><End>'}
 	}
 
 	-- _auto_formatters = {

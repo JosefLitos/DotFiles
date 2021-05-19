@@ -26,13 +26,14 @@ end
 _G.colors = {
 	dark =   {"#222222", "#4a4846"},
 	light =  {"#868380", "#f0ece0"},
-	violet = {"#9547b0", "#b555f0"},
+	violet = {"#9040a8", "#b555f0"},
 	magenta ={"#9d2098", "#d032c5"},
 	pink =   {"#bd5878", "#f09aa5"},
 	red =    {"#c82a15", "#f03522"},
 	orange = {"#d26d15", "#f08522"},
 	yellow = {"#d8af15", "#f0e522"},
-	green =  {"#669915", "#85f022"},
+	lime =   {"#90aa15", "#bcf022"},
+	green =  {"#559915", "#85f022"},
 	cyan =   {"#45ac87", "#75f0aa"},
 	blue =   {"#1a6ab8", "#2798f0"}
 }
@@ -117,7 +118,7 @@ hi! link CursorLineNr LightGrey
 hi! link StatusLine LightGrey 
 hi! link NonText Grey
 hi! link SpecialKey NonText
-hi! link Type LightCyan
+hi! link Type Normal
 hi! link Special Violet
 hi! link Delimiter LightRed
 hi! link Operator Red
@@ -134,13 +135,14 @@ hi! link Method LightGreen
 hi! link String Yellow
 hi! link Character LightYellow
 hi! link Number LightPink
-hi! link Boolean LightPink
-hi! link Constant Pink
+hi! link Boolean Keyword
+hi! link Constant LightViolet
 hi! link Identifier Normal
 hi! link Variable Green
 hi! link TSField Variable
 hi! link TSVariable Variable
 hi! link TSMath Number
+hi! link commentTSConstant Magenta
 ]])
 
 -- NvimTree

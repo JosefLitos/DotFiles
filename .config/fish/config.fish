@@ -74,6 +74,7 @@ abbr ...    'cd ../..'
 abbr cu 		"cd /usr/"
 abbr ce 		"cd /etc/"
 abbr cds 		"cd ~/Documents/AvAvA/server/src/"
+abbr cdb 		"cd ~/Documents/BookExchange/backend"
 abbr cdq 		"cd ~/Documents/PG/QuickNodeRequests"
 
 # quick program info fetch
