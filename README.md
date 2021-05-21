@@ -26,6 +26,9 @@ applications’ configurations (vlc, pcmanfm)
 | alsa-utils         | sound control                                     |
 | bc                 | used for floating-point arithmetics               |
 | bat                | cat with syntax highlightning                     |
+| exa                | ls replacement in rust, best                      |
+| engrampa           | gtk archiver                                      |
+| fd                 | for finding files                                 |
 | feh                | background setter and image viewer                |
 | fish               | my shell of choice                                |
 | fontfinder-gtk     | optional, online font view&install                |
@@ -33,6 +36,7 @@ applications’ configurations (vlc, pcmanfm)
 | git                | vcs system                                        |
 | gvfs-mtp           | mounting phones                                   |
 | gvfs               | for pcmanfm automounting                          |
+| htop               | simple but perfect task manager                   |
 | i3-gaps            | window manager of choice                          |
 | i3blocks           | statusbar                                         |
 | i3lock             | lockscreen                                        |
@@ -43,24 +47,25 @@ applications’ configurations (vlc, pcmanfm)
 | libxft-bgra        | fixed color emojis for st                         |
 | mpris-ctl          | music bg controller                               |
 | neovim             | my editor of choice                               |
+| networkmanager     |                                                   |
 | nodejs             | for npm to work                                   |
 | notepadqq          | linux replacement for notepad++; editor           |
 | npm                | node package manager for lsp servers              |
+| otf-font-awesome   | font with custom icons                            |
 | otf-overpass       | well-readable and looking font for UI             |
 | pacman-contrib     | contains ‘checkupdates’ used in script            |
 | paru               | aur packages helper                               |
 | pavucontrol        | gui way to control pulse audio                    |
 | pcmanfm-gtk3       | file manager                                      |
 | picom-ibhagwan-git | compositor with great blur method                 |
-| pynvim             | used for rnvimr ranger plugin for neovim          |
+| python-pynvim      | used for rnvimr ranger plugin for neovim          |
 | qt5ct              | use gtk3 theme for qt                             |
 | scrot              | tool for taking screenshot                        |
 | st                 | [best terminal](https://github.com/JosefLitos/st) |
 | ranger             | terminal file browser                             |
 | rofi               | dmenu replacement                                 |
-| ttf-exo2           | better UI font                                    |
+| ttf-exo-2          | better UI font                                    |
 | ttf-firacode       | better monospace font                             |
-| ttf-font-awesome   | font with custom                                  |
 | ttf-joypixels      | font with full emoji support                      |
 | ttf-nova           | font of many interesting shapes                   |
 | udisks2            | diskmanagement utility                            |

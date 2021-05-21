@@ -55,6 +55,8 @@ hi('Orange', colors.orange[1])
 hi('LightOrange', colors.orange[2])
 hi('Yellow', colors.yellow[1])
 hi('LightYellow', colors.yellow[2])
+hi('Lime', colors.lime[1])
+hi('LightLime', colors.lime[2])
 hi('Green', colors.green[1])
 hi('LightGreen', colors.green[2])
 hi('Cyan', colors.cyan[1])
@@ -98,9 +100,10 @@ hi('FoldColumn', colors.dark[2], 'NONE')
 hi('Folded', colors.hi[1], colors.dark[1], 'term=standout')
 hi('CursorColumn', nil, colors.dark[1])
 hi('CursorLine', nil, colors.dark[1])
+hi('CursorLineNR', colors.light[1], colors.dark[1], 'gui=NONE')
 hi('ColorColumn', nil, colors.dark[1])
 hi('Comment', colors.light[1], nil, 'gui=italic')
-hi('MatchParen', colors.red[2], colors.dark[2], 'gui=bold')
+hi('MatchParen', colors.yellow[2], colors.dark[2], 'gui=bold')
 hi('VertSplit', colors.light[1], colors.dark[1], 'gui=NONE')
 hi('StatusLineNC', colors.dark[1], colors.light[1])
 hi('ErrorMsg', colors.red[2], 'NONE', 'gui=bold')
@@ -114,12 +117,12 @@ hi('DiffDelete', colors.dark[1], colors.red[1], 'gui=NONE')
 hi('DiffText', colors.dark[1], colors.yellow[1], 'gui=NONE')
 vim.cmd([[
 hi! link LineNr Grey
-hi! link CursorLineNr LightGrey
 hi! link StatusLine LightGrey 
 hi! link NonText Grey
 hi! link SpecialKey NonText
 hi! link Type Normal
-hi! link Special Violet
+hi! link Special Keyword
+hi! link SpecialChar Orange
 hi! link Delimiter LightRed
 hi! link Operator Red
 hi! link Statement Keyword
@@ -130,8 +133,8 @@ hi! link Define PreProc
 hi! link Conditional Command
 hi! link Repeat Command
 hi! link Include Keyword
-hi! link Function LightGreen
-hi! link Method LightGreen
+hi! link Method Delimiter
+hi! link Function LightCyan
 hi! link String Yellow
 hi! link Character LightYellow
 hi! link Number LightPink
@@ -139,9 +142,13 @@ hi! link Boolean Keyword
 hi! link Constant LightViolet
 hi! link Identifier Normal
 hi! link Variable Green
-hi! link TSField Variable
+hi! link Field LightGreen
+hi! link TSField Field
 hi! link TSVariable Variable
 hi! link TSMath Number
+hi! link TSConstructor Method
+hi! link TSParameter Lime
+hi! link TSKeywordOperator Keyword
 hi! link commentTSConstant Magenta
 ]])
 
