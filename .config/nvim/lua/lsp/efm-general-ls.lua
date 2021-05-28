@@ -13,6 +13,7 @@ local tsserver = {
 			"prettier --print-width=",
 			vim.o.textwidth,
 			(vim.o.expandtab or " --use-tabs"),
+			" --no-semi",
 			" --stdin-filepath ${INPUT}"
 		}),
 		formatStdin = true

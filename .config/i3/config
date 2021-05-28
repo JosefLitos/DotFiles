@@ -80,6 +80,7 @@ mode "" {
 # start app launcher
 #exec i3-dmenu-desktop
 bindsym $mod+r exec --no-startup-id rofi -show drun
+bindsym $mod+slash exec --no-startup-id rofi -show drun
 #bindsym Menu exec --no-startup-id rofi -show drun
 
 # quick app starter
@@ -335,12 +336,12 @@ set $Exit "C: L: D: Q: S: H: P: R: Esc:"
 bindsym $mod+Escape mode $Exit
 bindsym $mod+x mode $Exit
 bindsym $mod+Shift+x exec i3lock-fancy-rapid 50 5 -fe
-bindsym --release $mod+$alt+x exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || (xrandr --auto && xrandr -r 50)
+bindsym --release $mod+$alt+x exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || xrandr --auto
 mode $Exit {
 	bindsym c exec $modetgl $mode reload, mode default
 	bindsym Shift+c exec $modetgl $mode restart, mode default
 	bindsym l exec i3lock-fancy-rapid 10 5 -fe, mode default
-	bindsym --release d exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || (xrandr --auto && xrandr -r 50), mode default
+	bindsym --release d exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || xrandr --auto, mode default
 	bindsym q exit
 	bindsym s mode default, exec systemctl suspend
 	bindsym h mode default, exec $hibernate
@@ -379,7 +380,6 @@ set $barsig --no-startup-id ~/.config/i3blocks/signal
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec dunst
 # exec --no-startup-id nm-applet
-exec --no-startup-id xrandr -r 50
 exec_always --no-startup-id xset r rate 225 25
 
 # screenshot
@@ -399,7 +399,7 @@ bindsym $mod+n exec --no-startup-id $barsig kb
 bindsym $mod+$alt+p exec --no-startup-id /usr/local/bin/DrivePowerOff
 
 # Disable internal display
-bindsym XF86Launch1 exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || (xrandr --auto && xrandr -r 50)
+bindsym XF86Launch1 exec --no-startup-id xrandr --listmonitors | grep 'LVDS1' && xrandr --output LVDS1 --off || xrandr --auto
 # lockscreen
 bindsym XF86ScreenSaver exec i3lock-fancy-rapid 15 5 -fe
 

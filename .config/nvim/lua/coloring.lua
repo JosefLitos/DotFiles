@@ -102,6 +102,7 @@ hi('CursorColumn', nil, colors.dark[1])
 hi('CursorLine', nil, colors.dark[1])
 hi('CursorLineNR', colors.light[1], colors.dark[1], 'gui=NONE')
 hi('ColorColumn', nil, colors.dark[1])
+-- hi('Function', colors.light[2], nil, 'gui=bold')
 hi('Comment', colors.light[1], nil, 'gui=italic')
 hi('MatchParen', colors.yellow[2], colors.dark[2], 'gui=bold')
 hi('VertSplit', colors.light[1], colors.dark[1], 'gui=NONE')
@@ -133,8 +134,8 @@ hi! link Define PreProc
 hi! link Conditional Command
 hi! link Repeat Command
 hi! link Include Keyword
-hi! link Method Delimiter
-hi! link Function LightCyan
+"hi! link Function LightCyan
+hi! link Function White
 hi! link String Yellow
 hi! link Character LightYellow
 hi! link Number LightPink
@@ -146,10 +147,11 @@ hi! link Field LightGreen
 hi! link TSField Field
 hi! link TSVariable Variable
 hi! link TSMath Number
-hi! link TSConstructor Method
+hi! link TSConstructor Identifier
 hi! link TSParameter Lime
 hi! link TSKeywordOperator Keyword
 hi! link commentTSConstant Magenta
+hi! link sqlType String
 ]])
 
 -- NvimTree
@@ -161,7 +163,7 @@ hi('NvimTreeOpenedFile', colors.violet[1], nil, "gui=bold")
 vim.cmd([[
 hi! link NvimTreeIndentMarker Magenta
 hi! link NvimTreeImageFile Yellow
-hi! link NvimTreeGitDirty DiffDelete
+hi! link NvimTreeGitDirty LightOrange
 hi! link NvimTreeGitDeleted DiffDelete
 hi! link NvimTreeGitMerge DiffChange
 hi! link NvimTreeGitRenamed DiffChange
@@ -208,6 +210,7 @@ hi! link LspDiagnosticsDefaultInformation LightGreen
 hi! link LspSagaFinderSelection LightGreen
 hi! link LspFloatWinBorder Contrast
 ]])
+hi('TargetWord', colors.con[2], nil, 'gui=NONE')
 
 -- Git
 vim.cmd([[

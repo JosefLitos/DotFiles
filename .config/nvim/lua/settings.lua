@@ -80,3 +80,4 @@ vim.o.timeoutlen = 500 -- By default timeoutlen is 1000 ms
 DATA_PATH = vim.fn.stdpath('data')
 CACHE_PATH = vim.fn.stdpath('cache')
 require'nvim_comment'.setup()
+require'lspsaga'.init_lsp_saga()

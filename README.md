@@ -58,6 +58,7 @@ applications’ configurations (vlc, pcmanfm)
 | pavucontrol        | gui way to control pulse audio                    |
 | pcmanfm-gtk3       | file manager                                      |
 | picom-ibhagwan-git | compositor with great blur method                 |
+| pulseaudio         | sound mixer                                       |
 | python-pynvim      | used for rnvimr ranger plugin for neovim          |
 | qt5ct              | use gtk3 theme for qt                             |
 | scrot              | tool for taking screenshot                        |
@@ -65,7 +66,7 @@ applications’ configurations (vlc, pcmanfm)
 | ranger             | terminal file browser                             |
 | rofi               | dmenu replacement                                 |
 | ttf-exo-2          | better UI font                                    |
-| ttf-firacode       | better monospace font                             |
+| ttf-fira-code      | better monospace font                             |
 | ttf-joypixels      | font with full emoji support                      |
 | ttf-nova           | font of many interesting shapes                   |
 | udisks2            | diskmanagement utility                            |

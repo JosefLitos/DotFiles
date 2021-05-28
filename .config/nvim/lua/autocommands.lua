@@ -13,6 +13,7 @@ utils.define_augroups({
 		{'FileType', 'java', 'nnoremap ca <Cmd>lua require(\'jdtls\').code_action()<CR>'}
 	},
 	_markdown = {{'FileType', 'markdown', 'setlocal ts=4 sw=4'}},
+	_lua = {{'FileType', 'lua', 'hi! link luaTSConstructor Delimiter'}},
 	--[[_solidity = {
 		{'BufWinEnter', '.sol', 'setlocal filetype=solidity'},
 		{'BufRead', '*.sol', 'setlocal filetype=solidity'},
