@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Fan speed script
 
-while read -a LINE; do
-	[ "${LINE[0]}" = 'fan1:' ] && SPEED=${LINE[1]} && break
+while read -a line; do
+	[ "${line[0]}" = 'fan1:' ] && SPEED=${line[1]} && break
 done <<< $(sensors)
 
 if [ $SPEED ]; then

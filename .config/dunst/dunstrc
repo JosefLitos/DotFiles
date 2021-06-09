@@ -50,7 +50,7 @@
 	close = ctrl+space
 	close_all = ctrl+shift+space
 	history = ctrl+grave
-	context = ctrl+shift+period
+	context = ctrl+period
 
 [urgency_low]
 	frame_color = "#9d2098"
@@ -65,7 +65,7 @@
 	timeout = 5
 
 [urgency_critical]
-	frame_color = "#f03500"
+	frame_color = "#f03522"
 	foreground = "#f0ece0"
 	background = "#1c1c1c"
 	timeout = 10

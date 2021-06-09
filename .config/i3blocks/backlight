@@ -5,8 +5,8 @@ if [ "$button" -a "$button" != 2 ]; then
 		xbacklight + 10 || xbacklight - 10
 fi
 
-LIGHT=$(xbacklight)
-LIGHT=${LIGHT%.*}
-TEXT="<b> $LIGHT%</b>"
+light=$(xbacklight)
+light=${light%.*}
+TEXT="<b> $light%</b>"
 printf "%s\n%s\n" "$TEXT" "$TEXT"
-~/.config/i3blocks/colorcode $LIGHT
+~/.config/i3blocks/colorcode $light

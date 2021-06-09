@@ -2,15 +2,15 @@
 # CPU usage, CPU frequency on click script
 # FontAwesome icons fitting:  
 
-while read -a LINE; do
-	[ "${LINE[0]}" = '%Cpu(s):' ] && PCT=${LINE[1]/,/.} && break
+while read -a line; do
+	[ "${line[0]}" = '%Cpu(s):' ] && PCT=${line[1]/,/.} && break
 done <<< $(top -bn 1)
 
 if [ "$button" = 1 ]; then
-	while read -a LINE; do
-		case ${LINE[1]} in
-			'MHz:') SPEED=${LINE[2]%.*};;
-			'max.') MAXSPEED=${LINE[3]%,*}; break;;
+	while read -a line; do
+		case ${line[1]} in
+			'MHz:') SPEED=${line[2]%.*};;
+			'max.') MAXSPEED=${line[3]%,*}; break;;
 		esac
 	done <<< $(lscpu)
 	TEXT=" "$(bc <<< "scale=1;$SPEED/1000")"G/"$(bc <<< "scale=1;$MAXSPEED/1000")"G ($PCT%)"

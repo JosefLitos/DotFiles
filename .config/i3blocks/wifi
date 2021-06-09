@@ -7,24 +7,24 @@ if [[ $button -eq 1 ]]; then
 fi
 
 if [ $BLOCK_INSTANCE ]; then
-	read -a LINE <<< $(ip a s $BLOCK_INSTANCE)
+	read -a line <<< $(ip a s $BLOCK_INSTANCE)
 else
-	while read -a LINE; do
-		[[ "${LINE[1]}" = wlp* ]] && break
+	while read -a line; do
+		[[ "${line[1]}" = wlp* ]] && break
 	done <<< $(ip a)
 	BLOCK_INSTANCE=wlp
 fi
-[[ "${LINE[2]}" = *UP* ]] && ON=1
-if [ $ON ]; then
-	while read -a LINE; do
-		[[ "${LINE[0]}" = "$BLOCK_INSTANCE"* ]] &&\
-			QUALITY=$[${LINE[2]%.*}*10/7] && break
+[[ "${line[2]}" = *UP* ]] && on=1
+if [ $on ]; then
+	while read -a line; do
+		[[ "${line[0]}" = "$BLOCK_INSTANCE"* ]] &&\
+			quality=$[${line[2]%.*}*10/7] && break
 	done < /proc/net/wireless
-	[ $QUALITY ] && read -a LINE <<< $(nmcli) && SSID=${LINE[-1]}
+	[ $quality ] && read -a line <<< $(nmcli) && ssid=${line[-1]}
 fi
-TEXT=$([ $ON ] && ([ $QUALITY ] && echo " $QUALITY%: $SSID" || echo "" ) || echo "")
+TEXT=$([ $on ] && ([ $quality ] && echo " $quality%: $ssid" || echo "" ) || echo "")
 
 echo "$TEXT"
 echo "$TEXT"
-~/.config/i3blocks/colorcode $([ -z "$QUALITY" -a "$ON" ] && echo 0 || echo $QUALITY)
+~/.config/i3blocks/colorcode $([ -z "$quality" -a "$on" ] && echo 0 || echo $quality)
 

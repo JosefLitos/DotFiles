@@ -2,8 +2,10 @@
 #Battery status script
 #FontAwesome icons for use
 #       ⚡ 
-LINE=($(acpi))
-TEXT=${LINE[2]:0:1} STATE=${LINE[3]%\%,} TIME=${LINE[4]%:??}
+line=($(acpi))
+TEXT=${line[2]:0:1}
+STATE=${line[3]%\%*}
+TIME=${line[4]%:??}
 #TEXT=$(acpi | cut -d " " -f3-5 | sed "s/,//g;s/Discharging//;s/Charging//;s/Unknown//;s/Full//;s/:..$//;s/ 0/ /g")
 
 if [ -z "$TEXT" -o "$TEXT" = 'rate' ]; then
@@ -16,7 +18,9 @@ else
 			[ $STATE -le 60 ] && TEXT= ||
 			[ $STATE -le 80 ] && TEXT= || TEXT=
 			if [ $STATE -le 6 ]; then
-				case "$(rofi -dmenu -l 3 -p " $STATE%" <<< "I\'ll plug it in\nSuspend\nPower off")" in
+				case "$(rofi -dmenu -l 3 -p " $STATE%" <<< "I'll plug it in
+Suspend
+Power off")" in
 					"Suspend") systemctl suspend;;
 					"Power off") systemctl poweroff;;
 				esac

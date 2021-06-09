@@ -3,10 +3,10 @@
 
 [ "$BLOCK_INSTANCE" = 'swap' -a -z "$(swapon --show=NAME)" ] && exit 0
 declare -i MTotal MUsed STotal SUsed
-while read -a LINE; do
-	case ${LINE[0]} in
-		'Mem:') MTotal=${LINE[1]}; MUsed=${LINE[2]}+${LINE[4]};;
-		'Swap:') STotal=${LINE[1]}; SUsed=${LINE[2]}; break;;
+while read -a line; do
+	case ${line[0]} in
+		'Mem:') MTotal=${line[1]}; MUsed=${line[2]}+${line[4]};;
+		'Swap:') STotal=${line[1]}; SUsed=${line[2]}; break;;
 	esac
 done <<< $(free -m)
 

@@ -4,8 +4,8 @@
 if [ -z $INTERFACE -a "$BLOCK_INSTANCE" ]; then
   INTERFACE=$BLOCK_INSTANCE
 elif [ -z $INTERFACE ]; then
-	while read -a LINE; do
-		[ ${LINE[0]} = 'default' ] && INTERFACE=${LINE[4]} && break
+	while read -a line; do
+		[ ${line[0]} = 'default' ] && INTERFACE=${line[4]} && break
 	done <<< $(ip route)
 fi
 # Exit if there is no default route

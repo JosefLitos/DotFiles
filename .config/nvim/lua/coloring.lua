@@ -187,12 +187,12 @@ hi! link StartifyFile White
 ]])
 
 -- BufferLine
+hi("BufferCurrent", colors.light[2], nil, "gui=bold")
+hi("BufferCurrentMod", colors.red[2], nil, "gui=bold")
 vim.cmd([[
 hi! link BufferVisible White
-hi! link BufferVisibleMod LightOrange
+hi! link BufferVisibleMod LightRed
 hi! link BufferVisibleSign LightContrast
-hi! link BufferCurrent White
-hi! link BufferCurrentMod LightRed
 hi! link BufferCurrentSign LightHighlight
 hi! link BufferInactive LightGrey
 hi! link BufferInactiveMod Orange
