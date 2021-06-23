@@ -1,7 +1,7 @@
 #!/bin/sh
 adb start-server
 adb tcpip 5555
-adb connect 192.168.0.102:5555
+adb connect $([ -z $1] && echo 192.168.0.102:5555 || echo $1:5555)
 scrcpy --max-fps $(rofi -dmenu -p "FPS" -l 0) -m 1920
 adb disconnect
 adb kill-server

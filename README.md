@@ -86,6 +86,6 @@ which is wasteful.
 
 # Two dark themes I adopted
 
-I made rofi themes based on these two themes. Material-Black is better with a darker background.
-
-![Arc-Darkest-Kiwi](scr-AD-Kiwi.png) ![Material-Black-Lime](scr-MB-Lime.png)
+I made rofi and QT theme based on Material-Black-Lime.
+For icons I altered the color of Material-Black-Lime-Suru-Glow and the other variant from
+Solarized-Dark-Green.

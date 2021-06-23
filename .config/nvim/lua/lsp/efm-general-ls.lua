@@ -14,6 +14,7 @@ local tsserver = {
 			vim.o.textwidth,
 			(vim.o.expandtab or " --use-tabs"),
 			" --no-semi",
+			" --single-quote",
 			" --stdin-filepath ${INPUT}"
 		}),
 		formatStdin = true

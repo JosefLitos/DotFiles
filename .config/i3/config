@@ -30,8 +30,8 @@ bindsym $mod+t gaps inner current toggle 10
 bindsym $mod+$alt+t border toggle
 
 set $bg #101010aa
-set $hi2 #85f022
-set $hi #559915
+set $hi #85f022
+set $hi2 #559915
 set $con #9d2098
 set $text #f0ece0
 
@@ -45,8 +45,8 @@ exec --no-startup-id picom
 bindsym $mod+p exec --no-startup-id pgrep -x "picom" && killall picom || picom
 
 set $feh --no-startup-id feh --no-fehbg --bg-fill -rz ~/Pictures/screen
-# exec $feh
-exec $feh/distros/i3green.png
+exec $feh
+# exec $feh/distros/i3green.png
 bindsym $mod+u mode ""
 mode "" {
 	bindsym $mod+u mode "default"
@@ -362,7 +362,7 @@ bar {
 	position bottom
 
 	colors {
-		statusline $hi
+		statusline $hi2
 		#separator #aaaaaa
 		background $bg
 		# name             border  bg      fg
@@ -446,8 +446,8 @@ bindsym KP_Divide exec $barsig vol -5
 bindsym KP_Multiply exec $barsig vol +5
 bindsym KP_Add workspace back_and_forth
 bindsym KP_Begin focus mode_toggle
-bindsym KP_Home workspace prev
-bindsym KP_End workspace next
+bindsym KP_Home workspace next
+bindsym KP_End workspace prev
 bindsym KP_Prior exec $barsig light + $(bc <<< $(xbacklight)/2+3)
 bindsym KP_Next exec $barsig light - $(bc <<< $(xbacklight)/2.2+1)
 
