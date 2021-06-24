@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 3.0.15
+###  vlc 3.0.16
 ###
 
 ###
@@ -2834,7 +2834,7 @@ equalizer-bands=0 0 0 0 0 0 0 0 0 0
 #sout-avi-subject=
 
 # Encoder (string)
-#sout-avi-encoder=VLC Media Player - 3.0.15 Vetinari
+#sout-avi-encoder=VLC Media Player - 3.0.16 Vetinari
 
 # Keywords (string)
 #sout-avi-keywords=
@@ -3613,7 +3613,7 @@ equalizer-bands=0 0 0 0 0 0 0 0 0 0
 #role=video
 
 # Audio filters (string)
-audio-filter=equalizer
+#audio-filter=
 
 # Audio visualizations (string)
 #audio-visual=none
