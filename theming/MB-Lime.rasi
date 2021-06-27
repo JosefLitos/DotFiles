@@ -11,13 +11,13 @@
 	bg-alt: 	#09090a;
 	bg-e: 	#161718;
 	bg-e-alt:#1a1c1e;
-	fg: 		#a7a7a8;
-	ac: 		#3a5023;
-	ac-mid:	#7dbf2f;
-	ac-dark:	#4d9000;
-	ac-fg: 	#eeeeee;
-	side: 	#8800aa;
-	side-a: 	#8800aadd;
+	fg: 		#868380;
+	ac: 		#3a5020;
+	ac-mid:	#85f022;
+	ac-dark:	#559915;
+	ac-fg: 	#f0eeea;
+	side: 	#9d2098;
+	side-a: 	#9d2098dd;
 	spacing: 0;
 	background-color: transparent;
 }
